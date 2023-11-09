@@ -48,7 +48,7 @@ const SignupForm = () => {
                 />
             </span>
 
-            <span className={Styles["Signup_Form__span"]}>
+            <span className={Styles["Signup_Form__span"]}> {/*make sure to accept the valid 11-digit phone number (PH)*/}
                 <label
                     htmlFor="contact" 
                     className={Styles["Signup_Form__span-label"]}
