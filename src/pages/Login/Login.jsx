@@ -11,23 +11,6 @@ const Login = () => {
     const [uname, setUname] = useState("");
     const [password, setPassword] = useState("");
 
-    const validateForm = () => {
-        const loginForm = document.getElementById("Login-form-id");
-        if (loginForm) {
-            if (loginForm.checkValidity()) {
-            return true;
-            } else {
-                return false;
-            }
-        }
-    };
-
-    const loginHandler = async () => {
-        if (validateForm()) {
-            await logInUser(uname, password).then(navigate("/"));
-          }
-    }
-
     const signUpHandler = (e) => {
         e.preventDefault();
         navigate("/signup");
@@ -79,7 +62,7 @@ const Login = () => {
 
                 <button
                     className={`${Styles["Login_Form__button"]} ${Styles["login_btn"]}`}
-                    onClick={loginHandler}
+                    //onClick={loginHandler}
                     >
                     Login
                 </button>

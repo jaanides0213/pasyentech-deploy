@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, 
+import {
+  BrowserRouter as Router, 
   Route,
   Routes,
   Navigate,
@@ -12,8 +13,13 @@ const App = () => {
   return (
     <Router>
       <div>
-          <LogIn/>
-          <Signup/>
+        <Routes>
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<Signup />} />
+
+          
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes> 
       </div>
     </Router>
   )

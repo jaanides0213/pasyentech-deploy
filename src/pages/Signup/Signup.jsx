@@ -1,126 +1,50 @@
-//import React from 'react'
-import Styles from './Signup.module.css'
+import Styles from './Signup.module.css';
+import SignupForm from "./SignupForm";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
-    return (
-        <div className={Styles["Signup_Form"]}>
-            <span className={Styles["Signup_Form__span"]}>
-                <img/>
-                <h2>Sign Up</h2>
-            </span>
+    const navigate = useNavigate();
 
-            <span className={Styles["Signup_Form__span"]}>
-                <label 
-                    htmlFor="fname" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    First Name
-                </label>
-                
-                <input 
-                    type='text'
-                    className={Styles["Signup_Form__span-input"]}
-                    name="fname"
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <label 
-                    htmlFor="lname" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    Last Name
-                </label>
-                <input 
-                    type='text'
-                    className={Styles["Signup_Form__span-input"]}
-                    name="lname"
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <label
-                    htmlFor="email" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    E-mail Address
-                </label>
-                <input 
-                    type='email'
-                    className={Styles["Signup_Form__span-input"]}
-                    name="email"
-                    
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <label
-                    htmlFor="contact" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    Contact Number
-                </label>
-                <input 
-                    type='text'
-                    className={Styles["Signup_Form__span-input"]}
-                    name="contactNo"
-                    pattern="[0-9]*"
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <label 
-                    htmlFor="uname" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    Username
-                </label>
-                <input 
-                    type='text'
-                    className={Styles["Signup_Form__span-input"]}
-                    name="uname"
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <label 
-                    htmlFor="password" 
-                    className={Styles["Signup_Form__span-label"]}
-                >
-                    Password
-                </label>
-            
-                <input
-                    type="password"
-                    className={Styles["Signup_Form__span-input"]}
-                    name="password"
-                    minLength={8}
-                    required
-                />
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <button
-                    className={`${Styles["Signup_Form__button"]} ${Styles["submitBtn"]}`}
-                    //onClick={}
-                >
-                    Sign Up
-                </button>
-            </span>
-
-            <span className={Styles["Signup_Form__span"]}>
-                <p> Already Have an account? </p>
-                <p className={Styles["Signup_Form__span-text"]}>Log In</p>    
-            </span>
-            
-        </div>
-    );
+    const logInHandler = (e) => {
+        e.preventDefault();
+        navigate("/login");
     }
 
+    return (
+        <main className={Styles["Signup"]}>
+            <div className={Styles["Signup-Text"]}>
+                <img/>
+                <h2>Sign Up</h2>
+            </div>
+
+            <form
+                className={Styles["Signup_Form"]}
+                id="Signup-Form"
+            >
+                <SignupForm/> {/*gicall ko agad; di pa maka fetch ng data*/}
+                
+                <button
+                    className={`${Styles["Signup_Form__button"]} ${Styles["signup_btn"]}`}
+                    // onClick={signUpHandler}
+                    >
+                    Sign-up
+                </button>
+
+                <h3>Already have an account?</h3>
+
+                <button 
+                    className={`${Styles.Signup_Form__button} ${Styles.login_btn}`}
+                    onClick={logInHandler}
+                >
+                    Login
+                </button>
+
+            </form>
+        </main>
+  )
+}
+
 export default Signup
+
+
