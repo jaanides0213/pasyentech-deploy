@@ -1,0 +1,53 @@
+.Login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Login__span{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    text-indent: 1rem;
+    color:white;
+}
+
+.Login-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Login-form__input-span{
+    padding: .5rem;
+}
+
+.Login-Form__label{
+    font-size: 20px;
+    color: white;
+}
+
+.Login-form__input-span{
+    display: flex;
+    flex-direction: column;
+}
+
+.Login-Form__input{
+    width: 392px;
+    height: 44px;
+    background-color: white;
+    border: none;
+    color: black;
+}
+
+.login_btn{
+    width: 138px;
+}
+.signup_btn{
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
