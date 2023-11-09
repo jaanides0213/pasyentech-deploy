@@ -1,20 +1,22 @@
-//import { useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
+import {BrowserRouter as Router, 
   Route,
+  Routes,
   Navigate,
 } from "react-router-dom";
-import './App.css'
-import Login from "./pages/Login/Login";
-//import Dashboard from "./pages/Dashboard/Dashboard";
-//import Signup from "./pages/Signup/Signup";
+
+import Signup from './pages/Signup/Signup.jsx'
+import LogIn from './pages/Login/Login.jsx';
 
 const App = () => {
 
-  
-
+  return (
+    <Router>
+      <div>
+          <LogIn/>
+          <Signup/>
+      </div>
+    </Router>
+  )
 }
-
 
 export default App;
