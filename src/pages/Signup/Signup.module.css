@@ -1,24 +1,61 @@
 body{
     background: linear-gradient(to top, #31000a, #8f001e);
+    justify-content: center;
+}
+
+.Signup{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Signup-Text{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    text-indent: 1rem;
+    color:white;
 }
 
 .Signup_Form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+}
+
+.Signup_Form__span{
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
+
+.Signup_Form__span-label{
+    font-size: 20px;
     color: white;
 }
 
-h2{
-    font-size: 32px;
-    font-weight: bold;
+.h4{
+    color: white;
 }
 
-.Signup_Form__span-text{
+
+.Signup_Form__span-input{
+    width: 392px;
+    height: 44px;
+    border: none;
+    background-color:white ;
+    color: black;
+}
+
+
+.Signup_Form__button{
+    width: 138px;
+}
+
+.login_btn {
+    background: none;
+    border: none;
     text-decoration: underline;
-}
-
-.Signup_Form__span_input input   {
-    display: block;
-    background-color: white;
 }

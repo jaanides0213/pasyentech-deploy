@@ -1,6 +1,7 @@
 import Styles from './Signup.module.css';
 import SignupForm from "./SignupForm";
 import { useNavigate } from 'react-router-dom';
+import { TiUserAddOutline } from 'react-icons/ti';
 
 const Signup = () => {
 
@@ -14,7 +15,7 @@ const Signup = () => {
     return (
         <main className={Styles["Signup"]}>
             <div className={Styles["Signup-Text"]}>
-                <img/>
+                <TiUserAddOutline size="2.5rem" color="white"/>
                 <h2>Sign Up</h2>
             </div>
 
@@ -31,7 +32,7 @@ const Signup = () => {
                     Sign-up
                 </button>
 
-                <h3>Already have an account?</h3>
+                <h4>Already have an account?</h4>
 
                 <button 
                     className={`${Styles.Signup_Form__button} ${Styles.login_btn}`}

@@ -2,7 +2,7 @@ import Styles from './Login.module.css'
 //import {logInUser} from "../../api/loginUser";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import { TiUserOutline } from 'react-icons/ti';
 
 const Login = () => {
 
@@ -23,7 +23,7 @@ const Login = () => {
     return (
         <main className={Styles["Login"]}>
             <span className={Styles["Login__span"]}>
-                <img/>
+                <TiUserOutline size="2.5rem" color="white" />
                 <h2>Log In</h2>
             </span>
                 
@@ -67,7 +67,7 @@ const Login = () => {
                     Login
                 </button>
 
-                <h3> Dont have an account yet?</h3>
+                <h4> Dont have an account yet?</h4>
 
                 <button 
                     className={`${Styles.Login_Form__button} ${Styles.signup_btn}`}
