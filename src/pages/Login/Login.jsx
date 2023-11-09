@@ -3,11 +3,11 @@ import Styles from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { TiUserOutline } from 'react-icons/ti';
+import Header from '../../components/Header/Header.jsx';
 
 const Login = () => {
 
     const navigate = useNavigate();
-    
     const [uname, setUname] = useState("");
     const [password, setPassword] = useState("");
 
@@ -22,11 +22,13 @@ const Login = () => {
 
     return (
         <main className={Styles["Login"]}>
+            <Header />
             <span className={Styles["Login__span"]}>
                 <TiUserOutline size="2.5rem" color="white" />
                 <h2>Log In</h2>
             </span>
-                
+
+
             <form 
                 className={Styles["Login-form"]}
                 onSubmit={submitHandler}
@@ -45,6 +47,8 @@ const Login = () => {
                         required
                     />
                 </span>
+               
+
 
                 <span className={Styles["Login-form__input-span"]}>
                     <label htmlFor="password" className={Styles["Login-Form__label"]}>

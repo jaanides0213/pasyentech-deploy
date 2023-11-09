@@ -1,0 +1,20 @@
+/* Header.module.css */
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align to the start (left) of the container */
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .Logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 1rem; /* Add margin to separate the logo from other content */
+  }
+  
+  .Header__span {
+    /* Additional styles for the span if needed */
+  }
+  
