@@ -22,7 +22,10 @@ const Login = () => {
 
     return (
         <main className={Styles["Login"]}>
-            <Header />
+            <a href=''>  {/*indicate appropriate routing here (to itself) */}
+                <img className='logo-class' src='/src/assets/logo-img/png-250px/white-complete-250px.png'/>
+            </a>
+    
             <span className={Styles["Login__span"]}>
                 <TiUserOutline size="2.5rem" color="white" />
                 <h2>Log In</h2>
@@ -68,7 +71,7 @@ const Login = () => {
                     className={`${Styles["Login_Form__button"]} ${Styles["login_btn"]}`}
                     //onClick={loginHandler}
                     >
-                    Login
+                    Log In
                 </button>
 
                 <h4> Dont have an account yet?</h4>
@@ -77,7 +80,7 @@ const Login = () => {
                     className={`${Styles.Login_Form__button} ${Styles.signup_btn}`}
                     onClick={signUpHandler}
                 >
-                    Sign-Up
+                    Sign Up
                 </button>
             </form>
         </main>
