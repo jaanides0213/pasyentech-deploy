@@ -3,19 +3,22 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin-top: -2.5rem;
 }
 
 .Login__span{
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
-    text-indent: 1rem;
+    font-size: 20px;
+    margin-top: -5rem;   
     color:white;
+    text-indent: 0.5rem;
 }
 
 .Login-form{
     display: flex;
     flex-wrap: wrap;
+    margin-top: -1.5rem;
     flex-direction: column;
     align-items: center;
 }
@@ -25,7 +28,7 @@
 }
 
 .Login-Form__label{
-    font-size: 20px;
+    font-size: 17px;
     color: white;
 }
 
@@ -35,19 +38,34 @@
 }
 
 .Login-Form__input{
-    width: 392px;
-    height: 44px;
+    width: 320px;
+    height: 40px;
     background-color: white;
     border: none;
     color: black;
 }
 
-.login_btn{
-    width: 138px;
+input {
+    padding-left: 15px;
+    padding-right: 15px;
 }
+
+.login_btn{
+    width: 120px;
+    margin-top: 15px;
+    background-color: white;
+    border-color: none;
+    color: #8F001E;
+    font-weight: bold;
+}
+
+h4 {
+    color: white;
+}
+
 .signup_btn{
+    margin-top: -2rem;
     background: none;
     border: none;
     text-decoration: underline;
 }
-

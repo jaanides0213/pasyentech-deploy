@@ -14,6 +14,9 @@ const Signup = () => {
 
     return (
         <main className={Styles["Signup"]}>
+            <a href=''> {/*indicate appropriate routing here (to itself) */}
+                <img className='logo-class' src='/src/assets/logo-img/png-250px/white-complete-250px.png'/>
+            </a>
             <div className={Styles["Signup-Text"]}>
                 <TiUserAddOutline size="2.5rem" color="white"/>
                 <h2>Sign Up</h2>
@@ -40,8 +43,9 @@ const Signup = () => {
                 >
                     Login
                 </button>
-
             </form>
+            <br/>
+            <br/>
         </main>
   )
 }
