@@ -10,11 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^10.6.0",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "react-router-dom": "^6.18.0",
     "react-icons": "^4.11.0",
     "react-router": "^6.18.0",
     "react-router-dom": "^6.18.0"
@@ -29,5 +28,10 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "sass": "^1.69.5",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "A website application to streamline operations and enhance patient care.",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
