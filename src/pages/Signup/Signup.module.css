@@ -1,8 +1,3 @@
-body{
-    background: linear-gradient(to top, #31000a, #8f001e);
-    justify-content: center;
-}
-
 .Signup{
     display: flex;
     align-items: center;

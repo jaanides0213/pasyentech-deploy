@@ -20,6 +20,12 @@ const Login = () => {
         e.preventDefault();
     };
 
+    const loginHandler = (e) => {
+        e.preventDefault();
+        navigate("/sidebar"); 
+
+    };
+
     return (
         <main className={Styles["Login"]}>
             <a href=''>  {/*indicate appropriate routing here (to itself) */}
@@ -30,7 +36,6 @@ const Login = () => {
                 <TiUserOutline size="2.5rem" color="white" />
                 <h2>Log In</h2>
             </span>
-
 
             <form 
                 className={Styles["Login-form"]}
@@ -67,7 +72,7 @@ const Login = () => {
 
                 <button
                     className={`${Styles["Login_Form__button"]} ${Styles["login_btn"]}`}
-                    //onClick={loginHandler}
+                    onClick={loginHandler}
                     >
                     Log In
                 </button>

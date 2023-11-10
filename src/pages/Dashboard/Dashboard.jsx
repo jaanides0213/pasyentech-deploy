@@ -3,7 +3,7 @@
     const Dashboard = () => {
       return (
         <div>
-          
+          <h1>Hi Dashboard</h1>
         </div>
       )
     }

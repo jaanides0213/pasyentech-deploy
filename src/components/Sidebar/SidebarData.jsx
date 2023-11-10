@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Appointment extends Component {
+export class SidebarData extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ export class Appointment extends Component {
   }
 }
 
-export default Appointment
+export default SidebarData
