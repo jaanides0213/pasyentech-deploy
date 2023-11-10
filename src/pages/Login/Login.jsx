@@ -3,7 +3,6 @@ import Styles from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { TiUserOutline } from 'react-icons/ti';
-import Header from '../../components/Header/Header.jsx';
 
 const Login = () => {
 
@@ -13,7 +12,8 @@ const Login = () => {
 
     const signUpHandler = (e) => {
         e.preventDefault();
-        navigate("/signup");
+        navigate("/signup"); 
+
     };
 
     const submitHandler = (e) => {
@@ -50,8 +50,6 @@ const Login = () => {
                         required
                     />
                 </span>
-               
-
 
                 <span className={Styles["Login-form__input-span"]}>
                     <label htmlFor="password" className={Styles["Login-Form__label"]}>
