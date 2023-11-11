@@ -29,6 +29,9 @@
 
 .DashboardNotes_note__textarea{
     width: 350px;
+    padding: 40px 15px 15px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .DashboardAppointment_note {
@@ -43,8 +46,16 @@
     color: black;
     font-style: italic;
 }
+
+.DashboardNotes_label{
+    position: absolute;
+    top: 150px;
+    font-weight: bold;
+    color: black;
+    font-style: italic;
+}
   
-  .DashboardAppointment_note__textarea {
+.DashboardAppointment_note__textarea {
     width: 350px;
     padding: 40px 15px 15px 15px;
     box-sizing: border-box;
