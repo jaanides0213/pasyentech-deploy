@@ -1,0 +1,53 @@
+.Dashboard__cont{
+    background-color: aliceblue;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.Dashboard__cont-helloUser{
+    border: 1px solid #8F001E;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.Dashboard__cont-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px 40px;
+}
+.Dashboard__cont-column{
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.Dashboard__cont-column-main{
+    display: flex;
+}
+
+.DashboardNotes_note__textarea{
+    width: 350px;
+}
+
+.DashboardAppointment_note {
+    position: relative;
+}
+  
+.DashboardAppointment_label {
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    font-weight: bold;
+    color: black;
+    font-style: italic;
+}
+  
+  .DashboardAppointment_note__textarea {
+    width: 350px;
+    padding: 40px 15px 15px 15px;
+    box-sizing: border-box;
+    margin-top: 30px;
+    border-radius: 10px;
+}

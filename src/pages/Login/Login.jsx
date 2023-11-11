@@ -22,7 +22,7 @@ const Login = () => {
 
     const loginHandler = (e) => {
         e.preventDefault();
-        navigate("/sidebar"); 
+        navigate("/dashboard"); 
 
     };
 

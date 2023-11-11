@@ -7,7 +7,8 @@ import {
 
 import Signup from './pages/Signup/Signup.jsx'
 import LogIn from './pages/Login/Login.jsx';
-import Sidebar from './Components/Sidebar/Sidebar.jsx'
+import Sidebar from './Components/Sidebar/Sidebar.jsx';
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import './App.css';
 
 const App = () => {
@@ -18,11 +19,10 @@ const App = () => {
         <Routes>
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
-            
             <Route path="*" element={<Navigate to="/login" />} />
         </Routes> 
-        {/* <Sidebar/> */}
       </div>
     </Router>
   )

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react';
+import Styles from './Sidebar.module.css';
 
-export class Sidebar extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+const Sidebar = () => {
+  return (
+    <div className={Styles["Sidebar__cont"]}>
+      
+      
+    </div>
+  )
 }
 
-export default Sidebar
+export default Sidebar;
