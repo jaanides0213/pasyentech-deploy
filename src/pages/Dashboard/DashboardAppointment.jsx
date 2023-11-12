@@ -5,7 +5,6 @@ const DashboardAppointment = () => {
   return (
     <div
       className={Styles["DashboardAppointment_note"]}
-      style={{ background: "rgba(255, 255, 255, 0)" }}
     >
       <div className={Styles["DashboardAppointment_label"]}>
         Appointments for today:{" "}
