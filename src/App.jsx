@@ -8,7 +8,6 @@ import {
 import PrivateRoute from "./PrivateRoute";
 import Signup from "./pages/Signup/Signup.jsx";
 import LogIn from "./pages/Login/Login.jsx";
-import Sidebar from "./Components/Sidebar/Sidebar.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import "./App.css";
 
@@ -19,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<Signup />} />
+
           <Route
             path="/dashboard"
             element={<PrivateRoute element={<Dashboard />} />}
@@ -29,5 +29,4 @@ const App = () => {
     </Router>
   );
 };
-
 export default App;

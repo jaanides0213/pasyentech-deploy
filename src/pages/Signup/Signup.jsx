@@ -61,6 +61,12 @@ const Signup = () => {
       const message =
         "You have been registered. Your account is awaiting approval from the superadmin.";
       alert(message);
+      setFname("");
+      setLname("");
+      setUname("");
+      setEmail("");
+      setPassword("");
+      setContactNo("");
       signOut(auth); // Display the alert message
     } catch (error) {
       console.log("Error during signup:", error);

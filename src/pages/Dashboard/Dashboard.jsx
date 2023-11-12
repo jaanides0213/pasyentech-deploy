@@ -5,8 +5,14 @@ import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
 import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
+import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
+  const location = useLocation();
+  const user = location.state && location.state.user; // Access the user data
+
+  console.log("Rendering Dashboard");
+
   const getFormattedDate = () => {
     const currentDate = new Date();
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
@@ -17,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <main className={Styles["Dashboard__cont"]}>
-      <Sidebar /> {/*For run through purposes*/}
+      <Sidebar />
       <div className={Styles["Dashboard__cont-main"]}>
         <div className={Styles["Dashboard__cont-header"]}>
           <Header />
@@ -25,8 +31,10 @@ const Dashboard = () => {
         <div className={Styles["Dashboard__cont-column-main"]}>
           <div className={Styles["Dashboard__cont-column"]}>
             <div className={Styles["Dashboard__cont-helloUser"]}>
-              <p className={Styles["Dashboard__cont-text"]}>Hello, </p>
-              <h1>Jess</h1> {/* for run through purposes */}
+              <p className={Styles["Dashboard__cont-text"]}>
+                Hello, {user && user.fname} {/* Access user data here */}
+              </p>
+              <h1>Jess</h1>
               <p className={Styles["Dashboard__cont-text"]}>
                 Today is {getFormattedDate()}
               </p>

@@ -57,9 +57,23 @@ const Login = () => {
             await signOut(auth);
           } else {
             alert("Redirecting you to home page..");
-            navigate("/dashbaord");
+            navigate("/dashboard");
           }
         }
+      }
+
+      try {
+        const userDoc = await getDoc(userRef);
+        const userDocData = userDoc.data();
+
+        if (userDoc.exists()) {
+          if (userDocData.role === "approved") {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/dashboard");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
     };
 

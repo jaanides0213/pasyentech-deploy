@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Navigate } from "react-router-dom";
-import { auth, db } from "../src/config/firebase";
+import { auth } from "../src/config/firebase";
 
 const PrivateRoute = ({ element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,7 +13,7 @@ const PrivateRoute = ({ element }) => {
     return () => unsubscribe();
   }, []);
 
-  return isLoggedIn ? element : <Navigate to="/login" />;
+  return isLoggedIn ? <Navigate to="/dashboard" /> : element;
 };
 
 export default PrivateRoute;
