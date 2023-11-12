@@ -1,29 +1,80 @@
 import Styles from "./Login.module.css";
-//import {logInUser} from "../../api/loginUser";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { TiUserOutline } from "react-icons/ti";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getDoc, doc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../../config/firebase";
+import React, { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [uname, setUname] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const signUpHandler = (e) => {
     e.preventDefault();
     navigate("/signup");
   };
 
-  const submitHandler = (e) => {
+  const login = (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setErrorMessage("Please fill in the fields");
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          alert("User not found. Please create an account.");
+        } else if (error.code === "auth/wrong-password") {
+          alert("Wrong password. Please try again.");
+        } else {
+          console.log(error);
+        }
+      });
   };
 
-  const loginHandler = (e) => {
-    e.preventDefault();
-    navigate("/dashboard");
-  };
+  useEffect(() => {
+    const handleLogin = async (user) => {
+      if (user) {
+        const uid = user.uid;
+        const userRef = doc(db, "users", uid); // Correct usage of doc function
+        const userDoc = await getDoc(userRef); // Use getDoc on the DocumentReference
+        const userDocData = userDoc.data();
+        if (userDoc.exists()) {
+          if (userDocData.role !== "admin") {
+            alert(
+              "Your account is awaiting approval from an admin. Please check back later."
+            );
+            await signOut(auth);
+          } else {
+            alert("Redirecting you to home page..");
+            navigate("/admin-home");
+          }
+        }
+      }
+    };
 
-  const login = () => {};
+    const listen = onAuthStateChanged(auth, handleLogin);
+    return () => {
+      listen();
+    };
+  }, []);
+
+  const [showConfirmationPassword, setShowConfirmationPassword] =
+    useState(false);
+
+  const toggleConfirmationPasswordVisibility = () => {
+    setShowConfirmationPassword(!showConfirmationPassword);
+  };
 
   return (
     <main className={Styles["Login"]}>
@@ -43,19 +94,19 @@ const Login = () => {
 
       <form
         className={Styles["Login-form"]}
-        onSubmit={submitHandler}
+        onSubmit={login}
         id="Login-form-id"
       >
         <span className={Styles["Login-form__input-span"]}>
-          <label htmlFor="uname" className={Styles["Login-Form__label"]}>
-            Username
+          <label htmlFor="email" className={Styles["Login-Form__label"]}>
+            Email
           </label>
           <input
             type="text"
-            id="uname"
+            id="email"
             className={Styles["Login-Form__input"]}
-            value={uname}
-            onChange={(e) => setUname(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </span>
@@ -74,9 +125,11 @@ const Login = () => {
           />
         </span>
 
+        {errorMessage && <p>{errorMessage}</p>}
+
         <button
           className={`${Styles["Login_Form__button"]} ${Styles["login_btn"]}`}
-          onClick={loginHandler}
+          type="submit"
         >
           Log In
         </button>
