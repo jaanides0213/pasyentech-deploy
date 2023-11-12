@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Styles from './Header.module.css';
+import React, { useState, useEffect } from "react";
+import Styles from "./Header.module.css";
 
 const Header = () => {
   const [currentTime, setCurrentTime] = useState(getFormattedTime());
@@ -8,8 +8,8 @@ const Header = () => {
   function getFormattedTime() {
     const currentDateTime = new Date();
     const hours = currentDateTime.getHours() % 12 || 12;
-    const minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
-    const ampm = currentDateTime.getHours() >= 12 ? 'pm' : 'am';
+    const minutes = currentDateTime.getMinutes().toString().padStart(2, "0");
+    const ampm = currentDateTime.getHours() >= 12 ? "pm" : "am";
     return `${hours}:${minutes} ${ampm}`;
   }
 
@@ -30,7 +30,6 @@ const Header = () => {
 
       <div className={Styles["UserName"]}>Username</div>
     </div>
-
   );
 };
 
