@@ -34,7 +34,7 @@ const Dashboard = () => {
               <p className={Styles["Dashboard__cont-text"]}>
                 Hello, {user && user.fname} {/* Access user data here */}
               </p>
-              <h1>Jess</h1>
+              <h1>{user && user.fname}</h1>
               <p className={Styles["Dashboard__cont-text"]}>
                 Today is {getFormattedDate()}
               </p>
