@@ -36,11 +36,11 @@ const Dashboard = () => {
           <div className={Styles["Dashboard__cont-column"]}>
             <Notes />
             <span className={Styles["Dashboard__cont-text"]}>Shortcuts:</span>
-            <button className={Styles["Dashboard__cont-add"]}>
+            <button className={Styles["Dashboard__cont-add_patient"]}>
               <IoMdAdd />
               Add Patient
             </button>
-            <button className={Styles["Dashboard__cont-add"]}>
+            <button className={Styles["Dashboard__cont-add_prescription"]}>
               <IoMdAdd />
               Add Prescription
             </button>
