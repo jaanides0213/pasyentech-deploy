@@ -57,7 +57,7 @@ const Login = () => {
             await signOut(auth);
           } else {
             alert("Redirecting you to home page..");
-            navigate("/admin-home");
+            navigate("/dashboard");
           }
         }
       }
