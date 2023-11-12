@@ -1,12 +1,7 @@
 import Styles from "./Signup.module.css";
 import { useState } from "react";
 
-const SignupForm = ({ userInfo, setUserInfo }) => {
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
-
+const SignupForm = () => {
   return (
     <>
       <span className={Styles["Signup_Form__span"]}>
@@ -18,8 +13,6 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           type="text"
           className={Styles["Signup_Form__span-input"]}
           name="fname"
-          value={userInfo.fname}
-          onChange={handleInputChange}
           required
         />
       </span>
@@ -32,8 +25,6 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           type="text"
           className={Styles["Signup_Form__span-input"]}
           name="lname"
-          value={userInfo.lname}
-          onChange={handleInputChange}
           required
         />
       </span>
@@ -46,15 +37,12 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           type="email"
           className={Styles["Signup_Form__span-input"]}
           name="email"
-          value={userInfo.email}
-          onChange={handleInputChange}
           required
         />
       </span>
 
       <span className={Styles["Signup_Form__span"]}>
         {" "}
-        {/*make sure to accept the valid 11-digit phone number (PH)*/}
         <label htmlFor="contact" className={Styles["Signup_Form__span-label"]}>
           Contact Number
         </label>
@@ -63,8 +51,6 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           className={Styles["Signup_Form__span-input"]}
           name="contactNo"
           pattern="[0-9]*"
-          value={userInfo.contactNo}
-          onChange={handleInputChange}
           required
         />
       </span>
@@ -77,8 +63,6 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           type="text"
           className={Styles["Signup_Form__span-input"]}
           name="uname"
-          value={userInfo.uname}
-          onChange={handleInputChange}
           required
         />
       </span>
@@ -93,8 +77,6 @@ const SignupForm = ({ userInfo, setUserInfo }) => {
           className={Styles["Signup_Form__span-input"]}
           name="password"
           minLength={8}
-          value={userInfo.password}
-          onChange={handleInputChange}
           required
         />
       </span>
