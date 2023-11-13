@@ -1,5 +1,31 @@
-.Sidebar__cont{
+.Sidebar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: #8F001E;
-    height: 100vh;
+    height: 121vh;
     width: 490px;
+} 
+
+.sidebar-content {
+    margin-top: -3rem;
+    line-height: 20px;
 }
+
+.sidebar-content a {
+    font-weight:300;
+    color: white;
+    font-size: 20px;
+}
+
+.sidebar-content a:hover, .sidebar-content-logout a:hover {
+    color: white;
+}
+.sidebar-content-logout {
+    margin-top: 12rem;
+}
+.sidebar-content-logout a{
+    font-weight:300;
+    color: white;
+    font-size: 20px;
+}   
