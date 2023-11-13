@@ -106,12 +106,15 @@ const Signup = () => {
 
   return (
     <main className={Styles["Signup"]}>
-      <a href="">
-        <img
-          className="logo-class"
-          src="/src/assets/logo-img/png-250px/white-complete-250px.png"
-        />
-      </a>
+      <div className="div-logo">
+        <a href="signup">
+          <img
+            className="logo-class"
+            src="/src/assets/logo-img/png-250px/white-complete-250px.png"
+          />
+        </a>
+      </div>
+       
       <div className={Styles["Signup-Text"]}>
         <TiUserAddOutline size="2.5rem" color="white" />
         <h2>Sign Up</h2>
@@ -221,14 +224,14 @@ const Signup = () => {
           className={`${Styles["Signup_Form__button"]} ${Styles["signup_btn"]}`}
           type="submit"
         >
-          Sign-up
+          Sign Up
         </button>
         <h4>Already have an account?</h4>
         <button
           className={`${Styles.Signup_Form__button} ${Styles.login_btn}`}
           onClick={logInHandler}
         >
-          Login
+          Log In
         </button>
       </form>
       <br />
