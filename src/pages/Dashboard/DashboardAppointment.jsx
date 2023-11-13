@@ -3,9 +3,7 @@ import Styles from "./Dashboard.module.css";
 
 const DashboardAppointment = () => {
   return (
-    <div
-      className={Styles["DashboardAppointment_note"]}
-    >
+    <div className={Styles["DashboardAppointment_note"]}>
       <div className={Styles["DashboardAppointment_label"]}>
         Appointments for today:{" "}
       </div>

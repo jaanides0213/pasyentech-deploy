@@ -61,6 +61,20 @@ const Login = () => {
           }
         }
       }
+
+      try {
+        const userDoc = await getDoc(userRef);
+        const userDocData = userDoc.data();
+
+        if (userDoc.exists()) {
+          if (userDocData.role === "approved") {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/dashboard");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     };
 
     const listen = onAuthStateChanged(auth, handleLogin);
@@ -78,15 +92,14 @@ const Login = () => {
 
   return (
     <main className={Styles["Login"]}>
-      <a href="">
-        {" "}
-        {/*indicate appropriate routing here (to itself) */}
-        <img
-          className="logo-class"
-          src="/src/assets/logo-img/png-250px/white-complete-250px.png"
-        />
-      </a>
-
+        <div className={Styles["div-logo"]}>
+          <a href="/login">
+            <img
+              src="/src/assets/logo-img/png-250px/white-complete-250px.png"
+            />
+          </a>
+        </div>
+      
       <span className={Styles["Login__span"]}>
         <TiUserOutline size="2.5rem" color="white" />
         <h2>Log In</h2>

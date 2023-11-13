@@ -1,19 +1,23 @@
+body {
+    overflow-x: hidden;
+}
+
 .Dashboard__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: auto;
     display: flex;
-    font-family: "Inter", sans-serif;
-    
+    font-family: "Inter", sans-serif;   
 }
 
 /* for hello user */
 .Dashboard__cont-helloUser{
     border: 2px solid #8F001E;
     border-radius: 10px;
-    width: 342px;
+    width: 100%;
+    max-width: 342px; /* Limit the width on larger screens */
     font-family: "Inter",sans-serif;
-    padding: 0px 0px 10px 10px
+    padding: 0px 0px 10px 10px;
 }
 
 .Dashboard__cont-main{

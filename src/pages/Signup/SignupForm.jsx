@@ -1,5 +1,4 @@
 import Styles from "./Signup.module.css";
-import { useState } from "react";
 
 const SignupForm = () => {
   return (
