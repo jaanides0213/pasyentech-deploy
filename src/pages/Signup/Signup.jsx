@@ -1,8 +1,8 @@
 import Styles from "./Signup.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAddOutline } from "react-icons/ti";
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 
@@ -67,17 +67,9 @@ const Signup = () => {
       setEmail("");
       setPassword("");
       setContactNo("");
-      signOut(auth); // Display the alert message
     } catch (error) {
       console.log("Error during signup:", error);
     }
-  };
-
-  const [showConfirmationPassword, setShowConfirmationPassword] =
-    useState(false);
-
-  const toggleConfirmationPasswordVisibility = () => {
-    setShowConfirmationPassword(!showConfirmationPassword);
   };
 
   const validateFirstName = (value) => {
@@ -114,7 +106,7 @@ const Signup = () => {
           />
         </a>
       </div>
-       
+
       <div className={Styles["Signup-Text"]}>
         <TiUserAddOutline size="2.5rem" color="white" />
         <h2>Sign Up</h2>

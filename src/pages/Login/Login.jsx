@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -84,14 +84,7 @@ const Login = () => {
     return () => {
       listen();
     };
-  }, []);
-
-  const [showConfirmationPassword, setShowConfirmationPassword] =
-    useState(false);
-
-  const toggleConfirmationPasswordVisibility = () => {
-    setShowConfirmationPassword(!showConfirmationPassword);
-  };
+  }, [email, password, navigate]);
 
   return (
     <main className={Styles["Login"]}>

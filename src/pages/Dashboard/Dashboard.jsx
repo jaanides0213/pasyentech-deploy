@@ -1,4 +1,3 @@
-import React from "react";
 import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
@@ -34,7 +33,8 @@ const Dashboard = () => {
               <p className={Styles["Dashboard__cont-text"]}>
                 Hello, {/* Access user data here */}
               </p>
-              <h1>{user && user.fname}</h1>
+              {/* {user && user.fname} */}
+              {console.log("hahah", user && user.fname)}
               <p className={Styles["Dashboard__cont-text"]}>
                 Today is {getFormattedDate()}
               </p>
