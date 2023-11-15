@@ -32,7 +32,7 @@ const Dashboard = () => {
           <div className={Styles["Dashboard__cont-column"]}>
             <div className={Styles["Dashboard__cont-helloUser"]}>
               <p className={Styles["Dashboard__cont-text"]}>
-                Hello, {user && user.fname} {/* Access user data here */}
+                Hello, {/* Access user data here */}
               </p>
               <h1>{user && user.fname}</h1>
               <p className={Styles["Dashboard__cont-text"]}>
