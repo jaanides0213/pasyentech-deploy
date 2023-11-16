@@ -3,13 +3,52 @@
     align-items: center;
     flex-direction: column;
     background-color: #8F001E;
+    transition: width 1s; /*styling to toggle sidebar*/
     height: 125vh;
     width: 490px;
 } 
 
+.arrow-btn:hover{
+    cursor: pointer;
+}
+
+.Sidebar.open {
+    width: 490px;
+    .arrow-btn{
+        background-color: #8F001E;
+        color: white;
+        align-self: flex-end;
+        margin-top: 6rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.Sidebar.closed {
+    width: 125px;
+    .arrow-btn{
+        background-color: #8F001E;
+        align-self: center;
+        color: white;
+        margin-top: 6rem;
+    }
+}
+
+.sidebar-logo{
+    margin-top: -7.5rem;
+}
+
+.sidebar-icons {
+    align-self: flex-end;
+    color: white;
+}
+
 .sidebar-content {
     margin-top: -3rem;
     line-height: 20px;
+}
+
+.sidebar-content-closed{
+    margin-top: 5em;
 }
 
 .sidebar-content a {
