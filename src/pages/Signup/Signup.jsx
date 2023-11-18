@@ -184,7 +184,7 @@ const Signup = () => {
           />
         </span>
 
-        <span className={Styles["Signup_Form__span"]}>
+        {/* <span className={Styles["Signup_Form__span"]}>
           <label htmlFor="uname" className={Styles["Signup_Form__span-label"]}>
             Username
           </label>
@@ -196,7 +196,7 @@ const Signup = () => {
             onChange={(e) => setUname(e.target.value)}
             required
           />
-        </span>
+        </span> */}
 
         <span className={Styles["Signup_Form__span"]}>
           <label
