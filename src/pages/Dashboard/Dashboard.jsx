@@ -5,11 +5,9 @@ import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
 import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
-import { useLocation } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Dashboard = () => {
-  const location = useLocation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {

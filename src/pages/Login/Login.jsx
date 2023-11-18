@@ -43,12 +43,16 @@ const Login = () => {
   };
 
   useEffect(() => {
+    // Clear email and password when component mounts
+    setEmail("");
+    setPassword("");
+
     const handleLogin = async (user) => {
       let userRef;
       if (user) {
         const uid = user.uid;
-        const userRef = doc(db, "users", uid); // Correct usage of doc function
-        const userDoc = await getDoc(userRef); // Use getDoc on the DocumentReference
+        const userRef = doc(db, "users", uid);
+        const userDoc = await getDoc(userRef);
         const userDocData = userDoc.data();
         if (userDoc.exists()) {
           if (userDocData.role !== "admin") {
@@ -57,7 +61,7 @@ const Login = () => {
             );
             await signOut(auth);
           } else {
-            alert("Redirecting you to home page..");
+            alert("Redirecting you to the home page..");
             navigate("/dashboard");
           }
         }
