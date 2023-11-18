@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { auth } from "../src/config/firebase";
 
@@ -14,7 +13,9 @@ const PrivateRoute = ({ element }) => {
     return () => unsubscribe();
   }, []);
 
-  return isLoggedIn ? <Navigate to="/dashboard" /> : element;
+  return isLoggedIn
+    ? React.cloneElement(element, { user: auth.currentUser })
+    : element;
 };
 
 PrivateRoute.propTypes = {

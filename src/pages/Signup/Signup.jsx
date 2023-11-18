@@ -2,7 +2,7 @@ import Styles from "./Signup.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAddOutline } from "react-icons/ti";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 
@@ -11,10 +11,10 @@ const Signup = () => {
 
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [uname, setUname] = useState(""); // Changed setuname to setUname
+  const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [contactNo, setContactNo] = useState(""); // Added contactNo to state
+  const [contactNo, setContactNo] = useState("");
   const [fnameError, setFnameError] = useState("");
   const [lnameError, setLnameError] = useState("");
 
@@ -38,6 +38,10 @@ const Signup = () => {
         email,
         password
       );
+
+      await updateProfile(userCredential.user, {
+        displayName: `${fname}`,
+      });
 
       const docRef = doc(db, "users", userCredential.user.uid);
       await setDoc(docRef, {

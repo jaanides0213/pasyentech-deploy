@@ -33,8 +33,10 @@ const Dashboard = () => {
               <p className={Styles["Dashboard__cont-text"]}>
                 Hello, {/* Access user data here */}
               </p>
+              {/* {user && user.displayName} */}
+
               {/* {user && user.fname} */}
-              {console.log("hahah", user && user.fname)}
+              {console.log("nani", user)}
               <p className={Styles["Dashboard__cont-text"]}>
                 Today is {getFormattedDate()}
               </p>
