@@ -1,4 +1,3 @@
-import React from "react";
 import Styles from "./Dashboard.module.css";
 
 const DashboardNotes = () => {
@@ -12,7 +11,6 @@ const DashboardNotes = () => {
         cols="10"
         rows="5"
         placeholder="Type...."
-        maxLength="100"
         className={Styles["DashboardNotes_note__textarea"]}
       />
       <div className={Styles["DashboardNotes_note__footer"]}>

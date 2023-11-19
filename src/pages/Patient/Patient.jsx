@@ -1,13 +1,5 @@
-import React, { Component } from 'react'
+const Patient = () => {
+  return <div></div>;
+};
 
-export class Patient extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-}
-
-export default Patient
+export default Patient;

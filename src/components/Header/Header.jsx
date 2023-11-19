@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Styles from "./Header.module.css";
 
 const Header = () => {
   const [currentTime, setCurrentTime] = useState(getFormattedTime());
 
-  // Function to format the time as "hh:mm am/pm"
   function getFormattedTime() {
     const currentDateTime = new Date();
     const hours = currentDateTime.getHours() % 12 || 12;
@@ -13,13 +12,11 @@ const Header = () => {
     return `${hours}:${minutes} ${ampm}`;
   }
 
-  // Update the time every minute
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(getFormattedTime());
-    }, 60000); // 60000 milliseconds = 1 minute
+    }, 60000);
 
-    // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 

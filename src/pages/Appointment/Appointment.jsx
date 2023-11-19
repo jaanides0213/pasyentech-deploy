@@ -1,13 +1,5 @@
-import React, { Component } from 'react'
+const Appointment = () => {
+  return <div></div>;
+};
 
-export class Appointment extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-}
-
-export default Appointment
+export default Appointment;

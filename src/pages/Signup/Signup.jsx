@@ -1,8 +1,8 @@
 import Styles from "./Signup.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAddOutline } from "react-icons/ti";
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 
@@ -11,10 +11,9 @@ const Signup = () => {
 
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [uname, setUname] = useState(""); // Changed setuname to setUname
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [contactNo, setContactNo] = useState(""); // Added contactNo to state
+  const [contactNo, setContactNo] = useState("");
   const [fnameError, setFnameError] = useState("");
   const [lnameError, setLnameError] = useState("");
 
@@ -26,9 +25,12 @@ const Signup = () => {
   const signUp = async (e) => {
     e.preventDefault();
 
-    // Check if any of the required fields are empty
-    if (!fname || !lname || !uname || !email || !password || !contactNo) {
-      alert("Please fill in all the required information.");
+    const isContactNoValid =
+      /^[0-9]*$/.test(contactNo) && contactNo.length === 11;
+
+    if (!isContactNoValid) {
+      alert("Please enter a valid 11-digit contact number.");
+      setContactNo(""); // Clear the contact number input field
       return;
     }
 
@@ -39,11 +41,14 @@ const Signup = () => {
         password
       );
 
+      await updateProfile(userCredential.user, {
+        displayName: `${fname}`,
+      });
+
       const docRef = doc(db, "users", userCredential.user.uid);
       await setDoc(docRef, {
         fname: fname,
         lname: lname,
-        uname: uname,
         email: email,
         role: "pending",
       });
@@ -52,7 +57,6 @@ const Signup = () => {
       await setDoc(requestDocRef, {
         firstName: fname,
         lastName: lname,
-        userName: uname,
         email: email,
         createdAt: serverTimestamp(),
         status: "pending",
@@ -63,21 +67,18 @@ const Signup = () => {
       alert(message);
       setFname("");
       setLname("");
-      setUname("");
       setEmail("");
       setPassword("");
       setContactNo("");
-      signOut(auth); // Display the alert message
     } catch (error) {
-      console.log("Error during signup:", error);
+      if (error.code === "auth/email-already-in-use") {
+        alert(
+          "The email address is already registered. Please use a different email."
+        );
+      } else {
+        console.log("Error during signup:", error);
+      }
     }
-  };
-
-  const [showConfirmationPassword, setShowConfirmationPassword] =
-    useState(false);
-
-  const toggleConfirmationPasswordVisibility = () => {
-    setShowConfirmationPassword(!showConfirmationPassword);
   };
 
   const validateFirstName = (value) => {
@@ -114,7 +115,7 @@ const Signup = () => {
           />
         </a>
       </div>
-       
+
       <div className={Styles["Signup-Text"]}>
         <TiUserAddOutline size="2.5rem" color="white" />
         <h2>Sign Up</h2>
@@ -188,7 +189,7 @@ const Signup = () => {
           />
         </span>
 
-        <span className={Styles["Signup_Form__span"]}>
+        {/* <span className={Styles["Signup_Form__span"]}>
           <label htmlFor="uname" className={Styles["Signup_Form__span-label"]}>
             Username
           </label>
@@ -200,7 +201,7 @@ const Signup = () => {
             onChange={(e) => setUname(e.target.value)}
             required
           />
-        </span>
+        </span> */}
 
         <span className={Styles["Signup_Form__span"]}>
           <label

@@ -1,16 +1,29 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
-import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
-import { useLocation } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Dashboard = () => {
-  const location = useLocation();
-  const user = location.state && location.state.user; // Access the user data
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   console.log("Rendering Dashboard");
 
   const getFormattedDate = () => {
@@ -31,10 +44,8 @@ const Dashboard = () => {
         <div className={Styles["Dashboard__cont-column-main"]}>
           <div className={Styles["Dashboard__cont-column"]}>
             <div className={Styles["Dashboard__cont-helloUser"]}>
-              <p className={Styles["Dashboard__cont-text"]}>
-                Hello, {user && user.fname} {/* Access user data here */}
-              </p>
-              <h1>{user && user.fname}</h1>
+              <p className={Styles["Dashboard__cont-text"]}>Hello,</p>
+              <h1>{user ? `${user.displayName}` : " "}</h1>
               <p className={Styles["Dashboard__cont-text"]}>
                 Today is {getFormattedDate()}
               </p>

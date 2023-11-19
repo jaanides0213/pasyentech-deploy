@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,6 +44,7 @@ const Login = () => {
 
   useEffect(() => {
     const handleLogin = async (user) => {
+      let userRef;
       if (user) {
         const uid = user.uid;
         const userRef = doc(db, "users", uid); // Correct usage of doc function
@@ -63,13 +64,15 @@ const Login = () => {
       }
 
       try {
-        const userDoc = await getDoc(userRef);
-        const userDocData = userDoc.data();
+        if (userRef) {
+          const userDoc = await getDoc(userRef);
 
-        if (userDoc.exists()) {
-          if (userDocData.role === "approved") {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate("/dashboard");
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            if (userData.role === "approved") {
+              await signInWithEmailAndPassword(auth, email, password);
+              navigate("/dashboard");
+            }
           }
         }
       } catch (error) {
@@ -81,25 +84,16 @@ const Login = () => {
     return () => {
       listen();
     };
-  }, []);
-
-  const [showConfirmationPassword, setShowConfirmationPassword] =
-    useState(false);
-
-  const toggleConfirmationPasswordVisibility = () => {
-    setShowConfirmationPassword(!showConfirmationPassword);
-  };
+  }, [email, password, navigate]);
 
   return (
     <main className={Styles["Login"]}>
-        <div className={Styles["div-logo"]}>
-          <a href="/login">
-            <img
-              src="/src/assets/logo-img/png-250px/white-complete-250px.png"
-            />
-          </a>
-        </div>
-      
+      <div className={Styles["div-logo"]}>
+        <a href="/login">
+          <img src="/src/assets/logo-img/png-250px/white-complete-250px.png" />
+        </a>
+      </div>
+
       <span className={Styles["Login__span"]}>
         <TiUserOutline size="2.5rem" color="white" />
         <h2>Log In</h2>
