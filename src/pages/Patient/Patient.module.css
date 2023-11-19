@@ -1,0 +1,25 @@
+body {
+    overflow-x: hidden;
+}
+
+.Dashboard__cont{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;   
+    display: flex;
+    font-family: "Inter", sans-serif;   
+}
+
+.Dashboard__cont-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px 40px;
+}
+
+.patient__table{
+    border: 1px solid; 
+    width: 100%;
+    border-collapse: collapse;
+    border-color: black;
+}

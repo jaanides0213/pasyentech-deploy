@@ -65,7 +65,7 @@ const Sidebar = () => {
                 </p>
               </b>
             </a>
-            <a href="#">
+            <a href="/patient">
               <p>
                 <HiUsers size="1rem" /> Patients
               </p>
