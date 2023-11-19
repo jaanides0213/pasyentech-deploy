@@ -4,7 +4,7 @@ import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
-import Header from "../../Components/Header/Header.jsx";
+import Header from "../../components/Header/Header.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Dashboard = () => {
@@ -36,10 +36,10 @@ const Dashboard = () => {
 
   return (
     <main className={Styles["Dashboard__cont"]}>
-      <Sidebar/>
+      <Sidebar />
       <div className={Styles["Dashboard__cont-main"]}>
         <div className={Styles["Dashboard__cont-header"]}>
-          <Header/>
+          <Header />
         </div>
         <div className={Styles["Dashboard__cont-column-main"]}>
           <div className={Styles["Dashboard__cont-column"]}>
@@ -54,7 +54,9 @@ const Dashboard = () => {
           </div>
           <div className={Styles["Dashboard__cont-column"]}>
             <Notes />
-            <span className={Styles["Dashboard__cont-text"]}>Shortcuts:</span>
+          </div>
+          <span className={Styles["Dashboard__shortcut-column"]}>
+          <h3>Shortcuts:</h3>
             <button className={Styles["Dashboard__cont-add_patient"]}>
               <IoMdAdd />
               Add Patient
@@ -63,7 +65,7 @@ const Dashboard = () => {
               <IoMdAdd />
               Add Prescription
             </button>
-          </div>
+          </span>
         </div>
       </div>
     </main>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HiSearch } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css"; // Update the import path as needed
-import Header from "../../Components/Header/Header.jsx";
+import Header from "../../components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const PatientTable = () => {
@@ -56,7 +56,7 @@ const PatientTable = () => {
         </div>
         
         <div className={Styles["Patient__cont-column-main"]}>
-          <h2>Patients</h2>
+          <h2 className={Styles["Patient__title"]}>Patients</h2>
           <div className={Styles["Patient_search_add_container"]}> 
             <div className={Styles["Patient_search_bar"]}>
               <input className={Styles["Patient_search_input"]} type="text" placeholder="Search patient"/>
