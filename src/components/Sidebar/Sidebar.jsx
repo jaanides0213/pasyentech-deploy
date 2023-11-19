@@ -12,8 +12,6 @@ import {
 } from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
 import Styles from "./Sidebar.module.css"; // Adjust the import path
-import { auth } from "../../config/firebase";
-import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);

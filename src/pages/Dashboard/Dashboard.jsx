@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
-import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
