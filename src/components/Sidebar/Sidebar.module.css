@@ -52,9 +52,13 @@
 }
 
 .sidebar-content a {
-    font-weight:300;
+    font-weight: 300;
     color: white;
     font-size: 20px;
+}
+
+.sidebar-content a.active-link {
+    font-weight: 600;
 }
 
 .sidebar-content a:hover, .sidebar-content-logout a:hover {

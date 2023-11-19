@@ -36,10 +36,10 @@ const Dashboard = () => {
 
   return (
     <main className={Styles["Dashboard__cont"]}>
-      <Sidebar />
+      <Sidebar/>
       <div className={Styles["Dashboard__cont-main"]}>
         <div className={Styles["Dashboard__cont-header"]}>
-          <Header />
+          <Header/>
         </div>
         <div className={Styles["Dashboard__cont-column-main"]}>
           <div className={Styles["Dashboard__cont-column"]}>

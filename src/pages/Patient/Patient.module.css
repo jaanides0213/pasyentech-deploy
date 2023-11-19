@@ -2,7 +2,7 @@ body {
     overflow-x: hidden;
 }
 
-.Dashboard__cont{
+.Patient__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: auto;   
@@ -10,11 +10,50 @@ body {
     font-family: "Inter", sans-serif;   
 }
 
-.Dashboard__cont-main{
+.Patient__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 60px 40px;
+}
+
+.Patient_search_add_container {
+    display: flex;
+    margin-top: -1rem;
+    flex-direction: row;
+    width: 100%;
+}
+
+.Patient_search_bar {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.Patient_search_input {
+    width: 15rem;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number]{
+    height: 2rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #8F001E;
+} 
+
+.Patient_search_button {
+    background-color: #8F001E;
+    color: white;
+    border-radius: 0;
+    height: 2.2rem;
+    margin-left: -3.5rem;
+}
+
+.Patient_add_bar button {
+    margin-left: 20.5rem;
+    border-radius: 0;
+    border: none;
+    color: white;
+    background-color: #8F001E;
 }
 
 .patient__table{
@@ -22,4 +61,8 @@ body {
     width: 100%;
     border-collapse: collapse;
     border-color: black;
+}
+
+.add-patient-form {
+    width: 90%;
 }
