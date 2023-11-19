@@ -11,7 +11,6 @@ const Signup = () => {
 
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [contactNo, setContactNo] = useState("");
@@ -26,9 +25,12 @@ const Signup = () => {
   const signUp = async (e) => {
     e.preventDefault();
 
-    // Check if any of the required fields are empty
-    if (!fname || !lname || !uname || !email || !password || !contactNo) {
-      alert("Please fill in all the required information.");
+    const isContactNoValid =
+      /^[0-9]*$/.test(contactNo) && contactNo.length === 11;
+
+    if (!isContactNoValid) {
+      alert("Please enter a valid 11-digit contact number.");
+      setContactNo(""); // Clear the contact number input field
       return;
     }
 
@@ -47,7 +49,6 @@ const Signup = () => {
       await setDoc(docRef, {
         fname: fname,
         lname: lname,
-        uname: uname,
         email: email,
         role: "pending",
       });
@@ -56,7 +57,6 @@ const Signup = () => {
       await setDoc(requestDocRef, {
         firstName: fname,
         lastName: lname,
-        userName: uname,
         email: email,
         createdAt: serverTimestamp(),
         status: "pending",
@@ -67,12 +67,17 @@ const Signup = () => {
       alert(message);
       setFname("");
       setLname("");
-      setUname("");
       setEmail("");
       setPassword("");
       setContactNo("");
     } catch (error) {
-      console.log("Error during signup:", error);
+      if (error.code === "auth/email-already-in-use") {
+        alert(
+          "The email address is already registered. Please use a different email."
+        );
+      } else {
+        console.log("Error during signup:", error);
+      }
     }
   };
 
