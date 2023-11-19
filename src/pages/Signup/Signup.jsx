@@ -105,24 +105,6 @@ const Signup = () => {
     }
   };
 
-  const [phoneError, setPhoneError] = useState("");
-
-  // ... (previous code)
-
-  const validatePhoneNumber = (value) => {
-    const regex = /^09\d{9}$/; // Assumes the phone number should start with 09 and have a total of 11 digits
-    const isValid = regex.test(value);
-
-    if (isValid) {
-      setPhoneError("");
-      setContactNo(value);
-    } else {
-      setPhoneError(
-        "Phone number should start with 09 and have a total of 11 digits."
-      );
-    }
-  };
-
   return (
     <main className={Styles["Signup"]}>
       <div className="div-logo">
@@ -202,10 +184,9 @@ const Signup = () => {
             name="contactNo"
             pattern="[0-9]*"
             value={contactNo}
-            onChange={(e) => validatePhoneNumber(e.target.value)}
+            onChange={(e) => setContactNo(e.target.value)}
             required
           />
-          {phoneError && <div className="error-message">{phoneError}</div>}
         </span>
 
         {/* <span className={Styles["Signup_Form__span"]}>
