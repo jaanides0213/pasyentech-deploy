@@ -59,7 +59,7 @@ const PatientTable = () => {
           <h2 className={Styles["Patient__title"]}>Patients</h2>
           <div className={Styles["Patient_search_add_container"]}> 
             <div className={Styles["Patient_search_bar"]}>
-              <input className={Styles["Patient_search_input"]} type="text" placeholder="Search patient"/>
+              <input className={Styles["Patient_search_input"]} placeholder="Search patient"/>
               <button className={Styles["Patient_search_button"]}><HiSearch/></button>
             </div>
             <div className={Styles["Patient_add_bar"]}>
