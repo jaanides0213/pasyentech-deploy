@@ -5,6 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);

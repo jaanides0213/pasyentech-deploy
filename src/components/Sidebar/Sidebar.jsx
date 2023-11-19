@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   HiHome,
   HiUsers,
@@ -12,6 +12,8 @@ import {
 } from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
 import Styles from "./Sidebar.module.css"; // Adjust the import path
+import { useNavigate } from "react-router";
+import { auth } from "firebase/auth";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
