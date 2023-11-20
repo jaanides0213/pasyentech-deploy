@@ -64,6 +64,14 @@ body {
     background-color: #8F001E;
 }
 
+.Patient_add_bar {
+    margin-left: 1.5rem;
+    border-radius: 0;
+    border: none;
+    color: white;
+    background-color: #8F001E;
+}
+
 .patient__table{
     border: 1px solid; 
     width: 100%;
@@ -74,3 +82,93 @@ body {
 .add-patient-form {
     width: 90%;
 }
+
+.Patient_header_title{
+    color:black ;
+    font-size: 25px;
+}
+
+
+/* for Patient_Form css*/
+
+.input_box input {
+
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* position: absolute; */
+}
+
+.age, .sex{
+    width: 35px;
+}
+
+.name{
+    width: 460px;
+
+}
+
+.main_div{
+    display: flex;
+}
+
+.contact{
+    width: 391px;
+}
+
+.risk, .psychosocial, .social, .family, .allergies, .current,
+.surgical, .past, .medical
+{
+    width: 590px;
+    height: 50px;
+}
+
+/* .input_box_sex,
+.input_box_age,
+ input {
+    width: 50px;
+    height: 20px;
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+} */
+
+.Patient_add_button{
+
+    border-radius: 0px;
+    background-color: #8F001E;
+
+}
+
+/* for scroll */
+
+.Patient__cont-column-main {
+    overflow: auto;
+    max-height: 700px;
+    padding-right: 20px; /* Add space for the scrollbar */
+    /* Add other styles as needed */
+  }
+  
+  /* Style the scrollbar */
+  .Patient__cont-column-main::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+  }
+  
+  .Patient__cont-column-main::-webkit-scrollbar-thumb {
+    background-color: #8F001E; /* Color of the thumb */
+    border-radius: 10px; /* Rounded corners of the thumb */
+  }
+  
+  .Patient__cont-column-main::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the track */
+    border-radius: 10px; /* Rounded corners of the track */
+  }
+  
+  /* Add any other styling for the input boxes, labels, and other elements as needed */
+  
