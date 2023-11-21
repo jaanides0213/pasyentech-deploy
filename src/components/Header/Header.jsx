@@ -23,8 +23,6 @@ const Header = () => {
   return (
     <div className={Styles["Header__Cont"]}>
       <div className={Styles["timeBox"]}>{currentTime}</div>
-      <div className={Styles["Profile"]}>P</div>
-      <div className={Styles["UserName"]}>Username</div>
     </div>
   );
 };
