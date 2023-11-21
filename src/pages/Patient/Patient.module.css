@@ -1,26 +1,23 @@
 body {
     overflow-x: hidden;
 }
-
 .Patient__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: auto;   
-    display: flex;
-    font-family: "Inter", sans-serif;   
+    height: 100%;
+    display: flex; 
+    font-family: "Inter", sans-serif;  
+    z-index: 1;  
 }
-
 .Patient__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 60px 40px;
+    padding: 40px 40px;
 }
-
 .Patient__cont-column-main {
     margin-top: -1.5rem;
 }
-
 .Patient_search_add_container {
     display: flex;
     margin-top: -1rem;
@@ -28,22 +25,29 @@ body {
     flex-direction: row;
     width: 95%;
 }
-
 .Patient_search_bar {
     display: flex;
     align-items: center; /* Align items vertically in the center */
 }
-
 .Patient_search_input {
     width: 15rem;
 }
-
 .Patient_search_input{
     height: 2rem;
     background-color: white;
-}
+    color: black;
+    border: 1px solid #8F001E;
+} 
 
+.Patient_search_button {
+    background-color: #8F001E;
+    border-radius: 0;
+    height: 2.2rem;
+    margin-left: -3.5rem;
+    height: 2.25rem;
+}
 .Patient_add_bar button {
+   
     height: 2.25rem;
     border-radius: 0;
     border: none;
@@ -51,11 +55,9 @@ body {
     background-color: #8F001E;
     font-size: 15px;
 }
-
 .Patient_add_bar a {
     color: white;
 }
-
 .Patient_add_bar a:hover {
     color: white;
 }
@@ -67,28 +69,23 @@ body {
     background-color: #8F001E;
 }
 
-
 .Patient_list_cont {
     margin-top: 1.5rem;
 }
-
 .Patient_table{
     border: 1px solid #8F001E; 
     width: 100%;
     border-collapse: collapse;
 }
 
-
 .Patient_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
 
-
 .Patient_table_main_head th {
     padding: 15px ;
 }
-
 .Patient_table_data td {
     font-size: 15px;
     text-align: center;
@@ -97,22 +94,18 @@ body {
     font-weight: 600;
     border-bottom: 1px solid #8F001E;
 }
-
 .Patient_table_action {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-
 /*action styling*/
 .Action__Styling{
     padding-right: 1rem;
 }
-
 .Action__link__Styling {
     color: #8F001E;
 }
-
 .Action__link__Styling:hover {
     color: #8F001E;
 }
@@ -120,23 +113,19 @@ body {
 .add-patient-form {
     width: 100%;
 }
-
 .Patient__form__container {
     width: 100%; /* Ensure the form takes up 100% of the available width */
     margin-top: -1rem;
 }
-
 .main_div{
     display: flex;
     flex-direction: w;
 }
-
 .input_box {
     line-height: 1.8rem;
     margin-right: 2rem;
     margin-top: 15px;
 }
-
 .input_box input {
     background-color: white;
     border-color:#8F001E;
@@ -148,17 +137,14 @@ body {
     border: 1px solid #8F001E;
 }
 
-
 .input_label {
     font-weight: 20px;
     font-size: 18px;
 }
 
-
 .name  {
     min-width: 40rem;
 }
-
 
 .sex_select_style {
     padding: 7.5px;
@@ -166,7 +152,6 @@ body {
     color: #8F001E;
     border: 1px solid;
 }
-
 /* .input_box_sex,
 .input_box_age,
  input {
@@ -178,12 +163,10 @@ body {
     padding: 0.5rem;
 } */
 
-
 .past{
     min-height: 5rem;
     word-wrap: break-word;
 }
-
 .medical, .past, .surgical, .current,
 .allergies, .family, .social, .psychosocial, .risk{
     color: black;
@@ -194,15 +177,12 @@ body {
     width: 100%;
     min-height: 75px;
 }
-
 .Patient_add_button{
     border-radius: 0px;
     background-color: #8F001E;
 
 }
-
 /* for scroll */
-
 .Patient__cont-column-main {
     overflow: auto;
     max-height: 700px;
@@ -224,5 +204,3 @@ body {
     background-color: #f1f1f1; /* Color of the track */
     border-radius: 10px; /* Rounded corners of the track */
   }
-  
-  /* Add any other styling for the input boxes, labels, and other elements as needed */

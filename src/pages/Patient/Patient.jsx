@@ -9,7 +9,6 @@ import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css"; // Update the import path as needed
 import Header from "../../components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
-
 const Patient = () => {
   const [patients, setPatients] = useState([
     { id: 1, name: "John Doe", age: 25, gender: "Male" },
@@ -36,9 +35,8 @@ const Patient = () => {
         <div className={Styles["Patient__cont-header"]}>
           <Header />
         </div>
-
         <div className={Styles["Patient__cont-column-main"]}>
-          <h1>Patients</h1>
+          <h2>Patients</h2>
         </div>
         <div className={Styles["Patient_search_add_container"]}>
           <div className={Styles["Patient_search_bar"]}>
@@ -54,7 +52,7 @@ const Patient = () => {
           <div className={Styles["Patient_add_bar"]}>
             {/* <link to="/patient_form" className={Styles[]} */}
             <button className={Styles["Patient_add_button"]}>
-              <a href="/patient_form" className={Styles["Patient_add_icon"]}>
+              <a href="/patientform" className={Styles["Patient_add_icon"]}>
                 <IoMdAdd /> Add Patient
               </a>
             </button>
@@ -70,7 +68,6 @@ const Patient = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-
             <tbody className={Styles["Patient_table_data"]}>
               {patients.map((patient) => (
                 <tr key={patient.id}>

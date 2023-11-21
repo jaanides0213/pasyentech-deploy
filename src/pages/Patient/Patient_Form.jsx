@@ -112,7 +112,6 @@ const PatientTable = () => {
                   className="birthdate"
                 />
               </div>
-
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>Contact Details</label>
                 <input
@@ -127,7 +126,6 @@ const PatientTable = () => {
             {/*3rd Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Medical History</label>
-
               <textarea
                 name="medical history"
                 value={newPatient.medicalhistory}
@@ -140,7 +138,6 @@ const PatientTable = () => {
               <label className={Styles["input_label"]}>
                 Past Medical Conditions
               </label>
-
               <textarea
                 name="pastmedicalconditions"
                 value={newPatient.pastmedicalconditions}
@@ -151,7 +148,6 @@ const PatientTable = () => {
             {/*5th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Surgical History</label>
-
               <textarea
                 name="Surgical History"
                 value={newPatient.surgicalhistory}
@@ -164,7 +160,6 @@ const PatientTable = () => {
               <label className={Styles["input_label"]}>
                 Current Medications
               </label>
-
               <textarea
                 name="Current Medications"
                 value={newPatient.currentmedications}
@@ -187,7 +182,6 @@ const PatientTable = () => {
               <label className={Styles["input_label"]}>
                 Family Medical History
               </label>
-
               <textarea
                 name="Family Medical History"
                 value={newPatient.familymedicalhistory}
@@ -211,7 +205,6 @@ const PatientTable = () => {
               <label className={Styles["input_label"]}>
                 Psychosocial History:
               </label>
-
               <textarea
                 name="Psychosocial History"
                 value={newPatient.psychosocialhistory}
