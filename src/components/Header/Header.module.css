@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.timeBox, .UserName{
+.timeBox{
     border-radius: 10px;
     background-color: #8F001E;
     width: 80px;
@@ -13,6 +13,28 @@
     text-align: center;
 }
 
+.Profile{
+    background-color: rgb(152, 150, 150);
+    width: 50px;
+    height: 50px; /* Set the height to make it a perfect circle */
+    margin-right: 20px; /* Adjust margin as needed */
+    font-family: 'Inter';
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: 480px;
+}
+
 .UserName{
-    margin-left: auto;
+    border-radius: 10px;
+    background-color: #8F001E;
+    width: 80px;
+    margin-bottom: 30px;
+    font-family: 'Inter';
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin-left: -4px;
+    text-align: center;
 }
