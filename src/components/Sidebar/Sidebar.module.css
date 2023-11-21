@@ -4,7 +4,7 @@
     flex-direction: column;
     background-color: #8F001E;
     transition: width 1s; /*styling to toggle sidebar*/
-    height: 125vh;
+    min-height: 120vh;
     width: 490px;
 } 
 

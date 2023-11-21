@@ -9,6 +9,7 @@ import Signup from "./pages/Signup/Signup.jsx";
 import LogIn from "./pages/Login/Login.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Patient from "./pages/Patient/Patient.jsx";
+import Patient_Form from "./pages/Patient/Patient_Form.jsx"
 import "./App.css";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/patient" element={<Patient />} />
+          <Route path="/patient_form" element={<Patient_Form />} />
           <Route path="/prescription" element={<Patient />} />
 
           <Route
