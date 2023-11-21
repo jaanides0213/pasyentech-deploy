@@ -4,15 +4,16 @@ body {
 .Patient__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: auto;   
-    display: flex;
-    font-family: "Inter", sans-serif;   
+    height: 100%;
+    display: flex; 
+    font-family: "Inter", sans-serif;  
+    z-index: 1;  
 }
 .Patient__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 60px 40px;
+    padding: 40px 40px;
 }
 .Patient__cont-column-main {
     margin-top: -1.5rem;

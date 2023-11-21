@@ -36,7 +36,7 @@ const Patient = () => {
           <Header />
         </div>
         <div className={Styles["Patient__cont-column-main"]}>
-          <h1>Patients</h1>
+          <h2>Patients</h2>
         </div>
         <div className={Styles["Patient_search_add_container"]}>
           <div className={Styles["Patient_search_bar"]}>
