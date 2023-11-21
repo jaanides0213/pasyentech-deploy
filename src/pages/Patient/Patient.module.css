@@ -68,7 +68,6 @@ body {
     border: none;
     background-color: #8F001E;
 }
-
 .Patient_list_cont {
     margin-top: 1.5rem;
 }
@@ -77,12 +76,10 @@ body {
     width: 100%;
     border-collapse: collapse;
 }
-
 .Patient_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
-
 .Patient_table_main_head th {
     padding: 15px ;
 }
@@ -136,16 +133,13 @@ body {
     flex-direction: column;
     border: 1px solid #8F001E;
 }
-
 .input_label {
     font-weight: 20px;
     font-size: 18px;
 }
-
 .name  {
     min-width: 40rem;
 }
-
 .sex_select_style {
     padding: 7.5px;
     background-color: white;
@@ -162,7 +156,6 @@ body {
     color: black;
     padding: 0.5rem;
 } */
-
 .past{
     min-height: 5rem;
     word-wrap: break-word;
@@ -180,7 +173,6 @@ body {
 .Patient_add_button{
     border-radius: 0px;
     background-color: #8F001E;
-
 }
 /* for scroll */
 .Patient__cont-column-main {
