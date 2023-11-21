@@ -1,15 +1,14 @@
 body {
     overflow-x: hidden;
 }
-
 .Dashboard__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: auto;
-    display: flex;
-    font-family: "Inter", sans-serif;   
+    height: 100%;
+    display: flex; 
+    font-family: "Inter", sans-serif;  
+    z-index: 1;  
 }
-
 /* for hello user */
 .Dashboard__cont-helloUser{
     border: 2px solid #8F001E;
@@ -18,39 +17,34 @@ body {
     max-width: 342px; /* Limit the width on larger screens */
     font-family: "Inter",sans-serif;
     padding: 0px 0px 10px 10px;
+    font-size: 12px;
 }
-
 .Dashboard__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 60px 40px;
+    padding: 40px 40px;
 }
-
 .Dashboard__cont-column{
     display: flex;
     flex-direction: column;
-    margin-right: 40px;
+    margin-right: 30px;
 }
-
 .Dashboard__cont-column-main{
     display: flex;
 }
-
 .DashboardNotes_note__textarea{
     width: 350px;
-    height:423px;
-    padding: 40px 15px 15px 15px;
+    min-height:460px;
+    padding: 35px 15px 15px 15px;
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #8F001E;
     color: white !important;
     font-style: italic;
 }
-
 .DashboardAppointment_note {
-    position: relative;
-    
+    position: relative; 
 }
   
 .DashboardAppointment_label {
@@ -60,24 +54,23 @@ body {
     font-weight: bold;
     color: black;
     font-style: italic;
+    font-size: 12px;
 }
-
 .DashboardNotes_label{
     position: absolute;
-    top: 150px;
+    top: 110px;
     font-weight: bold;
     color: rgb(255, 255, 255);
     font-style: italic;
     border: none;
-    padding: 0px 0px 10px 10px
-
-    
+    padding: 0px 0px 10px 10px;
+    font-size: 12px;
 }
   
 .DashboardAppointment_note__textarea {
     width: 354px;
-    height: 300px;
-    padding: 40px 15px 15px 15px;
+    min-height: 260px;
+    padding: 30px 15px 15px   15px;
     box-sizing: border-box;
     margin-top: 30px;
     border-radius: 10px;
@@ -85,11 +78,21 @@ body {
     border: 2px solid #8F001E;
     font-family: 'Inter';
     color: black;
-
 }
-
+.Dashboard__shortcut-column{
+    display: flex;
+    flex-direction: column;
+    margin-top: -1.5rem;
+    margin-left: -10px;
+    font-size: 12px;
+}
 .Dashboard__cont-add_patient,
 .Dashboard__cont-add_prescription{
   background-color: #8F001E;
-   margin-bottom: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 190px
+}
+.Dashboard__cont-add_patient {
+    margin-top: -0.5rem;
 }

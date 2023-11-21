@@ -1,5 +1,5 @@
 // Dashboard.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
@@ -65,7 +65,9 @@ const Dashboard = ({ userData }) => {
           </div>
           <div className={Styles["Dashboard__cont-column"]}>
             <Notes />
-            <span className={Styles["Dashboard__cont-text"]}>Shortcuts:</span>
+          </div>
+          <span className={Styles["Dashboard__shortcut-column"]}>
+            <h3>Shortcuts:</h3>
             <button className={Styles["Dashboard__cont-add_patient"]}>
               <IoMdAdd />
               Add Patient
@@ -74,11 +76,10 @@ const Dashboard = ({ userData }) => {
               <IoMdAdd />
               Add Prescription
             </button>
-          </div>
+          </span>
         </div>
       </div>
     </main>
   );
 };
-
 export default Dashboard;
