@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { HiSearch } from "react-icons/hi";
-import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css"; // Update the import path as needed
 import Header from "../../components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
@@ -59,83 +57,90 @@ const PatientTable = () => {
         <div className={Styles["Patient__cont-header"]}>
           <Header />
         </div>
-        <div className={Styles["Patient_header_title"]}>
-        <h2>Add Patient Form</h2>
+
+        <div className={Styles["Patient__cont-column-main"]}>
+        <h1>Add Patient Form</h1>
         </div>
-        <form>
-          <div className={Styles["Patient__cont-column-main"]}>
-            
-            {/* Add Patient Form */}
-            <div className={Styles["add-patient-form"]}>
-              <div className={Styles["main_div"]}>
-                <span className={Styles["input_box"]}>
+
+        <form className={Styles["Patient__form__container"]}> 
+          <div className={Styles["Patient__form__div_wrapper"]}>
+            <div className={Styles["main_div"]}>
+              
+              <div className={Styles["input_box"]}>
+                <label className={Styles["input_label"]}>
+                  Name of Patient
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={newPatient.name}
+                  onChange={handleInputChange}
+                  className={Styles["name"]}
+                />
+              </div>
+
+              <div className={Styles["input_box"]}>
                   <label className={Styles["input_label"]}>
-                    Name of Patient:
+                    Age
                   </label>
                   <input
-                    type="text"
-                    name="name"
-                    value={newPatient.name}
-                    onChange={handleInputChange}
-                    className={Styles["name"]}
-                  />
-                </span>
-                <span className={Styles["input_box"]}>
-                  <label>Age: </label>
-                  <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    max="100"
                     name="age"
                     value={newPatient.age}
                     onChange={handleInputChange}
                     className={Styles["age"]}
                   />
-                </span>
-                <span className={Styles["input_box"]}>
-                  <label>Sex:</label>
-                  <input
-                    type="text"
-                    name="sex"
-                    value={newPatient.sex}
-                    onChange={handleInputChange}
-                    className={Styles["sex"]}
-                  />
-                </span>
+                </div>
+                
+                <div className={Styles["input_box"]}>
+                  <label for="sex" className={Styles["input_label"]}>
+                    Sex
+                  </label>
+                  <select id="sex" name="sex" className={Styles["sex_select_style"]}>
+                    <option value="none" className={Styles["sex_option_style"]}>Choose an option</option>
+                    <option value="Male" className={Styles["sex_option_style"]}>Male</option>
+                    <option value="Female"  className={Styles["sex_option_style"]}>Female</option>
+                  </select>
+                </div>
               </div>
-              {/*--------*/}
+              
+              {/*2nd Row*/}
               <div className={Styles["main_div"]}>
-                <span className={Styles["input_box"]}>
+                <div className={Styles["input_box"]}>
                   <label className={Styles["input_label"]}>
-                    Date of Birth:
+                    Date of Birth
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     name="dateofbirth"
                     value={newPatient.dateofbirth}
                     onChange={handleInputChange}
-                    className="input_box"
+                    className="birthdate"
                   />
-                </span>
+                </div>
 
-                <span className={Styles["input_box"]}>
+                <div className={Styles["input_box"]}>
                   <label className={Styles["input_label"]}>
-                    Contact Details:
+                    Contact Details
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="contact details"
                     value={newPatient.contactdetails}
                     onChange={handleInputChange}
                     className={Styles["contact"]}
                   />
-                </span>
+                </div>
               </div>
 
+               {/*3rd Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
-                  Medical History:
+                  Medical History
                 </label>
-                <input
-                  type="text"
+                <textarea
                   name="medical history"
                   value={newPatient.medicalhistory}
                   onChange={handleInputChange}
@@ -143,12 +148,12 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*4th Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
-                  Past Medical Conditions:
+                  Past Medical Conditions
                 </label>
-                <input
-                  type="text"
+                <textarea
                   name="pastmedicalconditions"
                   value={newPatient.pastmedicalconditions}
                   onChange={handleInputChange}
@@ -156,13 +161,12 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*5th Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
-                  Surgical History:
+                  Surgical History
                 </label>
-
-                <input
-                  type="text"
+                <textarea
                   name="Surgical History"
                   value={newPatient.surgicalhistory}
                   onChange={handleInputChange}
@@ -170,12 +174,12 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*6th Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
-                  Current Medications:
+                  Current Medications
                 </label>
-                <input
-                  type="text"
+                <textarea
                   name="Current Medications"
                   value={newPatient.currentmedications}
                   onChange={handleInputChange}
@@ -183,10 +187,12 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*7th Row*/}
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Allergies:</label>
-                <input
-                  type="text"
+                <label className={Styles["input_label"]}>
+                  Allergies
+                </label>
+                <textarea
                   name="Allergies"
                   value={newPatient.allergies}
                   onChange={handleInputChange}
@@ -194,12 +200,12 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*8th Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
-                  Family Medical History:
+                  Family Medical History
                 </label>
-                <input
-                  type="text"
+                <textarea
                   name="Family Medical History"
                   value={newPatient.familymedicalhistory}
                   onChange={handleInputChange}
@@ -207,25 +213,25 @@ const PatientTable = () => {
                 />
               </div>
 
+              {/*9th Row*/}
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Social History:</label>
-
-                <input
-                  type="text"
+                <label className={Styles["input_label"]}>
+                  Social History
+                </label>
+                <textarea
                   name="Social History"
                   value={newPatient.socialhistory}
                   onChange={handleInputChange}
                   className={Styles["social"]}
-
                 />
               </div>
-
+              
+              {/*10th Row*/}
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>
                   Psychosocial History:
                 </label>
-                <input
-                  type="text"
+                <textarea
                   name="Psychosocial History"
                   value={newPatient.psychosocialhistory}
                   onChange={handleInputChange}
@@ -234,10 +240,10 @@ const PatientTable = () => {
               </div>
 
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Risk Factors:</label>
-
-                <input
-                  type="text"
+                <label className={Styles["input_label"]}>
+                  Risk Factors
+                </label>
+                <textarea
                   name="Risk Factors"
                   value={newPatient.riskfactors}
                   onChange={handleInputChange}
@@ -252,7 +258,6 @@ const PatientTable = () => {
               >
                 Add Patient
               </button>
-            </div>
           </div>
         </form>
       </div>

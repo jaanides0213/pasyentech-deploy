@@ -97,7 +97,7 @@ const Sidebar = () => {
                 <HiHome size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a href="/patient" className={isLinkActive("/patient") ? Styles["active-link"] : ""}>
               <p>
                 <HiUsers size="1rem" className={Styles["sidebar-icons"]} />
               </p>

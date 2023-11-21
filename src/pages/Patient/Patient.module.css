@@ -17,11 +17,16 @@ body {
     padding: 60px 40px;
 }
 
+.Patient__cont-column-main {
+    margin-top: -1.5rem;
+}
+
 .Patient_search_add_container {
     display: flex;
     margin-top: -1rem;
+    margin-left: 1px;
     flex-direction: row;
-    width: 100%;
+    width: 95%;
 }
 
 .Patient_search_bar {
@@ -32,13 +37,6 @@ body {
 .Patient_search_input {
     width: 15rem;
 }
-
-/*input[type=text], input[type=password], input[type=email], input[type=number]{
-    height: 2rem;
-    background-color: white;
-    color: black;
-    border: 1px solid #8F001E;
-} */
 
 .Patient_search_input{
     height: 2rem;
@@ -57,75 +55,121 @@ body {
 }
 
 .Patient_add_bar button {
-    margin-left: 1.5rem;
+    height: 2.25rem;
     border-radius: 0;
     border: none;
     color: white;
     background-color: #8F001E;
+    font-size: 15px;
+}
+
+.Patient_add_bar a {
+    color: white;
+}
+
+.Patient_add_bar a:hover {
+    color: white;
 }
 
 .Patient_add_bar {
     margin-left: 1.5rem;
     border-radius: 0;
     border: none;
-    color: white;
     background-color: #8F001E;
 }
 
-.patient__table{
-    border: 1px solid; 
+.Patient_list_cont {
+    margin-top: 1.5rem;
+}
+
+.Patient_table{
+    border: 1px solid #8F001E; 
     width: 100%;
     border-collapse: collapse;
-    border-color: black;
 }
 
-.add-patient-form {
-    width: 90%;
+.Patient_table_main_head {
+    background-color:#8F001E ;
+    color: white;
 }
 
-.Patient_header_title{
-    color:black ;
-    font-size: 25px;
+.Patient_table_main_head th {
+    padding: 15px ;
 }
 
+.Patient_table_data td {
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    color: #8F001E;
+    font-weight: 600;
+    border-bottom: 1px solid #8F001E;
+}
 
-/* for Patient_Form css*/
-
-.input_box input {
-
-    background-color: white;
-    border-color:#8F001E;
-    color: black;
-    padding: 0.5rem;
+.Patient_table_action {
     display: flex;
-    flex-direction: column;
-    margin: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    /* position: absolute; */
+    flex-direction: row;
+    justify-content: center;
 }
 
-.age, .sex{
-    width: 35px;
+/*action styling*/
+.Action__Styling{
+    padding-right: 1rem;
 }
 
-.name{
-    width: 460px;
+.Action__link__Styling {
+    color: #8F001E;
+}
 
+.Action__link__Styling:hover {
+    color: #8F001E;
+}
+/* for Patient_Form css*/
+.add-patient-form {
+    width: 100%;
+}
+
+.Patient__form__container {
+    width: 100%; /* Ensure the form takes up 100% of the available width */
+    margin-top: -1rem;
 }
 
 .main_div{
     display: flex;
+    flex-direction: w;
 }
 
-.contact{
-    width: 391px;
+.input_box {
+    line-height: 1.8rem;
+    margin-right: 2rem;
+    margin-top: 15px;
 }
 
-.risk, .psychosocial, .social, .family, .allergies, .current,
-.surgical, .past, .medical
-{
-    width: 590px;
-    height: 50px;
+.input_box input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.name  {
+    min-width: 40rem;
+}
+
+.sex_select_style {
+    padding: 7.5px;
+    background-color: white;
+    color: #8F001E;
+    border: 1px solid;
 }
 
 /* .input_box_sex,
@@ -139,11 +183,25 @@ body {
     padding: 0.5rem;
 } */
 
-.Patient_add_button{
+.past{
+    min-height: 5rem;
+    word-wrap: break-word;
+}
 
+.medical, .past, .surgical, .current,
+.allergies, .family, .social, .psychosocial, .risk{
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 75px;
+}
+
+.Patient_add_button{
     border-radius: 0px;
     background-color: #8F001E;
-
 }
 
 /* for scroll */
@@ -171,4 +229,3 @@ body {
   }
   
   /* Add any other styling for the input boxes, labels, and other elements as needed */
-  
