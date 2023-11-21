@@ -1,6 +1,15 @@
 import { useState } from "react";
-import { HiHome, HiUsers, HiPencil, HiCalendar, HiAdjustments } from "react-icons/hi";
-import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import {
+  HiHome,
+  HiUsers,
+  HiPencil,
+  HiCalendar,
+  HiAdjustments,
+} from "react-icons/hi";
+import {
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+} from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
 import Styles from "./Sidebar.module.css"; // Adjust the import path
 import { auth } from "../../config/firebase";
@@ -31,7 +40,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`${Styles["Sidebar"]} ${isSidebarOpen ? Styles["open"] : Styles["closed"]}`}>
+    <div
+      className={`${Styles["Sidebar"]} ${
+        isSidebarOpen ? Styles["open"] : Styles["closed"]
+      }`}
+    >
       <a className={Styles["arrow-btn"]} onClick={toggleSidebar}>
         {isSidebarOpen ? (
           <MdKeyboardDoubleArrowLeft size="1.5rem" />
@@ -51,27 +64,44 @@ const Sidebar = () => {
           </a>
 
           <span className={Styles["sidebar-content"]}>
-            <a href="/dashboard" className={isLinkActive("/dashboard") ? Styles["active-link"] : ""}>
+            <a
+              href="/dashboard"
+              className={
+                isLinkActive("/dashboard") ? Styles["active-link"] : ""
+              }
+            >
               <p>
                 <HiHome size="1rem" /> Dashboard
               </p>
             </a>
-            <a href="/patient" className={isLinkActive("/patient") ? Styles["active-link"] : ""}>
+            <a
+              href="/patient"
+              className={isLinkActive("/patient") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiUsers size="1rem" /> Patients
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiPencil size="1rem" /> Prescription
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiCalendar size="1rem" /> Appointments
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiAdjustments size="1rem" /> Account Details
               </p>
@@ -97,24 +127,39 @@ const Sidebar = () => {
                 <HiHome size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiUsers size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiPencil size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
                 <HiCalendar size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
-            <a href="#" className={isLinkActive("#") ? Styles["active-link"] : ""}>
+            <a
+              href="#"
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
-                <HiAdjustments size="1rem" className={Styles["sidebar-icons"]} />
+                <HiAdjustments
+                  size="1rem"
+                  className={Styles["sidebar-icons"]}
+                />
               </p>
             </a>
           </span>

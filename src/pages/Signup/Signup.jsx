@@ -2,9 +2,7 @@ import Styles from "./Signup.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiUserAddOutline } from "react-icons/ti";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db } from "../../config/firebase";
-import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { createUser } from "../../api/createUser";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,65 +18,6 @@ const Signup = () => {
   const logInHandler = (e) => {
     e.preventDefault();
     navigate("/login");
-  };
-
-  const signUp = async (e) => {
-    e.preventDefault();
-
-    const isContactNoValid =
-      /^[0-9]*$/.test(contactNo) && contactNo.length === 11;
-
-    if (!isContactNoValid) {
-      alert("Please enter a valid 11-digit contact number.");
-      setContactNo(""); // Clear the contact number input field
-      return;
-    }
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      await updateProfile(userCredential.user, {
-        displayName: `${fname}`,
-      });
-
-      const docRef = doc(db, "users", userCredential.user.uid);
-      await setDoc(docRef, {
-        fname: fname,
-        lname: lname,
-        email: email,
-        role: "pending",
-      });
-
-      const requestDocRef = doc(db, "requests", userCredential.user.uid);
-      await setDoc(requestDocRef, {
-        firstName: fname,
-        lastName: lname,
-        email: email,
-        createdAt: serverTimestamp(),
-        status: "pending",
-      });
-
-      const message =
-        "You have been registered. Your account is awaiting approval from the superadmin.";
-      alert(message);
-      setFname("");
-      setLname("");
-      setEmail("");
-      setPassword("");
-      setContactNo("");
-    } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert(
-          "The email address is already registered. Please use a different email."
-        );
-      } else {
-        console.log("Error during signup:", error);
-      }
-    }
   };
 
   const validateFirstName = (value) => {
@@ -103,6 +42,20 @@ const Signup = () => {
     } else {
       setLnameError("Last name should only contain letters.");
     }
+  };
+
+  const signUp = async (e) => {
+    e.preventDefault();
+
+    const isContactNoValid =
+      /^[0-9]*$/.test(contactNo) && contactNo.length === 11;
+
+    if (!isContactNoValid) {
+      alert("Please enter a valid 11-digit contact number.");
+      setContactNo("");
+      return;
+    }
+    await createUser(email, password, fname, lname, contactNo, navigate);
   };
 
   return (

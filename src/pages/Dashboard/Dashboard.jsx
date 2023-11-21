@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
+// Dashboard.jsx
+import React, { useEffect, useState } from "react";
 import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
+import { getUserData } from "../../api/getUserData";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const Dashboard = () => {
-  const [user, setUser] = useState(null);
+const Dashboard = ({ userData }) => {
+  const [user, setUser] = useState(userData);
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUser(user);
+        try {
+          const userData = await getUserData(user.uid);
+          console.log("User Data:", userData);
+          setUser(userData);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
       } else {
         setUser(null);
       }
@@ -23,8 +31,7 @@ const Dashboard = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
-  console.log("Rendering Dashboard");
+  }, [userData]);
 
   const getFormattedDate = () => {
     const currentDate = new Date();
@@ -34,22 +41,26 @@ const Dashboard = () => {
     return `${month}-${day}-${year}`;
   };
 
+  const userFName = user ? user.fname : ""; // Use user state instead of userData prop
+
   return (
     <main className={Styles["Dashboard__cont"]}>
-      <Sidebar/>
+      <Sidebar />
       <div className={Styles["Dashboard__cont-main"]}>
         <div className={Styles["Dashboard__cont-header"]}>
-          <Header/>
+          <Header />
         </div>
         <div className={Styles["Dashboard__cont-column-main"]}>
           <div className={Styles["Dashboard__cont-column"]}>
-            <div className={Styles["Dashboard__cont-helloUser"]}>
-              <p className={Styles["Dashboard__cont-text"]}>Hello,</p>
-              <h1>{user ? `${user.displayName}` : " "}</h1>
-              <p className={Styles["Dashboard__cont-text"]}>
-                Today is {getFormattedDate()}
-              </p>
-            </div>
+            {user && (
+              <div className={Styles["Dashboard__cont-helloUser"]}>
+                <p className={Styles["Dashboard__cont-text"]}>Hello,</p>
+                <h1>{userFName || " "}</h1>
+                <p className={Styles["Dashboard__cont-text"]}>
+                  Today is {getFormattedDate()}
+                </p>
+              </div>
+            )}
             <ApptmentNotes />
           </div>
           <div className={Styles["Dashboard__cont-column"]}>

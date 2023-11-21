@@ -1,12 +1,13 @@
-import Styles from "./Login.module.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { TiUserOutline } from "react-icons/ti";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
-import { useEffect } from "react";
+import { loginUser } from "../../api/loginUser";
+
+import Styles from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
       return;
     }
 
-    signInWithEmailAndPassword(auth, email, password)
+    loginUser(email, password)
       .then((userCredential) => {
         console.log(userCredential);
       })
@@ -41,12 +42,7 @@ const Login = () => {
         }
       });
   };
-
   useEffect(() => {
-    // Clear email and password when component mounts
-    setEmail("");
-    setPassword("");
-
     const handleLogin = async (user) => {
       let userRef;
       if (user) {
@@ -88,7 +84,13 @@ const Login = () => {
     return () => {
       listen();
     };
-  }, [email, password, navigate]);
+  }, [email, password, navigate]); // Only run the effect when the component mounts
+
+  useEffect(() => {
+    // Reset the states when the component mounts
+    setEmail("");
+    setPassword("");
+  }, []); // Empty dependency array means it runs once when the component mounts
 
   return (
     <main className={Styles["Login"]}>
