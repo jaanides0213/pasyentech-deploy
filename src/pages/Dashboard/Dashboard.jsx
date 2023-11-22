@@ -4,7 +4,6 @@ import Styles from "./Dashboard.module.css";
 import Notes from "./DashboardNotes.jsx";
 import ApptmentNotes from "./DashboardAppointment.jsx";
 import { IoMdAdd } from "react-icons/io";
-import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../Components/Header/Header.jsx";
 import { getUserData } from "../../api/getUserData";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -45,7 +44,6 @@ const Dashboard = ({ userData }) => {
 
   return (
     <main className={Styles["Dashboard__cont"]}>
-      <Sidebar />
       <div className={Styles["Dashboard__cont-main"]}>
         <div className={Styles["Dashboard__cont-header"]}>
           <Header />

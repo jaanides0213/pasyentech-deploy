@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Styles from "./Patient.module.css"; // Update the import path as needed
 import Header from "../../components/Header/Header.jsx";
-import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 const PatientTable = () => {
   const [patients, setPatients] = useState([
     { id: 1, name: "John Doe", age: 25, sex: "Male" },
@@ -46,7 +45,6 @@ const PatientTable = () => {
 
   return (
     <main className={Styles["Patient__cont"]}>
-      <Sidebar />
       <div className={Styles["Patient__cont-main"]}>
         <div className={Styles["Patient__cont-header"]}>
           <Header />
