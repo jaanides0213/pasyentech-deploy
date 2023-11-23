@@ -1,5 +1,6 @@
 .Header__Cont{
     display: flex;
+    margin-top: 15px;
 }
 
 .timeBox{
@@ -12,5 +13,4 @@
     padding: 10px 10px 10px 10px;
     text-align: center;
     font-size: 12px;
-    
 }

@@ -5,6 +5,7 @@ import {
   HiPencil,
   HiCalendar,
   HiAdjustments,
+  HiLogout
 } from "react-icons/hi";
 import {
   MdKeyboardDoubleArrowLeft,
@@ -106,13 +107,13 @@ const Sidebar = () => {
                 <HiAdjustments size="1rem" /> Account Details
               </p>
             </a>
-          </span>
-
-          <span className={Styles["sidebar-content-logout"]}>
-            <a href="#" onClick={signOutBtnHandler}>
+            <a
+              href="#" onClick={signOutBtnHandler}
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
-                {" "}
-                Log Out <IoLogOut size="1rem" />
+              {" "}
+                <HiLogout size="1rem" /> Log Out
               </p>
             </a>
           </span>
@@ -162,12 +163,16 @@ const Sidebar = () => {
                 />
               </p>
             </a>
-          </span>
-
-          <span className={Styles["sidebar-content-logout"]}>
-            <a href="#" onClick={signOutBtnHandler}>
+            <a
+              href="#" onClick={signOutBtnHandler}
+              className={isLinkActive("#") ? Styles["active-link"] : ""}
+            >
               <p>
-                <IoLogOut size="1rem" />
+              {" "}
+                <HiLogout 
+                size="1rem" 
+                className={Styles["sidebar-icons"]}
+                />
               </p>
             </a>
           </span>

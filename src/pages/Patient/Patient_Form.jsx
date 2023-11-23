@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Styles from "./Patient.module.css"; // Update the import path as needed
-import Header from "../../components/Header/Header.jsx";
+import Header from "../../Components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 const PatientTable = () => {
   const [patients, setPatients] = useState([
@@ -42,6 +42,7 @@ const PatientTable = () => {
     //------------------------
     setNewPatient({ name: "", age: "", sex: "", dateofbirth: "" });
   };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -50,7 +51,8 @@ const PatientTable = () => {
           <Header />
         </div>
         <div className={Styles["Patient__cont-column-main"]}>
-          <h1>Add Patient Form</h1>
+          <h2 className={Styles["Patient__h2"]}>Add Patient Form</h2>
+          <hr className={Styles["Patient__hr"]}/>
         </div>
         <form className={Styles["Patient__form__container"]}>
           <div className={Styles["Patient__form__div_wrapper"]}>
@@ -65,6 +67,7 @@ const PatientTable = () => {
                   className={Styles["name"]}
                 />
               </div>
+
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>Age</label>
                 <input
@@ -82,21 +85,23 @@ const PatientTable = () => {
                 <label for="sex" className={Styles["input_label"]}>
                   Sex
                 </label>
-                <select
-                  id="sex"
-                  name="sex"
-                  className={Styles["sex_select_style"]}
-                >
-                  <option value="none" className={Styles["sex_option_style"]}>
-                    Choose an option
-                  </option>
-                  <option value="Male" className={Styles["sex_option_style"]}>
-                    Male
-                  </option>
-                  <option value="Female" className={Styles["sex_option_style"]}>
-                    Female
-                  </option>
-                </select>
+                <div>
+                  <select
+                    id="sex"
+                    name="sex"
+                    className={Styles["sex_select_style"]}
+                  >
+                    <option value="none" className={Styles["sex_option_style"]}>
+                      Choose an option
+                    </option>
+                    <option value="Male" className={Styles["sex_option_style"]}>
+                      Male
+                    </option>
+                    <option value="Female" className={Styles["sex_option_style"]}>
+                      Female
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -123,6 +128,7 @@ const PatientTable = () => {
                 />
               </div>
             </div>
+
             {/*3rd Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Medical History</label>
@@ -133,6 +139,7 @@ const PatientTable = () => {
                 className={Styles["medical"]}
               />
             </div>
+
             {/*4th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
@@ -145,6 +152,7 @@ const PatientTable = () => {
                 className={Styles["past"]}
               />
             </div>
+
             {/*5th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Surgical History</label>
@@ -155,6 +163,7 @@ const PatientTable = () => {
                 className={Styles["surgical"]}
               />
             </div>
+
             {/*6th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
@@ -167,6 +176,7 @@ const PatientTable = () => {
                 className={Styles["current"]}
               />
             </div>
+
             {/*7th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Allergies</label>
@@ -177,6 +187,7 @@ const PatientTable = () => {
                 className={Styles["allergies"]}
               />
             </div>
+
             {/*8th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
@@ -189,6 +200,7 @@ const PatientTable = () => {
                 className={Styles["family"]}
               />
             </div>
+            
             {/*9th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Social History</label>
@@ -203,7 +215,7 @@ const PatientTable = () => {
             {/*10th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
-                Psychosocial History:
+                Psychosocial History
               </label>
               <textarea
                 name="Psychosocial History"
