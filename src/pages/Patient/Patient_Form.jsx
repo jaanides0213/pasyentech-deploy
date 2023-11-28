@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Styles from "./Patient.module.css"; // Update the import path as needed
-import Header from "../../components/Header/Header.jsx";
+import Header from "../../Components/Header/Header.jsx";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db, auth } from "../../config/firebase";
 const PatientTable = () => {
   const [patients, setPatients] = useState([
     { id: 1, name: "John Doe", age: 25, sex: "Male" },
@@ -8,21 +10,30 @@ const PatientTable = () => {
     { id: 3, name: "Bob Smith", age: 28, sex: "Male" },
     // Add more sample data as needed
   ]);
+  //^^ const patients is a temporary value
 
-  const [newPatient, setNewPatient] = useState({
-    name: "",
-    age: "",
-    sex: "",
-  });
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewPatient((prevPatient) => ({
-      ...prevPatient,
-      [name]: value,
-    }));
-  };
-  const addPatient = () => {
+  //add patient flow:
+  /*
+=> preventDefault() => to prevent page from loading TO BE REMOVED ONCE MAG NEXT PAGE
+=> async => to give time for upload
+=> if (!value etc) => form validation => cannot continue unless essential information is filled in
+=> window confirm is to encourage users to double check information
+*/
+  const addPatient = async (e) => {
     //---------------------------------
+    e.preventDefault();
+    //getting currently logged in user
+    const currentUser = auth.currentUser;
+    //upload and edit logs for transparency as well as timestamps
+    //so the actions of user can be traced
+    setNewPatient((prevPatientData) => ({
+      ...prevPatientData,
+      uploadedBy: currentUser.uid,
+      editedBy: currentUser.uid,
+      addedAt: serverTimestamp(),
+    }));
+    console.log(newPatient);
+
     if (
       !newPatient.name ||
       !newPatient.age ||
@@ -32,16 +43,79 @@ const PatientTable = () => {
       alert("Please fill in all fields");
       return;
     }
-    // Generate a unique ID for the new patient
-    const newId = patients.length + 1;
-    // Add the new patient to the list
-    setPatients((prevPatients) => [
-      ...prevPatients,
-      { id: newId, ...newPatient },
-    ]);
-    //------------------------
-    setNewPatient({ name: "", age: "", sex: "", dateofbirth: "" });
+    if (window.confirm("Are you sure you want to proceed?")) {
+      try {
+        window.alert("Uploading...");
+        //creating a variable to hold "addDoc",
+        //await function to give way for upload time, added to collection "patients"
+        //"...newPatient" is to add the contents of "newpatient" sa useState
+        const patientRef = await addDoc(collection(db, "patients"), {
+          ...newPatient,
+        });
+        //adding consolelog with the id of the individual upload for double checking
+        console.log("patient added successfully: ", patientRef.id);
+      } catch (error) {
+        console.error("error adding patient:", error);
+      }
+    }
   };
+
+  //creating usestate to keep track of information entered inside the form, and for
+  //consistency between entries
+  const [newPatient, setNewPatient] = useState({
+    name: "",
+    age: "",
+    sex: "",
+    dateofbirth: "",
+    contactDetails: "",
+    medicalhistory: "",
+    pastmedicalconditions: "",
+    surgicalhistory: "",
+    currentmedications: "",
+    allergies: "",
+    familymedicalhistory: "",
+    socialhistory: "",
+    psychosocialhistory: "",
+    riskfactors: "",
+  });
+
+  //general function to take in input of user
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setNewPatient((prevPatientData) => ({
+      ...prevPatientData,
+      [name]: value,
+    }));
+
+    console.log(name, value);
+  };
+  //function to take in input from "select" type
+  //to be optimized pra merged into one inputchange function
+  const handleInputChangeSex = (e) => {
+    const { name, value } = e.target;
+    setNewPatient((prevPatientData) => ({
+      ...prevPatientData,
+      sex: value,
+    }));
+    console.log(name, value);
+  };
+
+  /*
+ general format to be able to use functions is
+ <input
+    type="text"
+    name="name"
+    value={newPatient.name}
+    onChange={handleInputChange}
+    className={Styles["name"]}
+   />
+  => where type indicates input type
+  => name is what indicates label in firebase/newPatients usestate
+  => value to update newPatients
+  => calling onchange function for taking in input
+  => classname for styling
+ */
 
   return (
     <main className={Styles["Patient__cont"]}>
@@ -50,7 +124,8 @@ const PatientTable = () => {
           <Header />
         </div>
         <div className={Styles["Patient__cont-column-main"]}>
-          <h1>Add Patient Form</h1>
+          <h2 className={Styles["Patient__h2"]}>Add Patient Form</h2>
+          <hr className={Styles["Patient__hr"]} />
         </div>
         <form className={Styles["Patient__form__container"]}>
           <div className={Styles["Patient__form__div_wrapper"]}>
@@ -65,6 +140,7 @@ const PatientTable = () => {
                   className={Styles["name"]}
                 />
               </div>
+
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>Age</label>
                 <input
@@ -82,21 +158,28 @@ const PatientTable = () => {
                 <label for="sex" className={Styles["input_label"]}>
                   Sex
                 </label>
-                <select
-                  id="sex"
-                  name="sex"
-                  className={Styles["sex_select_style"]}
-                >
-                  <option value="none" className={Styles["sex_option_style"]}>
-                    Choose an option
-                  </option>
-                  <option value="Male" className={Styles["sex_option_style"]}>
-                    Male
-                  </option>
-                  <option value="Female" className={Styles["sex_option_style"]}>
-                    Female
-                  </option>
-                </select>
+                <div>
+                  <select
+                    id="sex"
+                    name="sex"
+                    className={Styles["sex_select_style"]}
+                    onChange={handleInputChangeSex}
+                    value={newPatient.sex}
+                  >
+                    <option value="none" className={Styles["sex_option_style"]}>
+                      Choose an option
+                    </option>
+                    <option value="Male" className={Styles["sex_option_style"]}>
+                      Male
+                    </option>
+                    <option
+                      value="Female"
+                      className={Styles["sex_option_style"]}
+                    >
+                      Female
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -123,16 +206,18 @@ const PatientTable = () => {
                 />
               </div>
             </div>
+
             {/*3rd Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Medical History</label>
               <textarea
-                name="medical history"
+                name="medicalhistory"
                 value={newPatient.medicalhistory}
                 onChange={handleInputChange}
                 className={Styles["medical"]}
               />
             </div>
+
             {/*4th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
@@ -145,55 +230,60 @@ const PatientTable = () => {
                 className={Styles["past"]}
               />
             </div>
+
             {/*5th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Surgical History</label>
               <textarea
-                name="Surgical History"
+                name="surgicalhistory"
                 value={newPatient.surgicalhistory}
                 onChange={handleInputChange}
                 className={Styles["surgical"]}
               />
             </div>
+
             {/*6th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Current Medications
               </label>
               <textarea
-                name="Current Medications"
+                name="currentmedications"
                 value={newPatient.currentmedications}
                 onChange={handleInputChange}
                 className={Styles["current"]}
               />
             </div>
+
             {/*7th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Allergies</label>
               <textarea
-                name="Allergies"
+                name="allergies"
                 value={newPatient.allergies}
                 onChange={handleInputChange}
                 className={Styles["allergies"]}
               />
             </div>
+
             {/*8th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Family Medical History
               </label>
               <textarea
-                name="Family Medical History"
+                name="familymedicalhistory"
                 value={newPatient.familymedicalhistory}
                 onChange={handleInputChange}
                 className={Styles["family"]}
               />
             </div>
+
             {/*9th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Social History</label>
               <textarea
-                name="Social History"
+                name="socialhistory"
                 value={newPatient.socialhistory}
                 onChange={handleInputChange}
                 className={Styles["social"]}
@@ -203,10 +293,10 @@ const PatientTable = () => {
             {/*10th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
-                Psychosocial History:
+                Psychosocial History
               </label>
               <textarea
-                name="Psychosocial History"
+                name="psychosocialhistory"
                 value={newPatient.psychosocialhistory}
                 onChange={handleInputChange}
                 className={Styles["psychosocial"]}
@@ -215,7 +305,7 @@ const PatientTable = () => {
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Risk Factors</label>
               <textarea
-                name="Risk Factors"
+                name="riskfactors"
                 value={newPatient.riskfactors}
                 onChange={handleInputChange}
                 className={Styles["risk"]}

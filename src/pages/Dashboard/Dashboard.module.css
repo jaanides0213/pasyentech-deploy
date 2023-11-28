@@ -9,32 +9,38 @@ body {
     font-family: "Inter", sans-serif;  
     z-index: 1;  
 }
+
 /* for hello user */
 .Dashboard__cont-helloUser{
     border: 2px solid #8F001E;
     border-radius: 10px;
     width: 100%;
-    max-width: 342px; /* Limit the width on larger screens */
+    max-width: 322px; /* Limit the width on larger screens */
     font-family: "Inter",sans-serif;
     padding: 0px 0px 10px 10px;
     font-size: 12px;
 }
+
 .Dashboard__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
 }
+
 .Dashboard__cont-column{
     display: flex;
     flex-direction: column;
     margin-right: 30px;
 }
+
 .Dashboard__cont-column-main{
     display: flex;
+    flex-wrap: wrap;
 }
+
 .DashboardNotes_note__textarea{
-    width: 350px;
+    width: 336px;
     min-height:457px;
     padding: 35px 15px 15px 15px;
     box-sizing: border-box;
@@ -43,8 +49,9 @@ body {
     color: white !important;
     font-style: italic;
 }
+
 .DashboardAppointment_note {
-    position: relative; 
+    position: relative;
 }
   
 .DashboardAppointment_label {
@@ -56,9 +63,10 @@ body {
     font-style: italic;
     font-size: 12px;
 }
+
 .DashboardNotes_label{
     position: absolute;
-    top: 110px;
+    top: 120px;
     font-weight: bold;
     color: rgb(255, 255, 255);
     font-style: italic;
@@ -68,7 +76,7 @@ body {
 }
   
 .DashboardAppointment_note__textarea {
-    width: 354px;
+    width: 336px;
     min-height: 260px;
     padding: 30px 15px 15px   15px;
     box-sizing: border-box;
@@ -77,22 +85,52 @@ body {
     background-color: #ffffff;
     border: 2px solid #8F001E;
     font-family: 'Inter';
+    font-style: italic;
     color: black;
 }
+
 .Dashboard__shortcut-column{
     display: flex;
     flex-direction: column;
     margin-top: -1.5rem;
     margin-left: -10px;
     font-size: 12px;
+    flex-wrap: wrap;
 }
+
 .Dashboard__cont-add_patient,
 .Dashboard__cont-add_prescription{
-  background-color: #8F001E;
-  margin-bottom: 10px;
-  text-align: center;
-  width: 190px
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 190px;
+    height: 2.25rem;
+    border: none;
+    color: white;
+    font-size: 13.5px;
 }
+
+.Dashboard__cont-add_patient a, .Dashboard__cont-add_patient a:hover,
+.Dashboard__cont-add_prescription a, .Dashboard__cont-add_prescription:hover {
+    color: white;
+}
+
 .Dashboard__cont-add_patient {
     margin-top: -0.5rem;
+}
+
+/* Media Query for Responsive Design */
+@media screen and (max-width: 1328px) {
+    .Dashboard__shortcut-column {
+        margin-top: 2px;
+        margin-left: 2px;
+    }
+
+    .DashboardNotes_note__textarea {
+        margin-top: 1.5rem;
+    }
+
+    .DashboardNotes_label {
+        margin-top: 30.5rem;
+    }
 }
