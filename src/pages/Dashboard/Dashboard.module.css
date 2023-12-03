@@ -111,7 +111,7 @@ body {
 }
 
 .Dashboard__cont-add_patient a, .Dashboard__cont-add_patient a:hover,
-.Dashboard__cont-add_prescription a, .Dashboard__cont-add_prescription:hover {
+.Dashboard__cont-add_prescription a, .Dashboard__cont-add_prescription a:hover {
     color: white;
 }
 

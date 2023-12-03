@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Styles from "./Patient.module.css"; // Update the import path as needed
-import Header from "../../Components/Header/Header.jsx";
+import Header from "../../components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../../config/firebase";
@@ -130,6 +130,10 @@ const PatientTable = () => {
           <hr className={Styles["Patient__hr"]} />
         </div>
         <form className={Styles["Patient__form__container"]}>
+          {/*PATIENT INFORMATION*/}
+          <span>
+            <h3>Patient Information</h3>
+          </span>
           <div className={Styles["Patient__form__div_wrapper"]}>
             <div className={Styles["main_div"]}>
               <div className={Styles["input_box"]}>
@@ -185,7 +189,6 @@ const PatientTable = () => {
               </div>
             </div>
 
-            {/*2nd Row*/}
             <div className={Styles["main_div"]}>
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>Date of Birth</label>
@@ -197,6 +200,7 @@ const PatientTable = () => {
                   className="birthdate"
                 />
               </div>
+
               <div className={Styles["input_box"]}>
                 <label className={Styles["input_label"]}>Contact Details</label>
                 <input
@@ -209,18 +213,46 @@ const PatientTable = () => {
               </div>
             </div>
 
-            {/*3rd Row*/}
+            <br/>
+
+            {/*PATIENT HISTORY*/}
+            <span>
+              <h3>Patient History</h3>
+            </span>
+
+            {/*backend must be updated*/}
             <div className={Styles["input_box"]}>
-              <label className={Styles["input_label"]}>Medical History</label>
+              <label className={Styles["input_label"]}>Chief Complaint</label>
               <textarea
-                name="medicalhistory"
-                value={newPatient.medicalhistory}
+                name="chief_complaint"
+                value={newPatient.chief_complaint}
                 onChange={handleInputChange}
-                className={Styles["medical"]}
+                className={Styles["chief_complaint"]}
               />
             </div>
 
-            {/*4th Row*/}
+            {/*backend must be updated*/}
+            <div className={Styles["input_box"]}>
+              <label className={Styles["input_label"]}>History of Present Illness</label>
+              <textarea
+                name="history_present"
+                value={newPatient.history_present}
+                onChange={handleInputChange}
+                className={Styles["history_present"]}
+              />
+            </div>
+
+            {/*backend must be updated*/}
+            <div className={Styles["input_box"]}>
+              <label className={Styles["input_label"]}>Review of Systems</label>
+              <textarea
+                name="review_system"
+                value={newPatient.review_system}
+                onChange={handleInputChange}
+                className={Styles["review_system"]}
+              />
+            </div>
+
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Past Medical Conditions
@@ -233,18 +265,6 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*5th Row*/}
-            <div className={Styles["input_box"]}>
-              <label className={Styles["input_label"]}>Surgical History</label>
-              <textarea
-                name="surgicalhistory"
-                value={newPatient.surgicalhistory}
-                onChange={handleInputChange}
-                className={Styles["surgical"]}
-              />
-            </div>
-
-            {/*6th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Current Medications
@@ -257,18 +277,26 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*7th Row*/}
             <div className={Styles["input_box"]}>
-              <label className={Styles["input_label"]}>Allergies</label>
+              <label className={Styles["input_label"]}>Medical History</label>
               <textarea
-                name="allergies"
-                value={newPatient.allergies}
+                name="medicalhistory"
+                value={newPatient.medicalhistory}
                 onChange={handleInputChange}
-                className={Styles["allergies"]}
+                className={Styles["medical"]}
               />
             </div>
 
-            {/*8th Row*/}
+            <div className={Styles["input_box"]}>
+              <label className={Styles["input_label"]}>Surgical History</label>
+              <textarea
+                name="surgicalhistory"
+                value={newPatient.surgicalhistory}
+                onChange={handleInputChange}
+                className={Styles["surgical"]}
+              />
+            </div>
+
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Family Medical History
@@ -281,7 +309,6 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*9th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Social History</label>
               <textarea
@@ -292,7 +319,6 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*10th Row*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 Psychosocial History
@@ -304,20 +330,60 @@ const PatientTable = () => {
                 className={Styles["psychosocial"]}
               />
             </div>
+
+            <br/>
+
+            {/*PHYSICAL EXAMINATION SECTION*/}
+            <span>
+              <h3>Physical Examination</h3>
+            </span>
+
+            {/*backend must be updated*/}
             <div className={Styles["input_box"]}>
-              <label className={Styles["input_label"]}>Risk Factors</label>
+              <label className={Styles["input_label"]}>
+                Physical Information Details
+              </label>
               <textarea
-                name="riskfactors"
-                value={newPatient.riskfactors}
+                name="physical_information"
+                value={newPatient.physical_information}
                 onChange={handleInputChange}
-                className={Styles["risk"]}
+                className={Styles["physical_information"]}
               />
             </div>
-            <br />
-            <button
-              onClick={addPatient}
-              className={Styles["Patient_add_button"]}
-            >
+
+            <br/>
+
+            <span>
+              <h3>Impression</h3>
+            </span>
+
+            {/*backend must be updated*/}
+            <div className={Styles["input_box"]}>
+              <label className={Styles["input_label"]}>
+                Impression Details
+              </label>
+              <textarea
+                name="impression"
+                value={newPatient.impression}
+                onChange={handleInputChange}
+                className={Styles["impression"]}
+              />
+            </div>
+
+            <br/>
+
+            <span>
+              <h3>Upload Diagnostic Files</h3>
+            </span>
+
+            {/*backend must be updated*/}
+            <div className={Styles["input_box_diagnostic"]}>
+              <input type="file" id="diagnosticFile" name="diagnosticFile"/>
+            </div>
+            
+            <br/>
+            <br/>
+            <button onClick={addPatient} className={Styles["Patient_add_button"]}>
               Add Patient
             </button>
           </div>
