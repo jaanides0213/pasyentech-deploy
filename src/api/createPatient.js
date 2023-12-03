@@ -1,5 +1,3 @@
-// createPatient.js
-
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 
@@ -11,9 +9,7 @@ export const createPatient = async (newPatient) => {
   // so the actions of the user can be traced
   newPatient = {
     ...newPatient,
-    uploadedBy: currentUser.uid,
-    editedBy: currentUser.uid,
-    addedAt: serverTimestamp(),
+    createdAt: serverTimestamp(), // Ensure this line is present
   };
 
   if (

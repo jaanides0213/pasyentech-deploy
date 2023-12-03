@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 
 const PatientTable = () => {
   const navigate = useNavigate();
-
   const [newPatient, setNewPatient] = useState({
     name: "",
     age: "",

@@ -14,6 +14,8 @@ import { getPatientData } from "../../api/getPatientData"; // Import the new fun
 const Patient = () => {
   const [patients, setPatients] = useState([]);
 
+  const [sortBy, setSortBy] = useState(""); // State to track sorting option
+
   useEffect(() => {
     const fetchPatients = async () => {
       try {
@@ -78,6 +80,26 @@ const Patient = () => {
     }
   };
 
+  const handleSort = (option) => {
+    setSortBy(option);
+
+    // Sort patients based on the selected option
+    if (option === "mostRecent") {
+      setPatients((prevPatients) =>
+        [...prevPatients].sort((a, b) => {
+          const dateA = a.createdAt ? a.createdAt.toMillis() : 0;
+          const dateB = b.createdAt ? b.createdAt.toMillis() : 0;
+
+          return dateB - dateA;
+        })
+      );
+    } else if (option === "name") {
+      setPatients((prevPatients) =>
+        [...prevPatients].sort((a, b) => a.name.localeCompare(b.name))
+      );
+    }
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <div className={Styles["Patient__cont-main"]}>
@@ -113,6 +135,8 @@ const Patient = () => {
               id="sortBy"
               name="sortBy"
               className={Styles["sorting_select__style"]}
+              onChange={(e) => handleSort(e.target.value)}
+              value={sortBy}
             >
               <option value="" className={Styles["sorting_option__style"]}>
                 Sort by
