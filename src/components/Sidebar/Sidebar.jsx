@@ -130,8 +130,8 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/patient"
+              className={isLinkActive("/patient") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiUsers size="1rem" className={Styles["sidebar-icons"]} />

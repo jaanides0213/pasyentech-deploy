@@ -1,6 +1,7 @@
 body {
     overflow-x: hidden;
 }
+
 .Patient__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -9,12 +10,14 @@ body {
     font-family: "Inter", sans-serif;  
     z-index: 1;  
 }
+
 .Patient__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
 }
+
 .Patient__cont-column-main {
     margin-top: -1.5rem;
 }
@@ -70,9 +73,11 @@ body {
 .Patient_add_bar a {
     color: white;
 }
+
 .Patient_add_bar a:hover {
     color: white;
 }
+
 
 .Patient_add_bar {
     margin-left: 1.5rem;
@@ -81,9 +86,34 @@ body {
     background-color: #8F001E;
 }
 
+.Patient_sort_by {
+    margin-left: 1.5rem;
+    border-radius: 0;
+    border: none;
+}
+
+.sorting_select__style {
+    
+    font-size: 13.5px;
+    font-weight: 450;
+    background-color: #8F001E;
+    height: 2.25rem;
+    border: none;
+    padding: 10px;
+    font-family: "Inter", sans-serif;  
+}
+
+.sorting_option__style {
+    padding: 7.5px;
+    background-color: white;
+    color: #8F001E;
+    border: 1px solid;
+}
+
 .Patient_list_cont {
     margin-top: 1.5rem;
 }
+
 .Patient_table{
     border: 1px solid #8F001E; 
     width: 100%;
@@ -109,6 +139,7 @@ body {
     flex-direction: row;
     justify-content: center;
 }
+
 /*action styling*/
 .Action__Styling{
     padding-right: 1rem;
@@ -123,6 +154,10 @@ body {
 /* for Patient_Form css*/
 .add-patient-form {
     max-width: 100%;
+}
+
+.Patient__form__div_wrapper{
+    margin-top: -1rem;
 }
 
 .Patient__form__container {
@@ -169,6 +204,7 @@ body {
     color: #8F001E;
     border: 1px solid;
 }
+
 /* .input_box_sex,
 .input_box_age,
  input {
@@ -185,7 +221,9 @@ body {
 }
 
 .medical, .past, .surgical, .current,
-.allergies, .family, .social, .psychosocial, .risk{
+.family, .social, .psychosocial, .risk,
+.chief_complaint, .history_present, .review_system,
+.physical_information, .impression{
     color: black;
     background-color: white;
     border: 1px solid #8F001E;
@@ -197,9 +235,24 @@ body {
     font-family: "Inter",sans-serif;
 }
 
+input[type="file"]::file-selector-button {
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #8F001E;
+    transition: 1s;
+  }
+  
+  input[type="file"]::file-selector-button:hover {
+    cursor: pointer;
+}
+
 .Patient_add_button{
     border-radius: 0px;
     background-color: #8F001E;
+    border: none;
 }
 
 /* Media Query for Responsive Design */
