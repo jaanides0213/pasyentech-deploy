@@ -1,86 +1,62 @@
 import { useState } from "react";
-import Styles from "./Patient.module.css"; // Update the import path as needed
+import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
-import Sidebar from "../../components/Sidebar/Sidebar.jsx";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db, auth } from "../../config/firebase";
+import { createPatient } from "../../api/createPatient";
+import { useNavigate } from "react-router";
+
 const PatientTable = () => {
-  const [patients, setPatients] = useState([
-    { id: 1, name: "John Doe", age: 25, sex: "Male" },
-    { id: 2, name: "Jane Doe", age: 30, sex: "Female" },
-    { id: 3, name: "Bob Smith", age: 28, sex: "Male" },
-    // Add more sample data as needed
-  ]);
-  //^^ const patients is a temporary value
+  const navigate = useNavigate();
 
-  //add patient flow:
-  /*
-=> preventDefault() => to prevent page from loading TO BE REMOVED ONCE MAG NEXT PAGE
-=> async => to give time for upload
-=> if (!value etc) => form validation => cannot continue unless essential information is filled in
-=> window confirm is to encourage users to double check information
-*/
-  const addPatient = async (e) => {
-    //---------------------------------
-    e.preventDefault();
-    //getting currently logged in user
-    const currentUser = auth.currentUser;
-    //upload and edit logs for transparency as well as timestamps
-    //so the actions of user can be traced
-    setNewPatient((prevPatientData) => ({
-      ...prevPatientData,
-      uploadedBy: currentUser.uid,
-      editedBy: currentUser.uid,
-      addedAt: serverTimestamp(),
-    }));
-    console.log(newPatient);
-
-    if (
-      !newPatient.name ||
-      !newPatient.age ||
-      !newPatient.sex ||
-      !newPatient.dateofbirth
-    ) {
-      alert("Please fill in all fields");
-      return;
-    }
-    if (window.confirm("Are you sure you want to proceed?")) {
-      try {
-        window.alert("Uploading...");
-        //creating a variable to hold "addDoc",
-        //await function to give way for upload time, added to collection "patients"
-        //"...newPatient" is to add the contents of "newpatient" sa useState
-        const patientRef = await addDoc(collection(db, "patients"), {
-          ...newPatient,
-        });
-        //adding consolelog with the id of the individual upload for double checking
-        console.log("patient added successfully: ", patientRef.id);
-      } catch (error) {
-        console.error("error adding patient:", error);
-      }
-    }
-  };
-
-  //creating usestate to keep track of information entered inside the form, and for
-  //consistency between entries
   const [newPatient, setNewPatient] = useState({
     name: "",
     age: "",
     sex: "",
     dateofbirth: "",
-    contactDetails: "",
-    medicalhistory: "",
-    pastmedicalconditions: "",
-    surgicalhistory: "",
-    currentmedications: "",
-    allergies: "",
-    familymedicalhistory: "",
-    socialhistory: "",
-    psychosocialhistory: "",
-    riskfactors: "",
+    // Add more fields as needed
   });
 
-  //general function to take in input of user
+  const addPatient = async (e) => {
+    try {
+      e.preventDefault();
+
+      if (
+        !newPatient.name ||
+        !newPatient.age ||
+        !newPatient.sex ||
+        !newPatient.dateofbirth
+      ) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      if (window.confirm("Are you sure you want to proceed?")) {
+        window.alert("Uploading...");
+        navigate("/patient");
+
+        // Call the createPatient function from the API file
+        await createPatient(newPatient);
+
+        window.alert("Patient uploaded successfully!");
+
+        // You might want to update the state with the new patient data if needed
+        // For example:
+        // setPatients((prevPatients) => [...prevPatients, newPatient]);
+
+        // Clear the form after successful upload
+        setNewPatient({
+          name: "",
+          age: "",
+          sex: "",
+          dateofbirth: "",
+          // Clear other fields as needed
+        });
+      }
+    } catch (error) {
+      console.error("Error adding patient:", error);
+      window.alert("Error adding patient. Please try again.");
+    }
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -88,20 +64,15 @@ const PatientTable = () => {
       ...prevPatientData,
       [name]: value,
     }));
-
-    console.log(name, value);
   };
-  //function to take in input from "select" type
-  //to be optimized pra merged into one inputchange function
+
   const handleInputChangeSex = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setNewPatient((prevPatientData) => ({
       ...prevPatientData,
       sex: value,
     }));
-    console.log(name, value);
   };
-
   /*
  general format to be able to use functions is
  <input
@@ -160,9 +131,7 @@ const PatientTable = () => {
               </div>
 
               <div className={Styles["input_box"]}>
-                <label for="sex" className={Styles["input_label"]}>
-                  Sex
-                </label>
+                <label className={Styles["input_label"]}>Sex</label>
                 <div>
                   <select
                     id="sex"

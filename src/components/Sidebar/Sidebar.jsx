@@ -11,7 +11,6 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
-import { IoLogOut } from "react-icons/io5";
 import Styles from "./Sidebar.module.css"; // Adjust the import path
 import { auth } from "../../config/firebase";
 import { useNavigate, useLocation } from "react-router-dom";

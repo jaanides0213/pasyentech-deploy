@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HiSearch,
   HiOutlinePencilAlt,
@@ -6,20 +6,38 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
-import Styles from "./Patient.module.css"; // Update the import path as needed
+import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
+import { createPatient } from "../../api/createPatient";
+import { getPatientData } from "../../api/getPatientData"; // Import the new function
+
 const Patient = () => {
-  const [patients, setPatients] = useState([
-    { id: 1, name: "John Doe", age: 25, gender: "Male" },
-    { id: 2, name: "Jane Doe", age: 30, gender: "Female" },
-    { id: 3, name: "Bob Smith", age: 28, genders: "Male" },
-    // Add more sample data as needed
-  ]);
+  const [patients, setPatients] = useState([]);
+
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        // Call the getPatientData function from the API file
+        const patientsData = await getPatientData();
+
+        // Update the local state with the retrieved patients
+        setPatients(patientsData);
+      } catch (error) {
+        console.error("Error fetching patients:", error);
+        // Handle error as needed
+      }
+    };
+
+    // Call the fetchPatients function when the component mounts
+    fetchPatients();
+  }, []); // Empty dependency array to run the effect only once
+
   const [newPatient, setNewPatient] = useState({
     name: "",
     age: "",
     gender: "",
   });
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewPatient((prevPatient) => ({
@@ -27,6 +45,39 @@ const Patient = () => {
       [name]: value,
     }));
   };
+
+  const addPatient = async () => {
+    try {
+      if (!newPatient.name || !newPatient.age || !newPatient.gender) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      if (window.confirm("Are you sure you want to add this patient?")) {
+        // Call the createPatient function from the API file
+        await createPatient(newPatient);
+
+        // Update the local state with the new patient
+        setPatients((prevPatients) => [
+          ...prevPatients,
+          { ...newPatient, id: prevPatients.length + 1 }, // Assuming you generate an ID
+        ]);
+
+        // Clear the form after successful addition
+        setNewPatient({
+          name: "",
+          age: "",
+          gender: "",
+        });
+
+        window.alert("Patient added successfully!");
+      }
+    } catch (error) {
+      console.error("Error adding patient:", error);
+      window.alert("Error adding patient. Please try again.");
+    }
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <div className={Styles["Patient__cont-main"]}>
@@ -58,11 +109,18 @@ const Patient = () => {
 
           {/*backend must be updated*/}
           <div className={Styles["Patient_sort_by"]}>
-            <select id="sortBy" name="sortBy" className={Styles["sorting_select__style"]}>
+            <select
+              id="sortBy"
+              name="sortBy"
+              className={Styles["sorting_select__style"]}
+            >
               <option value="" className={Styles["sorting_option__style"]}>
                 Sort by
               </option>
-              <option value="mostRecent" className={Styles["sorting_option__style"]}>
+              <option
+                value="mostRecent"
+                className={Styles["sorting_option__style"]}
+              >
                 Most recent
               </option>
               <option value="name" className={Styles["sorting_option__style"]}>
