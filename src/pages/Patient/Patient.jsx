@@ -55,7 +55,23 @@ const Patient = () => {
               </a>
             </button>
           </div>
+
+          {/*backend must be updated*/}
+          <div className={Styles["Patient_sort_by"]}>
+            <select id="sortBy" name="sortBy" className={Styles["sorting_select__style"]}>
+              <option value="" className={Styles["sorting_option__style"]}>
+                Sort by
+              </option>
+              <option value="mostRecent" className={Styles["sorting_option__style"]}>
+                Most recent
+              </option>
+              <option value="name" className={Styles["sorting_option__style"]}>
+                Name
+              </option>
+            </select>
+          </div>
         </div>
+
         <div className={Styles["Patient_list_cont"]}>
           <table className={Styles["Patient_table"]}>
             <thead className={Styles["Patient_table_main_head"]}>
