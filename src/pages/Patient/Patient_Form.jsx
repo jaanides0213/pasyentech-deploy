@@ -120,7 +120,6 @@ const PatientTable = () => {
 
   return (
     <main className={Styles["Patient__cont"]}>
-      <Sidebar />
       <div className={Styles["Patient__cont-main"]}>
         <div className={Styles["Patient__cont-header"]}>
           <Header />
