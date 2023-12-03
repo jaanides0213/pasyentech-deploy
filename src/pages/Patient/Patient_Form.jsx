@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Styles from "./Patient.module.css"; // Update the import path as needed
 import Header from "../../Components/Header/Header.jsx";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../../config/firebase";
 const PatientTable = () => {
@@ -172,6 +173,7 @@ const PatientTable = () => {
                     <option value="Male" className={Styles["sex_option_style"]}>
                       Male
                     </option>
+
                     <option
                       value="Female"
                       className={Styles["sex_option_style"]}

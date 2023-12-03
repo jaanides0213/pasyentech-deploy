@@ -15,6 +15,7 @@ body {
     border: 2px solid #8F001E;
     border-radius: 10px;
     width: 100%;
+ 
     max-width: 322px; /* Limit the width on larger screens */
     font-family: "Inter",sans-serif;
     padding: 0px 0px 10px 10px;
@@ -31,6 +32,7 @@ body {
 .Dashboard__cont-column{
     display: flex;
     flex-direction: column;
+
     margin-right: 30px;
 }
 
@@ -40,6 +42,7 @@ body {
 }
 
 .DashboardNotes_note__textarea{
+ 
     width: 336px;
     min-height:457px;
     padding: 35px 15px 15px 15px;
@@ -52,6 +55,7 @@ body {
 
 .DashboardAppointment_note {
     position: relative;
+    
 }
   
 .DashboardAppointment_label {

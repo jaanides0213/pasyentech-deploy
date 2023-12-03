@@ -69,8 +69,9 @@ const Dashboard = ({ userData }) => {
           <span className={Styles["Dashboard__shortcut-column"]}>
             <h3>Shortcuts:</h3>
             <button className={Styles["Dashboard__cont-add_patient"]}>
-              <IoMdAdd />
-              Add Patient
+              <a href="/patientform">
+                <IoMdAdd /> Add Patient
+              </a>
             </button>
             <button className={Styles["Dashboard__cont-add_prescription"]}>
               <IoMdAdd />
