@@ -3,6 +3,7 @@ import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
 import { createPatient } from "../../api/createPatient";
 import { useNavigate } from "react-router";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const PatientTable = () => {
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ const PatientTable = () => {
 
   return (
     <main className={Styles["Patient__cont"]}>
+      <Sidebar />
       <div className={Styles["Patient__cont-main"]}>
         <div className={Styles["Patient__cont-header"]}>
           <Header />
@@ -136,7 +138,7 @@ const PatientTable = () => {
                     id="sex"
                     name="sex"
                     className={Styles["sex_select_style"]}
-                    onChange={handleInputChangeSex}
+                    onChange={handleInputChangeSex} // Corrected onChange handler
                     value={newPatient.sex}
                   >
                     <option value="none" className={Styles["sex_option_style"]}>

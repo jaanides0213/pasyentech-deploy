@@ -10,6 +10,7 @@ import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
 import { createPatient } from "../../api/createPatient";
 import { getPatientData } from "../../api/getPatientData"; // Import the new function
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Patient = () => {
   const [patients, setPatients] = useState([]);
@@ -37,7 +38,7 @@ const Patient = () => {
   const [newPatient, setNewPatient] = useState({
     name: "",
     age: "",
-    gender: "",
+    sex: "",
   });
 
   const handleInputChange = (e) => {
@@ -50,7 +51,7 @@ const Patient = () => {
 
   const addPatient = async () => {
     try {
-      if (!newPatient.name || !newPatient.age || !newPatient.gender) {
+      if (!newPatient.name || !newPatient.age || !newPatient.sex) {
         alert("Please fill in all fields");
         return;
       }
@@ -69,7 +70,7 @@ const Patient = () => {
         setNewPatient({
           name: "",
           age: "",
-          gender: "",
+          sex: "",
         });
 
         window.alert("Patient added successfully!");
@@ -102,6 +103,7 @@ const Patient = () => {
 
   return (
     <main className={Styles["Patient__cont"]}>
+      <Sidebar />
       <div className={Styles["Patient__cont-main"]}>
         <div className={Styles["Patient__cont-header"]}>
           <Header />
@@ -169,7 +171,7 @@ const Patient = () => {
                 <tr key={patient.id}>
                   <td>{patient.name}</td>
                   <td>{patient.age}</td>
-                  <td>{patient.gender}</td>
+                  <td>{patient.sex}</td>
                   <td>
                     <div className={Styles["Patient_table_action"]}>
                       <div className={Styles["Action__Styling"]}>

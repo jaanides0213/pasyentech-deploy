@@ -7,7 +7,7 @@ import { IoMdAdd } from "react-icons/io";
 import Header from "../../Components/Header/Header.jsx";
 import { getUserData } from "../../api/getUserData";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { Sidebar } from "react-pro-sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Dashboard = ({ userData }) => {
   const [user, setUser] = useState(userData);
@@ -45,8 +45,8 @@ const Dashboard = ({ userData }) => {
 
   return (
     <main className={Styles["Dashboard__cont"]}>
+      <Sidebar />
       <div className={Styles["Dashboard__cont-main"]}>
-        <Sidebar />
         <div className={Styles["Dashboard__cont-header"]}>
           <Header />
         </div>
@@ -69,9 +69,8 @@ const Dashboard = ({ userData }) => {
           <span className={Styles["Dashboard__shortcut-column"]}>
             <h3>Shortcuts:</h3>
             <button className={Styles["Dashboard__cont-add_patient"]}>
-              <a href="/patientform">
-                <IoMdAdd /> Add Patient
-              </a>
+              <IoMdAdd />
+              Add Patient
             </button>
             <button className={Styles["Dashboard__cont-add_prescription"]}>
               <IoMdAdd />
