@@ -14,8 +14,9 @@ import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Patient = () => {
   const [patients, setPatients] = useState([]);
-
   const [sortBy, setSortBy] = useState(""); // State to track sorting option
+  const [searchPatient, setSearchPatient] = useState(""); // State for Search patient functionality
+  const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -101,6 +102,32 @@ const Patient = () => {
     }
   };
 
+  const handleSearch = async () => {
+    const searchTerm = searchPatient.toLowerCase();
+
+    try {
+      // Fetch patient data from the API
+      const patientsData = await getPatientData();
+
+      // Filter patients based on the search term
+      const filteredPatients = patientsData.filter((patient) =>
+        patient.name.toLowerCase().includes(searchTerm)
+      );
+
+      // Update the patients state with the filtered results
+      setPatients(filteredPatients);
+
+      // Display appropriate message based on the search result
+      if (filteredPatients.length === 0) {
+        setSearchResultMessage("No matching patients found.");
+      } else {
+        setSearchResultMessage("");
+      }
+    } catch (error) {
+      console.error("Error fetching patients during search:", error);
+    }
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -116,8 +143,11 @@ const Patient = () => {
             <input
               className={Styles["Patient_search_input"]}
               placeholder="Search patient"
+              type="text"
+              onChange={(e) => setSearchPatient(e.target.value)}
+              value={searchPatient}
             />
-            <button className={Styles["Patient_search_button"]}>
+            <button className={Styles["Patient_search_button"]} onClick={handleSearch}>
               <HiSearch />
             </button>
           </div>
@@ -157,44 +187,51 @@ const Patient = () => {
         </div>
 
         <div className={Styles["Patient_list_cont"]}>
-          <table className={Styles["Patient_table"]}>
-            <thead className={Styles["Patient_table_main_head"]}>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody className={Styles["Patient_table_data"]}>
-              {patients.map((patient) => (
-                <tr key={patient.id}>
-                  <td>{patient.name}</td>
-                  <td>{patient.age}</td>
-                  <td>{patient.sex}</td>
-                  <td>
-                    <div className={Styles["Patient_table_action"]}>
-                      <div className={Styles["Action__Styling"]}>
-                        <a href="#" className={Styles["Action__link__Styling"]}>
-                          <HiOutlineEye size="15px" /> View
-                        </a>
-                      </div>
-                      <div className={Styles["Action__Styling"]}>
-                        <a href="#" className={Styles["Action__link__Styling"]}>
-                          <HiOutlinePencilAlt size="15px" /> Edit
-                        </a>
-                      </div>
-                      <div className={Styles["Action__Styling"]}>
-                        <a href="#" className={Styles["Action__link__Styling"]}>
-                          <HiOutlineTrash size="15px" /> Delete
-                        </a>
-                      </div>
-                    </div>
-                  </td>
+          {searchResultMessage && (
+            <div className={Styles["Search_result_message"]}>
+              {searchResultMessage}
+            </div>
+          )}
+          {patients.length > 0 && (
+            <table className={Styles["Patient_table"]}>
+              <thead className={Styles["Patient_table_main_head"]}>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Sex</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className={Styles["Patient_table_data"]}>
+                {patients.map((patient) => (
+                  <tr key={patient.id}>
+                    <td>{patient.name}</td>
+                    <td>{patient.age}</td>
+                    <td>{patient.sex}</td>
+                    <td>
+                      <div className={Styles["Patient_table_action"]}>
+                        <div className={Styles["Action__Styling"]}>
+                          <a href="/patient/view-patient" className={Styles["Action__link__Styling"]}>
+                            <HiOutlineEye size="15px" /> View
+                          </a>
+                        </div>
+                        <div className={Styles["Action__Styling"]}>
+                          <a href="#" className={Styles["Action__link__Styling"]}>
+                            <HiOutlinePencilAlt size="15px" /> Edit
+                          </a>
+                        </div>
+                        <div className={Styles["Action__Styling"]}>
+                          <a href="#" className={Styles["Action__link__Styling"]}>
+                            <HiOutlineTrash size="15px" /> Delete
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </main>

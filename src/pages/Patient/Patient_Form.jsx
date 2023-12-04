@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Styles from "./Patient.module.css";
-import Header from "../../components/Header/Header.jsx";
+import { IoMdAdd } from "react-icons/io";
 import { createPatient } from "../../api/createPatient";
 import { useNavigate } from "react-router";
+import Styles from "./Patient.module.css";
+import Header from "../../components/Header/Header.jsx";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const PatientTable = () => {
@@ -12,8 +13,10 @@ const PatientTable = () => {
     age: "",
     sex: "",
     dateofbirth: "",
+    diagnosticFiles: [], // Add a new field for diagnostic files
     // Add more fields as needed
   });
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const addPatient = async (e) => {
     try {
@@ -25,7 +28,7 @@ const PatientTable = () => {
         !newPatient.sex ||
         !newPatient.dateofbirth
       ) {
-        alert("Please fill in all fields");
+        alert("Please fill in all required fields!");
         return;
       }
 
@@ -73,6 +76,30 @@ const PatientTable = () => {
       sex: value,
     }));
   };
+
+  const handleFileChange = (e) => {
+    const files = e.target.files;
+    setNewPatient((prevPatientData) => ({
+      ...prevPatientData,
+      diagnosticFiles: [...prevPatientData.diagnosticFiles, ...files],
+    }));
+    setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
+  };
+
+  const removeFile = (index) => {
+    const newFiles = [...uploadedFiles];
+    newFiles.splice(index, 1);
+    setUploadedFiles(newFiles);
+
+    // Remove the corresponding file from diagnosticFiles in newPatient state
+    setNewPatient((prevPatientData) => ({
+      ...prevPatientData,
+      diagnosticFiles: newFiles,
+    }));
+  };
+
+  const isRequired = true; // Set this based on your logic for determining required fields
+
   /*
  general format to be able to use functions is
  <input
@@ -108,18 +135,23 @@ const PatientTable = () => {
           <div className={Styles["Patient__form__div_wrapper"]}>
             <div className={Styles["main_div"]}>
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Name of Patient</label>
+                <label className={Styles["input_label"]}>
+                  Name of Patient{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                </label>
                 <input
                   type="text"
                   name="name"
                   value={newPatient.name}
                   onChange={handleInputChange}
                   className={Styles["name"]}
+                  required
                 />
               </div>
 
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Age</label>
+                <label className={Styles["input_label"]}>
+                  Age{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                </label>
                 <input
                   type="number"
                   min="1"
@@ -128,11 +160,14 @@ const PatientTable = () => {
                   value={newPatient.age}
                   onChange={handleInputChange}
                   className={Styles["age"]}
+                  required
                 />
               </div>
 
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Sex</label>
+                <label className={Styles["input_label"]}>
+                  Sex{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                </label>
                 <div>
                   <select
                     id="sex"
@@ -140,6 +175,7 @@ const PatientTable = () => {
                     className={Styles["sex_select_style"]}
                     onChange={handleInputChangeSex} // Corrected onChange handler
                     value={newPatient.sex}
+                    required
                   >
                     <option value="none" className={Styles["sex_option_style"]}>
                       Choose an option
@@ -161,24 +197,30 @@ const PatientTable = () => {
 
             <div className={Styles["main_div"]}>
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Date of Birth</label>
+                <label className={Styles["input_label"]}>
+                  Date of Birth{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                </label>
                 <input
                   type="date"
                   name="dateofbirth"
                   value={newPatient.dateofbirth}
                   onChange={handleInputChange}
                   className="birthdate"
+                  required
                 />
               </div>
 
               <div className={Styles["input_box"]}>
-                <label className={Styles["input_label"]}>Contact Details</label>
+                <label className={Styles["input_label"]}>
+                  Phone Number{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                </label>
                 <input
                   type="number"
                   name="contact details"
                   value={newPatient.contactdetails}
                   onChange={handleInputChange}
                   className={Styles["contact"]}
+                  required
                 />
               </div>
             </div>
@@ -350,16 +392,29 @@ const PatientTable = () => {
 
             {/*backend must be updated*/}
             <div className={Styles["input_box_diagnostic"]}>
-              <input type="file" id="diagnosticFile" name="diagnosticFile" />
+              <input
+                type="file"
+                id="diagnosticFile"
+                name="diagnosticFile"
+                onChange={handleFileChange}
+              />
+              {uploadedFiles.map((file, index) => (
+              <div key={index} className={Styles["uploaded_file__container"]}>
+                <span>{file.name}</span>
+                <button onClick={()=>removeFile(index)} className={Styles["remove_file__button"]}>
+                  Remove
+                </button>
+              </div>
+              ))}
             </div>
-
+            
             <br />
             <br />
             <button
               onClick={addPatient}
               className={Styles["Patient_add_button"]}
             >
-              Add Patient
+              <IoMdAdd/> Add Patient
             </button>
           </div>
         </form>

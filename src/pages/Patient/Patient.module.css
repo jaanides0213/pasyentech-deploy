@@ -56,7 +56,7 @@ body {
     background-color: #8F001E;
     border-radius: 0;
     height: 2.2rem;
-    margin-left: -3.5rem;
+    margin-left: -3.55rem;
     height: 2.25rem;
 }
 
@@ -194,6 +194,9 @@ body {
     font-size: 18px;
 }
 
+.required_asterisk {
+    color:#8F001E;
+}
 .name  {
     min-width: 40rem; /* Adjust the min-width for smaller screens */
 }
@@ -243,10 +246,16 @@ input[type="file"]::file-selector-button {
     padding-bottom: 10px;
     background-color: #8F001E;
     transition: 1s;
+    font-family: "Inter", sans-serif;  
   }
   
   input[type="file"]::file-selector-button:hover {
     cursor: pointer;
+}
+
+.uploaded_file__container {
+    margin-left: 15px;
+    margin-bottom: 0.5rem;
 }
 
 .Patient_add_button{
