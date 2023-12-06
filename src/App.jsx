@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/patient" element={<Patient />} />
-          <Route path="/patient/view-patient" element={<Patient_View/>}/>
+          <Route path="/patient/view-patient/:id" element={<Patient_View/>}/>
           <Route path="/prescription" element={<Patient />} />
           <Route path="/patientform" element={<PatientForm />} />{" "}
           {/* Add the closing parenthesis here */}

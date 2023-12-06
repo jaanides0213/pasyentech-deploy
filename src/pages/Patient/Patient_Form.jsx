@@ -16,7 +16,6 @@ const PatientTable = () => {
     diagnosticFiles: [], // Add a new field for diagnostic files
     // Add more fields as needed
   });
-  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const addPatient = async (e) => {
     try {
@@ -74,27 +73,6 @@ const PatientTable = () => {
     setNewPatient((prevPatientData) => ({
       ...prevPatientData,
       sex: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    const files = e.target.files;
-    setNewPatient((prevPatientData) => ({
-      ...prevPatientData,
-      diagnosticFiles: [...prevPatientData.diagnosticFiles, ...files],
-    }));
-    setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
-  };
-
-  const removeFile = (index) => {
-    const newFiles = [...uploadedFiles];
-    newFiles.splice(index, 1);
-    setUploadedFiles(newFiles);
-
-    // Remove the corresponding file from diagnosticFiles in newPatient state
-    setNewPatient((prevPatientData) => ({
-      ...prevPatientData,
-      diagnosticFiles: newFiles,
     }));
   };
 
@@ -216,7 +194,7 @@ const PatientTable = () => {
                 </label>
                 <input
                   type="number"
-                  name="contact details"
+                  name="contactdetails"
                   value={newPatient.contactdetails}
                   onChange={handleInputChange}
                   className={Styles["contact"]}
@@ -232,7 +210,6 @@ const PatientTable = () => {
               <h3>Patient History</h3>
             </span>
 
-            {/*backend must be updated*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Chief Complaint</label>
               <textarea
@@ -243,7 +220,6 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*backend must be updated*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>
                 History of Present Illness
@@ -256,7 +232,6 @@ const PatientTable = () => {
               />
             </div>
 
-            {/*backend must be updated*/}
             <div className={Styles["input_box"]}>
               <label className={Styles["input_label"]}>Review of Systems</label>
               <textarea
@@ -396,16 +371,7 @@ const PatientTable = () => {
                 type="file"
                 id="diagnosticFile"
                 name="diagnosticFile"
-                onChange={handleFileChange}
               />
-              {uploadedFiles.map((file, index) => (
-              <div key={index} className={Styles["uploaded_file__container"]}>
-                <span>{file.name}</span>
-                <button onClick={()=>removeFile(index)} className={Styles["remove_file__button"]}>
-                  Remove
-                </button>
-              </div>
-              ))}
             </div>
             
             <br />

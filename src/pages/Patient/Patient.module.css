@@ -146,6 +146,7 @@ body {
 }
 .Action__link__Styling {
     color: #8F001E;
+    cursor: pointer;
 }
 .Action__link__Styling:hover {
     color: #8F001E;
@@ -262,6 +263,12 @@ input[type="file"]::file-selector-button {
     border-radius: 0px;
     background-color: #8F001E;
     border: none;
+}
+
+/*VIEW PATIENT STYLES*/
+.Patient__information__container p, .Patient__history__container p,
+.Patient__physical__container p, .Patient__impression__container p {
+    line-height: 15px;
 }
 
 /* Media Query for Responsive Design */
