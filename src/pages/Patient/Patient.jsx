@@ -9,7 +9,7 @@ import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
 import { createPatient } from "../../api/createPatient";
-import { getPatientData } from "../../api/getPatientData"; // Import the new function
+import { getPatientData } from "./../../api/getPatientData"; // Import the new function
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Patient = () => {
@@ -128,6 +128,11 @@ const Patient = () => {
     }
   };
 
+  const handleViewPatient = (patientId) => {
+    // Navigate to the "Patient_View.jsx" page with the patient's ID
+    window.location.href = `/patient/view-patient/${patientId}`;
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -211,7 +216,7 @@ const Patient = () => {
                     <td>
                       <div className={Styles["Patient_table_action"]}>
                         <div className={Styles["Action__Styling"]}>
-                          <a href="/patient/view-patient" className={Styles["Action__link__Styling"]}>
+                          <a onClick={() => handleViewPatient(patient.id)} className={Styles["Action__link__Styling"]}>
                             <HiOutlineEye size="15px" /> View
                           </a>
                         </div>

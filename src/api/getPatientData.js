@@ -1,4 +1,4 @@
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 export const getPatientData = async () => {
@@ -9,7 +9,6 @@ export const getPatientData = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-
     return patientsData;
   } catch (error) {
     console.error("Error fetching patients data:", error);
