@@ -266,6 +266,10 @@ input[type="file"]::file-selector-button {
 }
 
 /*VIEW PATIENT STYLES*/
+.Patient__information__h3, .Patient__physical__h3,
+.Patient__impression__h3, .Patient__diagnosticFiles__h3{
+    margin-top: 2rem;
+}
 .Patient__information__container p, .Patient__history__container p,
 .Patient__physical__container p, .Patient__impression__container p {
     line-height: 15px;

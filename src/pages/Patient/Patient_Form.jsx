@@ -76,7 +76,7 @@ const PatientTable = () => {
     }));
   };
 
-  const isRequired = true; // Set this based on your logic for determining required fields
+  const isRequired = true; // Set this based on the logic for determining required fields
 
   /*
  general format to be able to use functions is
