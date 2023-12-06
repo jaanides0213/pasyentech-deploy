@@ -10,6 +10,7 @@ import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
 import { createPatient } from "../../api/createPatient";
 import { getPatientData } from "./../../api/getPatientData"; // Import the new function
+import { getPatientById } from "../../api/getPatientById.js";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Patient = () => {
@@ -128,10 +129,26 @@ const Patient = () => {
     }
   };
 
-  const handleViewPatient = (patientId) => {
-    // Navigate to the "Patient_View.jsx" page with the patient's ID
-    window.location.href = `/patient/view-patient/${patientId}`;
+  const handleViewPatient = async (patientId) => {
+    try {
+      // Call the new getPatientById function from the API file
+      const patient = await getPatientById(patientId);
+
+      // Construct the URL for the Patient_View page with the patient's ID
+      const viewPatientUrl = `/patient/view-patient/${patientId}`;
+
+      // Redirect the user to the Patient_View page
+      window.location.href = viewPatientUrl;
+  
+      // Display the patient details (you can customize this part)
+      console.log("Patient details:", patient);
+
+    } catch (error) {
+      console.error("Error viewing patient:", error);
+      // Handle error as needed
+    }
   };
+  
 
   return (
     <main className={Styles["Patient__cont"]}>
