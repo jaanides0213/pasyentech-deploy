@@ -2,33 +2,35 @@ body {
     overflow-x: hidden;
 }
 
-.Patient__cont{
+.Appointment__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 100%;
     display: flex; 
     font-family: "Inter", sans-serif;  
     z-index: 1;  
+    /* border: 1px solid  #8F001E; */
+
 }
 
-.Patient__cont-main{
+.Appointment__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
 }
 
-.Patient__cont-column-main {
+.Appointment__cont-column-main {
     margin-top: -1.5rem;
 }
 
-.Patient__hr {
+.Appointment__hr {
     border: none;
     border: 1px solid #8F001E;
     margin-top: 0.5rem;
 }
 
-.Patient_search_add_container {
+.Appointment_search_add_container {
     display: flex;
     margin-top: -1rem;
     margin-left: 1px;
@@ -36,23 +38,23 @@ body {
     width: 95%;
 }
 
-.Patient_search_bar {
+.Appointment_search_bar {
     display: flex;
     align-items: center; /* Align items vertically in the center */
 }
 
-.Patient_search_input {
+.Appointment_search_input {
     width: 15rem;
 }
 
-.Patient_search_input{
+.Appointment_search_input{
     height: 2rem;
     background-color: white;
     color: black;
     border: 1px solid #8F001E;
 } 
 
-.Patient_search_button {
+.Appointment_search_button {
     background-color: #8F001E;
     border-radius: 0;
     height: 2.2rem;
@@ -60,7 +62,7 @@ body {
     height: 2.25rem;
 }
 
-.Patient_add_bar button {
+.Appointment_add_bar button {
    
     height: 2.25rem;
     border-radius: 0;
@@ -70,23 +72,23 @@ body {
     font-size: 13.5px;
 }
 
-.Patient_add_bar a {
+.Appointment_add_bar a {
     color: white;
 }
 
-.Patient_add_bar a:hover {
+.Appointment_add_bar a:hover {
     color: white;
 }
 
 
-.Patient_add_bar {
+.Appointment_add_bar {
     margin-left: 1.5rem;
     border-radius: 0;
     border: none;
     background-color: #8F001E;
 }
 
-.Patient_sort_by {
+.Appointment_sort_by {
     margin-left: 1.5rem;
     border-radius: 0;
     border: none;
@@ -110,23 +112,23 @@ body {
     border: 1px solid;
 }
 
-.Patient_list_cont {
+.Appointment_list_cont {
     margin-top: 1.5rem;
 }
 
-.Patient_table{
+.Appointment_table{
     border: 1px solid #8F001E; 
     width: 100%;
     border-collapse: collapse;
 }
-.Patient_table_main_head {
+.Appointment_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
-.Patient_table_main_head th {
+.Appointment_table_main_head th {
     padding: 15px ;
 }
-.Patient_table_data td {
+.Appointment_table_data td {
     font-size: 15px;
     text-align: center;
     padding: 10px;
@@ -134,7 +136,7 @@ body {
     font-weight: 600;
     border-bottom: 1px solid #8F001E;
 }
-.Patient_table_action {
+.Appointment_table_action {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -152,16 +154,16 @@ body {
     color: #8F001E;
 }
 
-/* for Patient_Form css*/
-.add-patient-form {
+/* for Appointment_Form css*/
+.add-Appointment-form {
     max-width: 100%;
 }
 
-.Patient__form__div_wrapper{
+.Appointment__form__div_wrapper{
     margin-top: -1rem;
 }
 
-.Patient__form__container {
+.Appointment__form__container {
     width: 100%; /* Ensure the form takes up 100% of the available width */
     margin-top: -1px;
 }
@@ -259,19 +261,19 @@ input[type="file"]::file-selector-button {
     margin-bottom: 0.5rem;
 }
 
-.Patient_add_button{
+.Appointment_add_button{
     border-radius: 0px;
     background-color: #8F001E;
     border: none;
 }
 
-/*VIEW PATIENT STYLES*/
-.Patient__information__h3, .Patient__physical__h3,
-.Patient__impression__h3, .Patient__diagnosticFiles__h3{
+/*VIEW Appointment STYLES*/
+.Appointment__information__h3, .Appointment__physical__h3,
+.Appointment__impression__h3, .Appointment__diagnosticFiles__h3{
     margin-top: 2rem;
 }
-.Patient__information__container p, .Patient__history__container p,
-.Patient__physical__container p, .Patient__impression__container p {
+.Appointment__information__container p, .Appointment__history__container p,
+.Appointment__physical__container p, .Appointment__impression__container p {
     line-height: 15px;
 }
 
@@ -283,7 +285,7 @@ input[type="file"]::file-selector-button {
 }
 
 /* for scroll */
-.Patient__cont-column-main {
+.Appointment__cont-column-main {
     overflow: auto;
     max-height: 700px;
     padding-right: 20px; /* Add space for the scrollbar */
@@ -291,16 +293,16 @@ input[type="file"]::file-selector-button {
   }
   
   /* Style the scrollbar */
-  .Patient__cont-column-main::-webkit-scrollbar {
+  .Appointment__cont-column-main::-webkit-scrollbar {
     width: 10px; /* Set the width of the scrollbar */
   }
   
-  .Patient__cont-column-main::-webkit-scrollbar-thumb {
+  .Appointment__cont-column-main::-webkit-scrollbar-thumb {
     background-color: #8F001E; /* Color of the thumb */
     border-radius: 10px; /* Rounded corners of the thumb */
   }
   
-  .Patient__cont-column-main::-webkit-scrollbar-track {
+  .Appointment__cont-column-main::-webkit-scrollbar-track {
     background-color: #f1f1f1; /* Color of the track */
     border-radius: 10px; /* Rounded corners of the track */
   }

@@ -13,41 +13,41 @@ import {
 export class Prescription extends Component {
   render() {
     return (
-      <main className={Styles["Patient__cont"]}>
+      <main className={Styles["Prescription__cont"]}>
         <Sidebar />
-        <div className={Styles["Patient__cont-main"]}>
-          <div className={Styles["Patient__cont-header"]}>
+        <div className={Styles["Prescription__cont-main"]}>
+          <div className={Styles["Prescription__cont-header"]}>
             <Header />
           </div>
-          <div className={Styles["Patient__cont-column-main"]}>
+          <div className={Styles["Prescription__cont-column-main"]}>
             <h2>Prescription</h2>
           </div>
 
           {/* for searchbar/add/sort */}
-          <div className={Styles["Patient_search_add_container"]}>
-            <div className={Styles["Patient_search_bar"]}>
+          <div className={Styles["Prescription_search_add_container"]}>
+            <div className={Styles["Prescription_search_bar"]}>
               <input
-                className={Styles["Patient_search_input"]}
-                placeholder="Search patient"
+                className={Styles["Prescription_search_input"]}
+                placeholder="Search Prescription"
                 type="text"
               />
             </div>
             <div>
-              <button className={Styles["Patient_search_button"]}>
+              <button className={Styles["Prescription_search_button"]}>
                 <HiSearch />
               </button>
             </div>
-            <div className={Styles["Patient_add_bar"]}>
-              <button className={Styles["Patient_add_button"]}>
+            <div className={Styles["Prescription_add_bar"]}>
+              <button className={Styles["Prescription_add_button"]}>
                 <IoMdAdd /> Add prescription
               </button>
             </div>
           </div>
 
           {/* for table */}
-          <div>
-            <table className={Styles["Patient_table"]}>
-              <thead className={Styles["Patient_table_main_head"]}>
+          <div className={Styles["Prescription_list_cont"]}>
+            <table className={Styles["Prescription_table"]}>
+              <thead className={Styles["Prescription_table_main_head"]}>
                 <tr>
                   <th>Name</th>
                   <th>Age</th>
@@ -55,30 +55,28 @@ export class Prescription extends Component {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody className={Styles["Patient_table_data"]}>
+              <tbody className={Styles["Prescription_table_data_body"]}>
                 <tr>
-                  <th>john doe</th>
+                  <th>John Doe</th>
                   <th>12</th>
-                  <th>male</th>
+                  <th>Male</th>
                   <th>
-                    <div className={Styles["Patient_table_action"]}>
+                    <div className={Styles["Prescription_table_action"]}>
                       <div className={Styles["Action__Styling"]}>
-                        <a  className={Styles["Action__link__Styling"]} >
-                        <HiOutlineEye size="15px" /> View
+                        <a className={Styles["Action__link__Styling"]}>
+                          <HiOutlineEye size="15px" /> View
                         </a>
                       </div>
                       <div className={Styles["Action__Styling"]}>
-                        <a  className={Styles["Action__link__Styling"]} >
-                        <HiOutlinePencilAlt size="15px" /> Edit
+                        <a className={Styles["Action__link__Styling"]}>
+                          <HiOutlinePencilAlt size="15px" /> Edit
                         </a>
                       </div>
                       <div className={Styles["Action__Styling"]}>
-                        <a  className={Styles["Action__link__Styling"]} >
-                        <HiOutlineTrash size="15px" /> Delete
+                        <a className={Styles["Action__link__Styling"]}>
+                          <HiOutlineTrash size="15px" /> Delete
                         </a>
                       </div>
-                      
-
                     </div>
                   </th>
                 </tr>

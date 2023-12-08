@@ -2,7 +2,7 @@ body {
     overflow-x: hidden;
 }
 
-.Patient__cont{
+.Prescription__cont{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 100%;
@@ -11,49 +11,48 @@ body {
     z-index: 1;  
 }
 
-.Patient__cont-main{
+.Prescription__cont-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
 }
 
-.Patient__cont-column-main {
+.Prescription__cont-column-main {
     margin-top: -1.5rem;
 }
 
-.Patient__hr {
+.Prescription__hr {
     border: none;
     border: 1px solid #8F001E;
     margin-top: 0.5rem;
 }
 
-.Patient_search_add_container {
+.Prescription_search_add_container {
     display: flex;
     margin-top: -1rem;
     margin-left: 1px;
     flex-direction: row;
     width: 95%;
-    padding-bottom: 1.5rem;
 }
 
-.Patient_search_bar {
+.Prescription_search_bar {
     display: flex;
     align-items: center; /* Align items vertically in the center */
 }
 
-.Patient_search_input {
+.Prescription_search_input {
     width: 15rem;
 }
 
-.Patient_search_input{
+.Prescription_search_input{
     height: 2rem;
     background-color: white;
     color: black;
     border: 1px solid #8F001E;
 } 
 
-.Patient_search_button {
+.Prescription_search_button {
     background-color: #8F001E;
     border-radius: 0;
     height: 2.2rem;
@@ -61,7 +60,7 @@ body {
     height: 2.25rem;
 }
 
-.Patient_add_bar button {
+.Prescription_add_bar button {
    
     height: 2.25rem;
     border-radius: 0;
@@ -71,23 +70,23 @@ body {
     font-size: 13.5px;
 }
 
-.Patient_add_bar a {
+.Prescription_add_bar a {
     color: white;
 }
 
-.Patient_add_bar a:hover {
+.Prescription_add_bar a:hover {
     color: white;
 }
 
 
-.Patient_add_bar {
+.Prescription_add_bar {
     margin-left: 1.5rem;
     border-radius: 0;
     border: none;
     background-color: #8F001E;
 }
 
-.Patient_sort_by {
+.Prescription_sort_by {
     margin-left: 1.5rem;
     border-radius: 0;
     border: none;
@@ -111,23 +110,23 @@ body {
     border: 1px solid;
 }
 
-.Patient_list_cont {
+.Prescription_list_cont {
     margin-top: 1.5rem;
 }
 
-.Patient_table{
+.Prescription_table{
     border: 1px solid #8F001E; 
     width: 100%;
     border-collapse: collapse;
 }
-.Patient_table_main_head {
+.Prescription_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
-.Patient_table_main_head th {
+.Prescription_table_main_head th {
     padding: 15px ;
 }
-.Patient_table_data td {
+.Prescription_table_data td {
     font-size: 15px;
     text-align: center;
     padding: 15px;
@@ -135,7 +134,12 @@ body {
     font-weight: 600;
     border-bottom: 1px solid #8F001E;
 }
-.Patient_table_action {
+
+.Prescription_table_data td div{
+    padding: 15px;
+
+}
+.Prescription_table_action {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -153,16 +157,16 @@ body {
     color: #8F001E;
 }
 
-/* for Patient_Form css*/
-.add-patient-form {
+/* for Prescription_Form css*/
+.add-Prescription-form {
     max-width: 100%;
 }
 
-.Patient__form__div_wrapper{
+.Prescription__form__div_wrapper{
     margin-top: -1rem;
 }
 
-.Patient__form__container {
+.Prescription__form__container {
     width: 100%; /* Ensure the form takes up 100% of the available width */
     margin-top: -1px;
 }
@@ -260,19 +264,19 @@ input[type="file"]::file-selector-button {
     margin-bottom: 0.5rem;
 }
 
-.Patient_add_button{
+.Prescription_add_button{
     border-radius: 0px;
     background-color: #8F001E;
     border: none;
 }
 
-/*VIEW PATIENT STYLES*/
-.Patient__information__h3, .Patient__physical__h3,
-.Patient__impression__h3, .Patient__diagnosticFiles__h3{
+/*VIEW Prescription STYLES*/
+.Prescription__information__h3, .Prescription__physical__h3,
+.Prescription__impression__h3, .Prescription__diagnosticFiles__h3{
     margin-top: 2rem;
 }
-.Patient__information__container p, .Patient__history__container p,
-.Patient__physical__container p, .Patient__impression__container p {
+.Prescription__information__container p, .Prescription__history__container p,
+.Prescription__physical__container p, .Prescription__impression__container p {
     line-height: 15px;
 }
 
@@ -284,7 +288,7 @@ input[type="file"]::file-selector-button {
 }
 
 /* for scroll */
-.Patient__cont-column-main {
+.Prescription__cont-column-main {
     overflow: auto;
     max-height: 700px;
     padding-right: 20px; /* Add space for the scrollbar */
@@ -292,16 +296,16 @@ input[type="file"]::file-selector-button {
   }
   
   /* Style the scrollbar */
-  .Patient__cont-column-main::-webkit-scrollbar {
+  .Prescription__cont-column-main::-webkit-scrollbar {
     width: 10px; /* Set the width of the scrollbar */
   }
   
-  .Patient__cont-column-main::-webkit-scrollbar-thumb {
+  .Prescription__cont-column-main::-webkit-scrollbar-thumb {
     background-color: #8F001E; /* Color of the thumb */
     border-radius: 10px; /* Rounded corners of the thumb */
   }
   
-  .Patient__cont-column-main::-webkit-scrollbar-track {
+  .Prescription__cont-column-main::-webkit-scrollbar-track {
     background-color: #f1f1f1; /* Color of the track */
     border-radius: 10px; /* Rounded corners of the track */
   }
