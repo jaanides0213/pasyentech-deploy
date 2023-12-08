@@ -11,9 +11,11 @@ import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Patient from "./pages/Patient/Patient.jsx";
 import PatientForm from "./pages/Patient/Patient_Form.jsx";
 import Patient_View from "./pages/Patient/Patient_View.jsx";
-import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import "./App.css";
 import Prescription from "./pages/Prescription/Prescription.jsx";
+import Appointment from "./pages/Appointment/Appointment.jsx";
+import AccountDetails from "./pages/AccountDetails/AccountDetails.jsx";
+import "./App.css";
+
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/patient" element={<Patient />} />
           <Route path="/patient/view-patient/:id" element={<Patient_View/>}/>
           <Route path="/prescription" element={<Prescription />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/accountdetails" element={<AccountDetails />} />
           <Route path="/patientform" element={<PatientForm />} />{" "}
           {/* Add the closing parenthesis here */}
           <Route
