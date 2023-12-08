@@ -13,6 +13,7 @@ import PatientForm from "./pages/Patient/Patient_Form.jsx";
 import Patient_View from "./pages/Patient/Patient_View.jsx";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import "./App.css";
+import Prescription from "./pages/Prescription/Prescription.jsx";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/patient" element={<Patient />} />
           <Route path="/patient/view-patient/:id" element={<Patient_View/>}/>
-          <Route path="/prescription" element={<Patient />} />
+          <Route path="/prescription" element={<Prescription />} />
           <Route path="/patientform" element={<PatientForm />} />{" "}
           {/* Add the closing parenthesis here */}
           <Route

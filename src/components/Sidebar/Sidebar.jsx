@@ -84,8 +84,8 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/prescription"
+              className={isLinkActive("/prescription") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiPencil size="1rem" /> Prescription
