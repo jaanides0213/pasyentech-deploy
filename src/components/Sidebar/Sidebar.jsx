@@ -84,24 +84,24 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/prescription"
+              className={isLinkActive("/prescription") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiPencil size="1rem" /> Prescription
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/appointment"
+              className={isLinkActive("/appointment") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiCalendar size="1rem" /> Appointments
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/accountdetails"
+              className={isLinkActive("/accountdetails") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiAdjustments size="1rem" /> Account Details
@@ -138,24 +138,24 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/prescription"
+              className={isLinkActive("/prescription") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiPencil size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/appointment"
+              className={isLinkActive("/appointment") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiCalendar size="1rem" className={Styles["sidebar-icons"]} />
               </p>
             </a>
             <a
-              href="#"
-              className={isLinkActive("#") ? Styles["active-link"] : ""}
+              href="/accountdetails"
+              className={isLinkActive("/accountdetails") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiAdjustments
