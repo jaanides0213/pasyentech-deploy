@@ -77,7 +77,7 @@ const Sidebar = () => {
             <a
               href="/patient"
               /*"Patients" is not bold in the Sidebar when user navigates to View_Patient.jsx*/
-              className={isLinkActive("/patient") || isLinkActive("/patientform") || isLinkActive("/patient/view-patient/:id") ? Styles["active-link"] : ""}
+              className={isLinkActive("/patient") || isLinkActive("/patient/add-patient-form") || isLinkActive("/patient/view-patient/:id") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiUsers size="1rem" /> Patients

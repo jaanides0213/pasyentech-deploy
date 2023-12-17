@@ -1,0 +1,99 @@
+form {
+    max-width: 100%;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+
+.input_box_name input, .input_box_age input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+}
+
+.input_box_name input {
+    width: 40rem;
+}
+
+.input_box_calendar {
+    margin-right: 13px;
+}
+
+.input_box_calendar input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    text-align: center;
+    display: flex;
+    padding-top: 10px;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    font-family: "Inter",sans-serif;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.sex_select_style, .sex_select_option{
+    padding: 7.5px;
+    background-color: white;
+    color:black;
+    font-family: "Inter",sans-serif;
+    border: 1px solid #8F001E;
+}
+
+.input_box_phone {
+    margin-left: 13px;
+}
+
+.input_box_phone input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.textareaStyle {
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 46.5rem;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.nextBtn__container {
+    margin-top: 1.5rem;
+}
+
+.nextBtn__style {
+    font-family: "Inter",sans-serif;
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    color: white;
+}

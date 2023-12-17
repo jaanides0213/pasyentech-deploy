@@ -177,7 +177,7 @@ const Patient = () => {
           <div className={Styles["Patient_add_bar"]}>
             {/* <link to="/patient_form" className={Styles[]} */}
             <button className={Styles["Patient_add_button"]}>
-              <a href="/patientform" className={Styles["Patient_add_icon"]}>
+              <a href="/patient/add-patient-form" className={Styles["Patient_add_icon"]}>
                 <IoMdAdd /> Add Patient
               </a>
             </button>
