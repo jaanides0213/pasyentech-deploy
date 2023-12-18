@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Styles from "./AddPatient.module.css";
 
 const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
 
@@ -11,144 +12,186 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
         e.preventDefault();
         nextStep();
     }
-
-    // handle field change
-    handleChange = input => e => {
-        this.setState({ [input]: e.target.value });
-    }
     
     return (
         <form>
-            <h3>Past History</h3>
-                <span>
-                <h3>Childhood Illnesses</h3>
-                <label>Childhood Illnesses
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.childhoodIllness} 
-                            onChange={handleChange('childhoodIllness')}
-                            required
-                        />
+            <h3 className={Styles["h3___styling"]}>Patient History</h3>
+                <div className={Styles["Patient__form__div_wrapper"]}>
+                    <h3>I. Childhood Illness History</h3>
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>
+                            <label className={Styles["input_label"]}>Childhood Illnesses</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.childhoodIllness} 
+                                        onChange={handleChange('childhoodIllness')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
 
-                <h3>Adult Illnesses</h3>
-                <label>Medical
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.adultMedical} 
-                            onChange={handleChange('adultMedical')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>         
+                            <h3>II. Adult Illness History</h3>
+                            <label className={Styles["input_label"]}>Medical</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.adultMedical} 
+                                        onChange={handleChange('adultMedical')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
-                <label>Surgical
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.adultSurgical} 
-                            onChange={handleChange('adultSurgical')}
-                            required
-                        />
-                    </div>
-                </label>
-                <label>Ob/Gyn
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.adultObGyn} 
-                            onChange={handleChange('adultObGyn')}
-                            required
-                        />
-                    </div>
-                </label>
-                <label>Psychiatric
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.adultPsychiatric} 
-                            onChange={handleChange('adultPsychiatric')}
-                            required
-                        />
-                    </div>
-                </label>
-                <label>Health Maintenance
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.healthMaintenance} 
-                            onChange={handleChange('healthMaintenance')}
-                            required
-                        />
-                    </div>
-                </label>
 
-                <h3>Family History</h3>
-                <label>Family History
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.familyHistory} 
-                            onChange={handleChange('familyHistory')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>         
+                            <label className={Styles["input_label"]}>Surgical</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.adultSurgical} 
+                                        onChange={handleChange('adultSurgical')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
 
-                <h3>Medical History</h3>
-                <label>Medical History
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.medicalHistory} 
-                            onChange={handleChange('medicalHistory')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>         
+                            <label className={Styles["input_label"]}>Ob/Gyn</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.adultObGyn} 
+                                        onChange={handleChange('adultObGyn')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
 
-                <h3>Surgical History</h3>
-                <label>Surgical History
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.surgicalHistory} 
-                            onChange={handleChange('surgicalHistory')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>         
+                            <label className={Styles["input_label"]}>Psychiatric</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.adultPsychiatric} 
+                                        onChange={handleChange('adultPsychiatric')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
 
-                <h3>Personal and Social History</h3>
-                <label>Personal and Social History
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.personalSocialHistory} 
-                            onChange={handleChange('personalSocialHistory')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>    
+                            <h3>III. Health Maintenance</h3>     
+                            <label className={Styles["input_label"]}>Health Maintenance</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.healthMaintenance} 
+                                        onChange={handleChange('healthMaintenance')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
 
-                <h3>Psychosocial History</h3>
-                <label>Psychosocial History
-                    <div>
-                        <textarea
-                            type="text"
-                            value={values.psychosocialHistory} 
-                            onChange={handleChange('psychosocialHistory')}
-                            required
-                        />
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>      
+                            <h3>IV. Family History</h3>   
+                            <label className={Styles["input_label"]}>Family History</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.familyHistory} 
+                                        onChange={handleChange('familyHistory')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
                     </div>
-                </label>
-                </span>
 
-            <div>
-                <button onClick={ Previous }>Prev</button>
-                <button onClick={ Continue }>Next</button>
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>      
+                            <h3>V. Personal History</h3>
+                            <label className={Styles["input_label"]}>Medical History</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.medicalHistory} 
+                                        onChange={handleChange('medicalHistory')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
+                    </div>
+
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>      
+                            <label className={Styles["input_label"]}>Surgical History</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.surgicalHistory} 
+                                        onChange={handleChange('surgicalHistory')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
+                    </div>
+
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>      
+                            <label className={Styles["input_label"]}>Personal and Social History</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.personalSocialHistory} 
+                                        onChange={handleChange('personalSocialHistory')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
+                    </div>
+
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_textarea"]}>      
+                            <h3>VI. Psychosocial History</h3>
+                            <label className={Styles["input_label"]}>Psychosocial History</label>
+                                <div>
+                                    <textarea
+                                        type="text"
+                                        value={values.psychosocialHistory} 
+                                        onChange={handleChange('psychosocialHistory')}
+                                        className={Styles["textareaStyle"]}
+                                        required
+                                    />
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div className={Styles["nextBtn__container"]}>
+                <button onClick={ Previous } className={Styles["nextBtn__style"]}>Prev</button>
+                <button onClick={ Continue } className={Styles["nextBtn__style"]}>Next</button>
             </div>
         </form>
     )

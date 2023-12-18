@@ -240,6 +240,7 @@ body {
 }
 
 input[type="file"]::file-selector-button {
+    margin-top: 1rem;
     border: none;
     padding-left: 20px;
     padding-right: 20px;

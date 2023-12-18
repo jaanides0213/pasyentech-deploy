@@ -8,6 +8,10 @@ form {
     margin-top: 1rem;
 }
 
+.h3___styling {
+    margin-top: -1.5rem;
+    margin-bottom: 1.3rem;
+}
 
 .input_box_name input, .input_box_age input{
     background-color: white;
@@ -85,15 +89,37 @@ form {
 }
 
 .nextBtn__container {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .nextBtn__style {
     font-family: "Inter",sans-serif;
     background-color: #8F001E;
     margin-bottom: 10px;
+    margin-right: 10px;
     text-align: center;
     width: 6rem;
     border: none;
     color: white;
+}
+
+.main_div__confirmation {
+    margin-top: 2rem;
+    line-height: 15px;
+}
+
+.main_div__partition {
+    margin-bottom: 2.5rem;
+}
+
+.main_div__data {
+    margin-left: 1rem;
+}
+
+.main_div__subdata {
+    margin-left: 1.3rem;
+}
+
+.main_div__subsubdata {
+    margin-left: 1.3rem;
 }

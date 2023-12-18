@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Styles from "./AddPatient.module.css";
 import PatientInformation from './PatientInformation';
 import PastHistory from './PastHistory';
 import ReviewOfSystems from "./ReviewOfSystems";
 import PhysicalExamination from "./PhysicalExamination";
+import AssessmentAndPlan from './AssessmentAndPlan';
+import Confirmation from './Confirmation';
 
 export default class AddPatient extends Component {
     state = {
@@ -72,7 +73,12 @@ export default class AddPatient extends Component {
         physicalMuscoskeletal: '',
         physicalNeurologic: '',
         physicalMotor: '',
-        physicalReflexes: ''
+        physicalReflexes: '',
+
+        // PAGE 5: Physical Examination: Impression, Assessment, and Plan
+        patientImpression: '',
+        patientAssessmentPlan: '',
+        patientDiagnosticFiles: ''
     }
 
     // setup methods
@@ -95,8 +101,16 @@ export default class AddPatient extends Component {
 
     render() {
         const { step } = this.state;
-        const { patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness } = this.state;
-        const values = {  patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness }
+        const { patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness, 
+            childhoodIllness, adultMedical, adultSurgical, adultObGyn, adultPsychiatric, healthMaintenance, familyHistory, medicalHistory, surgicalHistory, personalSocialHistory, psychosocialHistory,
+            reviewGeneral, reviewSkin, review_HEENT_head, review_HEENT_eyes, review_HEENT_ears, review_HEENT_nose, review_HEENT_throat, reviewNeck, reviewBreasts, reviewRespiratory, reviewCardiovascular, reviewGastro, reviewUrinary, reviewGenital, reviewPeripheral, reviewMuscoskeletal, reviewPsychiatrict, reviewNeurologic, reviewHematologic, reviewEndocrine,
+            physicalVital, physicalSkin, HEENT_head, HEENT_eyes, HEENT_ears, HEENT_nose, HEENT_throat, physicalNeck, physicalThoraxLungs, physicalCardio, physicalBreast, physicalAbdomen, physicalGenitalia, physicalRectal, physicalExtremities, physicalPeripheral, physicalMuscoskeletal, physicalNeurologic, physicalMotor, physicalReflexes,
+            patientImpression, patientAssessmentPlan, patientDiagnosticFiles} = this.state;
+        const values = {  patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness,
+            childhoodIllness, adultMedical, adultSurgical, adultObGyn, adultPsychiatric, healthMaintenance, familyHistory, medicalHistory, surgicalHistory, personalSocialHistory, psychosocialHistory,
+            reviewGeneral, reviewSkin, review_HEENT_head, review_HEENT_eyes, review_HEENT_ears, review_HEENT_nose, review_HEENT_throat, reviewNeck, reviewBreasts, reviewRespiratory, reviewCardiovascular, reviewGastro, reviewUrinary, reviewGenital, reviewPeripheral, reviewMuscoskeletal, reviewPsychiatrict, reviewNeurologic, reviewHematologic, reviewEndocrine,
+            physicalVital, physicalSkin, HEENT_head, HEENT_eyes, HEENT_ears, HEENT_nose, HEENT_throat, physicalNeck, physicalThoraxLungs, physicalCardio, physicalBreast, physicalAbdomen, physicalGenitalia, physicalRectal, physicalExtremities, physicalPeripheral, physicalMuscoskeletal, physicalNeurologic, physicalMotor, physicalReflexes,
+            patientImpression, patientAssessmentPlan, patientDiagnosticFiles}
         
         switch (step) {
             case 1:
@@ -131,6 +145,23 @@ export default class AddPatient extends Component {
                         prevStep = {this.prevStep}
                         nextStep = {this.nextStep}
                         handleChange = {this.handleChange}
+                        values = {values}
+                    />
+                )
+            case 5:
+                return(
+                    <AssessmentAndPlan
+                        prevStep = {this.prevStep}
+                        nextStep = {this.nextStep}
+                        handleChange = {this.handleChange}
+                        values = {values}
+                    />
+                )
+            case 6:
+                return(
+                    <Confirmation
+                        prevStep = {this.prevStep}
+                        nextStep = {this.nextStep}
                         values = {values}
                     />
                 )
