@@ -10,7 +10,7 @@ const PatientInformation = ({prevStep, nextStep, handleChange, values}) => {
 
     return (
         <form>
-            <h3>Patient Information</h3>
+            <h3 className={Styles["h3___styling"]}>Patient Information</h3>
                 <div className={Styles["Patient__form__div_wrapper"]}>
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_name"]}>
