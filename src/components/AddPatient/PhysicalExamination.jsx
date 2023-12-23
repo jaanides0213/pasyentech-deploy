@@ -12,6 +12,8 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
     nextStep();
   }
 
+  const isRequired = true; // Set this based on the logic for determining required fields
+
   return (
     <form>
       <h3 className={Styles["h3___styling"]}>Physical Examination</h3>
@@ -19,7 +21,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
           <h3>I. General Assessment</h3>
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Vital Signs</label>
+              <label className={Styles["input_label"]}>
+                Vital Signs{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -34,7 +38,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
 
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Skin</label>
+              <label className={Styles["input_label"]}>
+                Skin{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -50,7 +56,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
               <h3>II. Head, Eyes, Ears, Nose, Throat (HEENT)</h3>
-              <label className={Styles["input_label"]}>Head</label>
+              <label className={Styles["input_label"]}>
+                Head{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -65,7 +73,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
 
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Eyes</label>
+              <label className={Styles["input_label"]}>
+                Eyes{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -80,7 +90,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
 
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Ears</label>
+              <label className={Styles["input_label"]}>
+                Ears{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -95,7 +107,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
 
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Nose</label>
+              <label className={Styles["input_label"]}>
+                Nose{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -110,7 +124,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
 
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Throat</label>
+              <label className={Styles["input_label"]}>
+                Throat{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
                 <div>
                   <textarea
                     type="text"
@@ -133,7 +149,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalNeck} 
                     onChange={handleChange('physicalNeck')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -149,7 +164,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalThoraxLungs} 
                     onChange={handleChange('physicalThoraxLungs')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -164,7 +178,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalCardio} 
                     onChange={handleChange('physicalCardio')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -180,7 +193,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalBreast} 
                     onChange={handleChange('physicalBreast')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -196,7 +208,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalAbdomen} 
                     onChange={handleChange('physicalAbdomen')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -212,7 +223,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalGenitalia} 
                     onChange={handleChange('physicalGenitalia')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -227,7 +237,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalRectal} 
                     onChange={handleChange('physicalRectal')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -243,7 +252,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalExtremities} 
                     onChange={handleChange('physicalExtremities')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -258,7 +266,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalPeripheral} 
                     onChange={handleChange('physicalPeripheral')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -273,7 +280,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalMuscoskeletal} 
                     onChange={handleChange('physicalMuscoskeletal')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -289,7 +295,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalNeurologic} 
                     onChange={handleChange('physicalNeurologic')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -304,7 +309,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalMotor} 
                     onChange={handleChange('physicalMotor')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -319,7 +323,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalReflexes} 
                     onChange={handleChange('physicalReflexes')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 

@@ -13,7 +13,7 @@ form {
     margin-bottom: 1.3rem;
 }
 
-.input_box_name input, .input_box_age input{
+.input_box_name input {
     background-color: white;
     border-color:#8F001E;
     color: black;
@@ -24,6 +24,18 @@ form {
     padding-left: 10px;
     font-family: "Inter",sans-serif;
     margin-right: 13px;
+}
+
+.input_box_age input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
 }
 
 .input_box_name input {
@@ -82,7 +94,7 @@ form {
     border: 1px solid #8F001E;
     display: flex;
     flex-direction: row;
-    width: 46.5rem;
+    width: 50rem;
     min-height: 75px;
     padding: 10px;
     font-family: "Inter",sans-serif;
@@ -122,4 +134,23 @@ form {
 
 .main_div__subsubdata {
     margin-left: 1.3rem;
+}
+
+.required_asterisk {
+    color:#8F001E;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .main_div {
+        flex-direction: column; /* Change to a column layout on smaller screens */
+    }
+
+    .input_box_name input,
+    .input_box_age input,
+    .input_box_calendar input,
+    .input_box_phone input,
+    .textareaStyle {
+        width: 90%; /* Make input fields and textareas full width on smaller screens */
+    }
 }
