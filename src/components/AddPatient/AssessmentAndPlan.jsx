@@ -11,6 +11,8 @@ const AssessmentAndPlan = ({prevStep, nextStep, handleChange, values}) => {
         e.preventDefault();
         nextStep();
     }
+
+    const isRequired = true; // Set this based on the logic for determining required fields
   
     return (
         <form>
@@ -19,7 +21,9 @@ const AssessmentAndPlan = ({prevStep, nextStep, handleChange, values}) => {
                 <h3>I. Impression</h3>
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>
-                            <label className={Styles["input_label"]}>Impression</label>
+                            <label className={Styles["input_label"]}>
+                                Impression{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                            </label>
                                 <div>
                                     <textarea
                                         type="text"
@@ -35,7 +39,9 @@ const AssessmentAndPlan = ({prevStep, nextStep, handleChange, values}) => {
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>
                             <h3>II. Assessment and Plan</h3>
-                            <label className={Styles["input_label"]}>Assessment and Plan</label>
+                            <label className={Styles["input_label"]}>
+                                Assessment and Plan{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                            </label>
                                 <div>
                                     <textarea
                                         type="text"

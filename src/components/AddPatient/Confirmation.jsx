@@ -76,6 +76,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
           <div className={Styles["main_div__partition"]}>
             <h3>III. Review of Systems</h3>
             <div className={Styles["main_div__data"]}>
+
               <h3>a. Physical Assessment Systems</h3>
               <div className={Styles["main_div__subdata"]}>
                 <p>General: {values.reviewGeneral}</p>
@@ -90,32 +91,102 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                 </div>
                 <p>Neck: {values.reviewNeck}</p>
                 <p>Breasts: {values.reviewBreasts}</p>
-                
               </div>
 
               <h3>b. Organ Systems</h3>
-              <h3>c. Medical Specialties</h3>
-            </div>
+              <div className={Styles["main_div__subdata"]}> 
+                <p>Respiratory: {values.reviewRespiratory}</p>
+                <p>Cardiovascular: {values.reviewCardiovascular}</p>
+                <p>Gastrointestinal: {values.reviewGastro}</p>
+                <p>Urinary: {values.reviewUrinary}</p>
+                <p>Genital: {values.reviewGenital}</p>
+                <p>Peripheral Vascular: {values.reviewPeripheral}</p>
+                <p>Muscoskeletal: {values.reviewMuscoskeletal}</p>
 
+              </div>
+
+              <h3>c. Medical Specialties</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Psychiatric: {values.reviewPsychiatrict}</p>
+                <p>Neurologic: {values.reviewNeurologic}</p>
+                <p>Hematologic: {values.reviewHematologic}</p>
+                <p>Endocrine: {values.reviewEndocrine}</p>
+              </div>
+            </div>
           </div>
 
           <div className={Styles["main_div__partition"]}>
             <h3>IV. Physical Examination</h3>
+            <div className={Styles["main_div__data"]}>
 
+              <h3>a. General Assessment</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Vital Signs: {values.physicalVital}</p>
+                <p>Skin: {values.physicalSkin}</p>
+              </div>
+
+              <h3>b. Head, Eyes, Ears, Nose, Throat (HEENT)</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Head: {values.HEENT_head}</p>
+                <p>Eyes: {values.HEENT_eyes}</p>
+                <p>Ears: {values.HEENT_ears}</p>
+                <p>Nose: {values.HEENT_nose}</p>
+                <p>Throat: {values.HEENT_throat}</p>
+              </div>
+
+              <h3>c. Neck</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Neck: {values.physicalNeck}</p>
+              </div>
+
+              <h3>d. Thorax and Respiratory</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Thorax and Lungs: {values.physicalThoraxLungs}</p>
+                <p>Cardiovascular: {values.physicalCardio}</p>
+              </div>
+
+              <h3>e. Breasts</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Breasts: {values.physicalBreast}</p>
+              </div>
+
+              <h3>f. Abdomen</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Abdomen: {values.physicalAbdomen}</p>
+              </div>
+
+              <h3>g. Pelvic and Genitalia</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Genitalia: {values.physicalGenitalia}</p>
+                <p>Rectal: {values.physicalRectal}</p>
+              </div>
+
+              <h3>h. Extremities</h3>
+              <div className={Styles["main_div__subdata"]}> 
+                <p>Extremities: {values.physicalExtremities}</p>
+                <p>Peripheral Vascular: {values.physicalPeripheral}</p>
+                <p>Muscoskeletal: {values.physicalMuscoskeletal}</p>
+              </div>
+
+              <h3>i. Neurologic</h3>
+              <div className={Styles["main_div__subdata"]}>
+                <p>Neurologic: {values.physicalNeurologic}</p>
+                <p>Motor: {values.physicalMotor}</p>
+                <p>Reflexes: {values.physicalReflexes}</p>
+              </div>
+            </div>
           </div>
 
           <div className={Styles["main_div__partition"]}>
             <h3>V. Impression, Assessment, and Plan</h3>
-
+            <div className={Styles["main_div__subdata"]}>
+              <p>Impression: {values.patientImpression}</p>
+              <p>Assessment and Plan: {values.patientAssessmentPlan}</p>
+              <p>Uploaded Diagnostic Files: {values.patientDiagnosticFiles}</p>
+            </div>
           </div>
-          
-           
-        
         </div>
-        
       </div>
-
-     
 
       <div className={Styles["nextBtn__container"]}>
         <button onClick={Previous} className={Styles["nextBtn__style"]}>Prev</button>

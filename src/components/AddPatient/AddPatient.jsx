@@ -78,19 +78,91 @@ export default class AddPatient extends Component {
         // PAGE 5: Physical Examination: Impression, Assessment, and Plan
         patientImpression: '',
         patientAssessmentPlan: '',
-        patientDiagnosticFiles: ''
+        patientDiagnosticFiles: []
     }
 
     // setup methods
     // go back to previous step
     prevStep = () => {
+        window.scrollTo(0, 0); // Scroll to the top of the page on component update
         const { step } = this.state;
         this.setState({ step: step - 1 });
     }
 
     // proceed to the next step
     nextStep = () => {
+        window.scrollTo(0, 0); // Scroll to the top of the page on component update
         const { step } = this.state;
+        
+
+        // Validate fields based on the current step
+        if (step === 1){
+            // Check if all required fields on Page 1 are filled
+            if (
+                !this.state.patientName ||
+                !this.state.patientAge ||
+                !this.state.patientSex ||
+                !this.state.dateOfBirth ||
+                !this.state.phoneNumber ||
+                !this.state.chiefComplaint ||
+                !this.state.presentIllness
+            ) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+        } else if (step === 2) {
+            // Check if all required fields on Page 2 are filled
+            if (
+                !this.state.childhoodIllness ||
+                !this.state.adultMedical ||
+                !this.state.adultSurgical ||
+                !this.state.healthMaintenance ||
+                !this.state.familyHistory ||
+                !this.state.medicalHistory ||
+                !this.state.surgicalHistory
+            ) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+        } else if (step === 3) {
+            // Check if all required fields on Page 3 are filled
+            if (
+                !this.state.reviewGeneral ||
+                !this.state.reviewSkin ||
+                !this.state.reviewNeck ||
+                !this.state.review_HEENT_head ||
+                !this.state.review_HEENT_eyes ||
+                !this.state.review_HEENT_ears ||
+                !this.state.review_HEENT_nose ||
+                !this.state.review_HEENT_throat
+            ) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+        } else if (step === 4) {
+            // Check if all required fields on Page 4 are filled
+            if (
+                !this.state.physicalVital ||
+                !this.state.physicalSkin ||
+                !this.state.HEENT_head ||
+                !this.state.HEENT_eyes ||
+                !this.state.HEENT_ears ||
+                !this.state.HEENT_nose ||
+                !this.state.HEENT_throat
+            ) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+        } else if (step === 5) {
+            // Check if all required fields on Page 5 are filled
+            if (
+                !this.state.patientImpression ||
+                !this.state.patientAssessmentPlan 
+            ) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+        }
         this.setState({ step: step + 1 });
     }
 
