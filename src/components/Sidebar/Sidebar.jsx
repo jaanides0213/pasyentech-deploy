@@ -100,8 +100,8 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="/accountdetails"
-              className={isLinkActive("/accountdetails") ? Styles["active-link"] : ""}
+              href="/account-details"
+              className={isLinkActive("/account-details") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiAdjustments size="1rem" /> Account Details

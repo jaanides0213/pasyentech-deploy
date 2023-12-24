@@ -129,7 +129,7 @@ const Signup = () => {
             htmlFor="contact"
             className={Styles["Signup_Form__span-label"]}
           >
-            Contact Number
+            Phone Number
           </label>
           <input
             type="text"
