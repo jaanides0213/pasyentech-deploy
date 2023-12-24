@@ -17,7 +17,6 @@ import Appointment from "./pages/Appointment/Appointment.jsx";
 import AccountDetails from "./pages/AccountDetails/AccountDetails.jsx";
 import "./App.css";
 
-
 const App = () => {
   return (
     <Router>
@@ -29,7 +28,7 @@ const App = () => {
           <Route path="/patient/view-patient/:id" element={<Patient_View/>}/>
           <Route path="/prescription" element={<Prescription />} />
           <Route path="/appointment" element={<Appointment />} />
-          <Route path="/accountdetails" element={<AccountDetails />} />
+          <Route path="/account-details" element={<AccountDetails />} />
           {/*<Route path="/patientform" element={<PatientForm />} />{" "}*/}
           <Route path="/patient/add-patient-form" element={<PatientForm_Parent/>}/>
           {/* Add the closing parenthesis here */}
