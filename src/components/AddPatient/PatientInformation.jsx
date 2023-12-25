@@ -108,6 +108,101 @@ const PatientInformation = ({prevStep, nextStep, handleChange, values}) => {
                                 required
                             />
                         </div> 
+
+                        <div className={Styles["input_box_civil"]}>
+                            <label className={Styles["input_label"]}>
+                                Civil Status{isRequired && <span className={Styles["required_asterisk"]}> *</span>} 
+                            </label> 
+                            <div>
+                                <select 
+                                    value={values.civilStatus}
+                                    onChange={handleChange('civilStatus')} 
+                                    className={Styles["civilStatus_select_style"]}
+                                    required>
+                                    <option value=""  className={Styles["civilStatus_select_option"]}>
+                                        Choose an option
+                                    </option>
+                                    <option value="Single"  className={Styles["civilStatus_select_option"]}>
+                                        Single
+                                    </option>
+                                    <option value="Married"  className={Styles["civilStatus_select_option"]}>
+                                        Married
+                                    </option>
+                                    <option value="Divorced"  className={Styles["civilStatus_select_option"]}>
+                                        Divorced
+                                    </option>
+                                    <option value="Separated"  className={Styles["civilStatus_select_option"]}>
+                                        Separated
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_address"]}>
+                            <label className={Styles["input_label"]}>
+                                Address{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                            </label> 
+                            <input 
+                                type="text"  
+                                value={values.patientAddress} 
+                                onChange={handleChange('patientAddress')}
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className={Styles["main_div"]}>
+                        <div className={Styles["input_box_religion"]}>
+                            <label className={Styles["input_label"]}>
+                                Religion{isRequired && <span className={Styles["required_asterisk"]}> *</span>} 
+                            </label> 
+                            <div>
+                                <select 
+                                    value={values.patientReligion}
+                                    onChange={handleChange('patientReligion')} 
+                                    className={Styles["patientReligion_select_style"]}
+                                    required>
+                                    <option value=""  className={Styles["cpatientReligion_select_option"]}>
+                                        Choose an option
+                                    </option>
+                                    <option value="Christian"  className={Styles["patientReligion_select_option"]}>
+                                        Christian
+                                    </option>
+                                    <option value="Muslim"  className={Styles["patientReligion_select_option"]}>
+                                        Muslim
+                                    </option>
+                                    <option value="Buddhist"  className={Styles["patientReligion_select_option"]}>
+                                        Buddhist
+                                    </option>
+                                    <option value="Jewish"  className={Styles["patientReligion_select_option"]}>
+                                        Jewish
+                                    </option>
+                                    <option value="Hindu"  className={Styles["patientReligion_select_option"]}>
+                                        Hindu
+                                    </option>
+                                    <option value="Others"  className={Styles["patientReligion_select_option"]}>
+                                        Others
+                                    </option>
+                                    <option value="Prefer not to say"  className={Styles["patientReligion_select_option"]}>
+                                        Prefer not to say
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className={Styles["input_box_occupation"]}>
+                            <label className={Styles["input_label"]}>
+                                Occupation{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                            </label> 
+                            <input 
+                                type="text"  
+                                value={values.patientOccupation} 
+                                onChange={handleChange('patientOccupation')}
+                                required
+                            />
+                        </div>
                     </div>
 
                     <div className={Styles["main_div"]}>

@@ -11,7 +11,6 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
   return (
     <div>
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>
-
       <div className={Styles["Patient__form__div_wrapper"]}>
         <div className={Styles["main_div__confirmation"]}>
 
@@ -23,6 +22,10 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                 <p>Sex: {values.patientSex}</p>
                 <p>Date of Birth: {values.dateOfBirth}</p>
                 <p>Phone Number: {values.phoneNumber}</p>
+                <p>Civil Status: {values.civilStatus}</p>
+                <p>Address: {values.patientAddress}</p>
+                <p>Religion: {values.patientReligion}</p>
+                <p>Occupation: {values.patientOccupation}</p>
                 <p>Chief Complaint: {values.chiefComplaint}</p>
                 <p>Present Illness: {values.presentIllness}</p>
               </div>

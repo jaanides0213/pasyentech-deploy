@@ -24,6 +24,35 @@ form {
     padding-left: 10px;
     font-family: "Inter",sans-serif;
     margin-right: 13px;
+    width: 40rem;
+}
+
+.input_box_address input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+    width: 50rem;
+}
+
+.input_box_occupation input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+    width: 39.25rem;
 }
 
 .input_box_age input{
@@ -36,11 +65,7 @@ form {
     border: 1px solid #8F001E;
     padding-left: 10px;
     font-family: "Inter",sans-serif;
-}
-
-.input_box_name input {
-    width: 40rem;
-}
+} 
 
 .input_box_calendar {
     margin-right: 13px;
@@ -48,13 +73,11 @@ form {
 
 .input_box_calendar input{
     background-color: white;
-    border-color:#8F001E;
+    border: 1px solid #8F001E;
     color: black;
+    padding: 8px;
     text-align: center;
     display: flex;
-    padding-top: 10px;
-    flex-direction: column;
-    border: 1px solid #8F001E;
     font-family: "Inter",sans-serif;
 }
 
@@ -63,7 +86,8 @@ form {
     font-size: 18px;
 }
 
-.sex_select_style, .sex_select_option{
+.sex_select_style, .sex_select_option,
+.civilStatus_select_style, .patientReligion_select_style{
     padding: 7.5px;
     background-color: white;
     color:black;
@@ -71,8 +95,18 @@ form {
     border: 1px solid #8F001E;
 }
 
+.civilStatus_select_style {
+    width: 14.3rem;
+}
+
+.patientReligion_select_style {
+    width: 10rem;
+    margin-right: 13px;
+}
+
 .input_box_phone {
     margin-left: 13px;
+    margin-right: 32px;
 }
 
 .input_box_phone input {

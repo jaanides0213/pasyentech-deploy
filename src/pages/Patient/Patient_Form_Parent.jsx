@@ -16,7 +16,6 @@ const Patient_Form_Parent = () => {
         </div>
       </div>
     </main>
-
   )
 }
 
