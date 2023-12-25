@@ -115,13 +115,16 @@ body {
     width: 100%;
     border-collapse: collapse;
 }
+
 .Patient_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
+
 .Patient_table_main_head th {
     padding: 15px ;
 }
+
 .Patient_table_data td {
     font-size: 15px;
     text-align: center;

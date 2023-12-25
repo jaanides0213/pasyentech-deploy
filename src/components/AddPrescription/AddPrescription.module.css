@@ -1,0 +1,207 @@
+form {
+    max-width: 100%;
+}
+
+.Patient__form__div_wrapper {
+    margin-top: -10px;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.main_div-2{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-top: -10px;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.required_asterisk {
+    color:#8F001E;
+}
+
+.input_box_name input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 40rem;
+    margin-right: 13px;
+}
+
+.input_box_age input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 8rem;
+} 
+
+.sex_select_style, .dosageUnit_select_style{
+    padding: 7.5px;
+    background-color: white;
+    color:black;
+    font-family: "Inter",sans-serif;
+    border: 1px solid #8F001E;
+    margin-right: 13px;
+}
+
+.input_box_weight input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 5rem;
+    margin-right: 13px;
+}
+
+.input_box_address input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 32.8rem;
+}
+
+.input_box_calendar input {
+    background-color: #8F001E;
+    color: white;
+    text-align: center;
+    display: flex;
+    padding: 8.5px;
+    text-align: center;    
+    border: none;
+    font-family: "Inter",sans-serif;
+}
+
+.input_box_dosage input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 4.5rem;
+    margin-right: 13px;
+} 
+
+.input_box_genericName input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 15.5rem;
+    margin-right: 13px;
+}
+
+.input_box_brandName input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 15.5rem;
+}
+
+.textareaStyle {
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 50rem;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.Add__more__wrapper {
+    margin-top: 1rem;
+}
+
+.Add__more__btn__styling {
+    width: 51.5rem;
+    color: white;
+    background-color: #8F001E;
+}
+
+.Next__btn__styling {
+    color: white;
+    background-color: #8F001E;
+}
+
+.medications__wrap {
+    margin-bottom: 1.5rem;
+}
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .main_div,
+    .main_div-2 {
+        flex-direction: column;
+    }
+
+    .input_box_name input,
+    .input_box_age input,
+    .input_box_weight input,
+    .input_box_address input,
+    .input_box_calendar input,
+    .input_box_dosage input,
+    .input_box_genericName input,
+    .input_box_brandName input,
+    .textareaStyle {
+        width: 90%;
+        margin-right: 0;
+    }
+
+    .sex_select_style,
+    .dosageUnit_select_style {
+        margin-right: 0;
+    }
+
+    .Add__more__btn__styling,
+    .Next__btn__styling {
+        width: 95%;
+    }
+}

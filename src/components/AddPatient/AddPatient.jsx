@@ -15,6 +15,10 @@ export default class AddPatient extends Component {
         patientSex: '',
         dateOfBirth: '',
         phoneNumber: '',
+        civilStatus: '',
+        patientAddress: '',
+        patientOccupation: '',
+        patientReligion: '',
         chiefComplaint: '',
         presentIllness: '',
 
@@ -94,7 +98,6 @@ export default class AddPatient extends Component {
         window.scrollTo(0, 0); // Scroll to the top of the page on component update
         const { step } = this.state;
         
-
         // Validate fields based on the current step
         if (step === 1){
             // Check if all required fields on Page 1 are filled
@@ -104,6 +107,10 @@ export default class AddPatient extends Component {
                 !this.state.patientSex ||
                 !this.state.dateOfBirth ||
                 !this.state.phoneNumber ||
+                !this.state.civilStatus ||
+                !this.state.patientAddress ||
+                !this.state.patientReligion ||
+                !this.state.patientOccupation ||
                 !this.state.chiefComplaint ||
                 !this.state.presentIllness
             ) {
@@ -170,15 +177,15 @@ export default class AddPatient extends Component {
     handleChange = input => e => {
         this.setState({ [input]: e.target.value });
     }
-
+    
     render() {
         const { step } = this.state;
-        const { patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness, 
+        const { patientName, patientAge, patientSex, dateOfBirth, phoneNumber, civilStatus, patientAddress, patientReligion, patientOccupation, chiefComplaint, presentIllness, 
             childhoodIllness, adultMedical, adultSurgical, adultObGyn, adultPsychiatric, healthMaintenance, familyHistory, medicalHistory, surgicalHistory, personalSocialHistory, psychosocialHistory,
             reviewGeneral, reviewSkin, review_HEENT_head, review_HEENT_eyes, review_HEENT_ears, review_HEENT_nose, review_HEENT_throat, reviewNeck, reviewBreasts, reviewRespiratory, reviewCardiovascular, reviewGastro, reviewUrinary, reviewGenital, reviewPeripheral, reviewMuscoskeletal, reviewPsychiatrict, reviewNeurologic, reviewHematologic, reviewEndocrine,
             physicalVital, physicalSkin, HEENT_head, HEENT_eyes, HEENT_ears, HEENT_nose, HEENT_throat, physicalNeck, physicalThoraxLungs, physicalCardio, physicalBreast, physicalAbdomen, physicalGenitalia, physicalRectal, physicalExtremities, physicalPeripheral, physicalMuscoskeletal, physicalNeurologic, physicalMotor, physicalReflexes,
             patientImpression, patientAssessmentPlan, patientDiagnosticFiles} = this.state;
-        const values = {  patientName, patientAge, patientSex, dateOfBirth, phoneNumber, chiefComplaint, presentIllness,
+        const values = {  patientName, patientAge, patientSex, dateOfBirth, phoneNumber, civilStatus, patientAddress, patientReligion, patientOccupation, chiefComplaint, presentIllness,
             childhoodIllness, adultMedical, adultSurgical, adultObGyn, adultPsychiatric, healthMaintenance, familyHistory, medicalHistory, surgicalHistory, personalSocialHistory, psychosocialHistory,
             reviewGeneral, reviewSkin, review_HEENT_head, review_HEENT_eyes, review_HEENT_ears, review_HEENT_nose, review_HEENT_throat, reviewNeck, reviewBreasts, reviewRespiratory, reviewCardiovascular, reviewGastro, reviewUrinary, reviewGenital, reviewPeripheral, reviewMuscoskeletal, reviewPsychiatrict, reviewNeurologic, reviewHematologic, reviewEndocrine,
             physicalVital, physicalSkin, HEENT_head, HEENT_eyes, HEENT_ears, HEENT_nose, HEENT_throat, physicalNeck, physicalThoraxLungs, physicalCardio, physicalBreast, physicalAbdomen, physicalGenitalia, physicalRectal, physicalExtremities, physicalPeripheral, physicalMuscoskeletal, physicalNeurologic, physicalMotor, physicalReflexes,
