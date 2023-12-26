@@ -43,46 +43,6 @@ export class Appointment extends Component {
               </button>
             </div>
           </div>
-
-          {/* for table */}
-          <div className={Styles["Appointment_list_cont"]}>
-            <table className={Styles["Appointment_table"]}>
-              <thead className={Styles["Appointment_table_main_head"]}>
-                <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Remarks</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody className={Styles["Appointment_table_data"]}>
-                <tr>
-                  <th> 12-21-2012</th>
-                  <th>00:00nn</th>
-                  <th>lorem ipsum dolor</th>
-                  <th>
-                    <div className={Styles["Appointment_table_action"]}>
-                      <div className={Styles["Action__Styling"]}>
-                        <a className={Styles["Action__link__Styling"]}>
-                          <HiOutlineEye size="15px" /> View
-                        </a>
-                      </div>
-                      <div className={Styles["Action__Styling"]}>
-                        <a className={Styles["Action__link__Styling"]}>
-                          <HiOutlinePencilAlt size="15px" /> Edit
-                        </a>
-                      </div>
-                      <div className={Styles["Action__Styling"]}>
-                        <a className={Styles["Action__link__Styling"]}>
-                          <HiOutlineTrash size="15px" /> Delete
-                        </a>
-                      </div>
-                    </div>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </main>
     );

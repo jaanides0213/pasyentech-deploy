@@ -10,7 +10,6 @@ body {
     font-family: "Inter", sans-serif;  
     z-index: 1;  
     /* border: 1px solid  #8F001E; */
-
 }
 
 .Appointment__cont-main{
@@ -18,10 +17,6 @@ body {
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
-}
-
-.Appointment__cont-column-main {
-    margin-top: -1.5rem;
 }
 
 .Appointment__hr {

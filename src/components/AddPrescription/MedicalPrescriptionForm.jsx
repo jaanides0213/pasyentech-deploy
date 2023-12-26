@@ -2,16 +2,32 @@ import React, { useState } from 'react';
 import Styles from "./AddPrescription.module.css";
 import { IoMdAdd } from "react-icons/io";
 
-const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => {
-    
-    const [medications, setMedications] = useState([{ dosageNum: '', dosageUnit: '', genericName: '', brandName: '', directionOfUse: '' }]);
-
+const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medications, setMedications}) => {
     const addMoreMedication = () => {
         setMedications([...medications, { dosageNum: '', dosageUnit: '', genericName: '', brandName: '', directionOfUse: '' }]);
     };
 
+    // for checking purposes only
+    const logUserInput = () => {
+        console.log('User Input:', {
+            patientName: values.patientName,
+            patientAge: values.patientAge,
+            patientSex: values.patientSex,
+            patientWeight: values.patientWeight,
+            patientAddress: values.patientAddress,
+            patientConsultationDate: values.patientConsultationDate,
+            medications: medications.map(medication => ({ ...medication })),
+        });
+    };
+
     const Continue = e => {
         e.preventDefault();
+        // Log user input before moving to the next step (for checking)
+        logUserInput(); 
+        
+        // Pass medications data to the parent component
+        const medicationsData = medications.map((medication) => ({ ...medication }));
+        handleChange('medications')({ target: { value: medicationsData } });
         nextStep();
     }
 
@@ -33,8 +49,34 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => 
         setMedications(newMedications);
     };
 
+    const handleDosageUnitChange = (e, index) => {
+        const newMedications = [...medications];
+        newMedications[index].dosageUnit = e.target.value;
+        setMedications(newMedications);
+    };
+
+    const handleGenericNameChange = (e, index) => {
+        const newMedications = [...medications];
+        newMedications[index].genericName = e.target.value;
+        setMedications(newMedications);
+    };
+
+    const handleBrandNameChange = (e, index) => {
+        const newMedications = [...medications];
+        newMedications[index].brandName = e.target.value;
+        setMedications(newMedications);
+    };
+
+    const handleDirectionOfUseChange = (e, index) => {
+        const newMedications = [...medications];
+        newMedications[index].directionOfUse = e.target.value;
+        setMedications(newMedications);
+    };
+
+
     return (
         <form className={Styles["Prescription__form__styling"]}>
+            <h3 className={Styles["h3___styling"]}>Medical Prescription Form</h3>
             <h3>Patient Details</h3>
             <div className={Styles["Patient__form__div_wrapper"]}>
                 <div className={Styles["main_div"]}>
@@ -152,7 +194,7 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => 
                             <div>
                                 <select 
                                     value={medication.dosageUnit}
-                                    onChange={(e) => handleChange('dosageUnit', index)(e)}
+                                    onChange={(e) => handleDosageUnitChange(e, index)}
                                     className={Styles["dosageUnit_select_style"]}
                                     required>
                                     
@@ -188,7 +230,7 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => 
                             <input 
                                 type="text"  
                                 value={medication.genericName}
-                                onChange={(e) => handleChange('genericName', index)(e)}
+                                onChange={(e) => handleGenericNameChange(e, index)}
                                 required
                             />
                         </div>
@@ -200,7 +242,7 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => 
                             <input 
                                 type="text"  
                                 value={medication.brandName}
-                                onChange={(e) => handleChange('brandName', index)(e)}
+                                onChange={(e) => handleBrandNameChange(e, index)}
                                 required
                             />
                         </div>
@@ -215,7 +257,7 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values}) => 
                                 <textarea
                                     type="text"
                                     value={medication.directionOfUse}
-                                    onChange={(e) => handleChange('directionOfUse', index)(e)}
+                                    onChange={(e) => handleDirectionOfUseChange(e, index)}
                                     className={Styles["textareaStyle"]}
                                     required
                                 />

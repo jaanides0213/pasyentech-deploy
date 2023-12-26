@@ -11,7 +11,7 @@ const Prescription_Form_Parent = () => {
       <div className={Styles["Prescription__cont-main"]}>
         <div className={Styles["Prescription__cont-header"]}>
           <Header/>
-          <h2>Medical Prescription Form</h2>
+          <h2>Add Prescription</h2>
           <AddPrescription/>
         </div>
       </div>
