@@ -19,7 +19,8 @@ export class AddPrescription extends Component {
     dosageNum: '',
     dosageUnit: '',
     unitsNumber: '',
-    directionOfUse: ''
+    directionOfUse: '',
+    medications: [{ dosageNum: '', dosageUnit: '', genericName: '', brandName: '', directionOfUse: '' }]
   }
 
   // setup methods
@@ -52,17 +53,21 @@ export class AddPrescription extends Component {
 
   // handle field change
   handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
+    if (input === 'medications') {
+      this.setState({ medications: e.target.value });
+  } else {
+      this.setState({ [input]: e.target.value });
+  }
   }
 
   render() {
     const { step } = this.state;
 
-    const {dateOfConsultation, patientName, patientAge, patientSex, patientWeight,
-      genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse} = this.state;
+    const {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientAddress, patientConsultationDate,
+      genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications} = this.state;
     
-    const values = {dateOfConsultation, patientName, patientAge, patientSex, patientWeight,
-      genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse}
+    const values = {dateOfConsultation, patientName, patientAge, patientSex, patientWeight,  patientAddress, patientConsultationDate,
+      genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications}
     
     switch (step) {
       case 1: 
@@ -71,6 +76,8 @@ export class AddPrescription extends Component {
             nextStep = {this.nextStep}
             handleChange = {this.handleChange}
             values = {values}
+            medications={this.state.medications}
+            setMedications={(medications) => this.setState({ medications })}
           />
         )
       case 2:

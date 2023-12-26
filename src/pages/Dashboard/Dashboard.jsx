@@ -75,8 +75,10 @@ const Dashboard = ({ userData }) => {
               </a>
             </button>
             <button className={Styles["Dashboard__cont-add_prescription"]}>
-              <IoMdAdd />
-              Add Prescription
+              <a href="/prescription/add-prescription-form">
+                <IoMdAdd />
+                Add Prescription
+              </a>
             </button>
           </span>
         </div>

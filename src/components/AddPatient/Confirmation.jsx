@@ -8,12 +8,16 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
     prevStep();
   }
 
+  const Continue = e => {
+    e.preventDefault();
+    window.location.href = '/patient'; // temp only
+  }
+
   return (
     <div>
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>
       <div className={Styles["Patient__form__div_wrapper"]}>
         <div className={Styles["main_div__confirmation"]}>
-
           <div className={Styles["main_div__partition"]}>
             <h3>I. Patient Information</h3>
               <div className={Styles["main_div__data"]}>

@@ -174,6 +174,26 @@ form {
     margin-bottom: 1.5rem;
 }
 
+/*CONFIRMATION PAGE*/
+.h3___styling {
+    margin-top: -1.5rem;
+    margin-bottom: 1.3rem;
+}
+
+.nextBtn__container {
+    margin-top: 2rem;
+}
+
+.nextBtn__style {
+    font-family: "Inter",sans-serif;
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    color: white;
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
