@@ -39,7 +39,9 @@ export class Appointment extends Component {
             </div>
             <div className={Styles["Appointment_add_bar"]}>
               <button className={Styles["Appointment_add_button"]}>
-                <IoMdAdd /> Add appointment
+                <a href="/appointment/add-appointment-form">
+                  <IoMdAdd /> Add appointment
+                </a>
               </button>
             </div>
           </div>

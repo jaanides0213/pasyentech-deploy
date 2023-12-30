@@ -93,7 +93,7 @@ const Sidebar = () => {
             </a>
             <a
               href="/appointment"
-              className={isLinkActive("/appointment") ? Styles["active-link"] : ""}
+              className={isLinkActive("/appointment") || isLinkActive("/appointment/add-appointment-form")? Styles["active-link"] : ""}
             >
               <p>
                 <HiCalendar size="1rem" /> Appointments
