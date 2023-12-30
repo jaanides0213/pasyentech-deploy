@@ -14,6 +14,7 @@ import Patient_View from "./pages/Patient/Patient_View.jsx";
 import Prescription from "./pages/Prescription/Prescription.jsx";
 import Prescription_Form_Parent from "./pages/Prescription/Prescription_Form_Parent.jsx";
 import Appointment from "./pages/Appointment/Appointment.jsx";
+import Appointment_Form_Parent from "./pages/Appointment/Appointment_Form_Parent.jsx";
 import AccountDetails from "./pages/AccountDetails/AccountDetails.jsx";
 import "./App.css";
 
@@ -32,6 +33,7 @@ const App = () => {
           {/*<Route path="/patientform" element={<PatientForm />} />{" "}*/}
           <Route path="/patient/add-patient-form" element={<PatientForm_Parent/>}/>
           <Route path="/prescription/add-prescription-form" element={<Prescription_Form_Parent/>}/>
+          <Route path="/appointment/add-appointment-form" element={<Appointment_Form_Parent/>}/>
           {/* Add the closing parenthesis here */}
           <Route
             path="/dashboard"
