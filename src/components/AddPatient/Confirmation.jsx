@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from "./AddPatient.module.css";
+import { createPatient } from '../../api/createPatient.js';
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
 
@@ -8,9 +9,22 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
     prevStep();
   }
 
-  const Continue = e => {
+  const Continue = async e => {
     e.preventDefault();
-    window.location.href = '/patient'; // temp only
+
+    try {
+      // Call createPatient function and pass the patient data
+      const patientId = await createPatient(values);
+
+      // You can handle the response as needed, for example, redirecting to a new page or showing a success message.
+      console.log('Patient created successfully with ID:', patientId);
+
+      // Additional logic or navigation can be added here
+      window.location.href = '/patient'; // temp only
+    } catch (error) {
+      console.error('Error creating patient:', error);
+      // Handle the error, show an alert, or perform other actions as needed
+    }
   }
 
   return (
@@ -197,7 +211,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
 
       <div className={Styles["nextBtn__container"]}>
         <button onClick={Previous} className={Styles["nextBtn__style"]}>Prev</button>
-        <button onClick={nextStep} className={Styles["nextBtn__style"]}>Confirm</button>
+        <button onClick={Continue} className={Styles["nextBtn__style"]}>Confirm</button>
       </div>
     </div>
   );

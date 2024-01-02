@@ -24,7 +24,7 @@ const Patient = () => {
       try {
         // Call the getPatientData function from the API file
         const patientsData = await getPatientData();
-
+  
         // Update the local state with the retrieved patients
         setPatients(patientsData);
       } catch (error) {
@@ -32,56 +32,11 @@ const Patient = () => {
         // Handle error as needed
       }
     };
-
+  
     // Call the fetchPatients function when the component mounts
     fetchPatients();
   }, []); // Empty dependency array to run the effect only once
-
-  const [newPatient, setNewPatient] = useState({
-    name: "",
-    age: "",
-    sex: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewPatient((prevPatient) => ({
-      ...prevPatient,
-      [name]: value,
-    }));
-  };
-
-  const addPatient = async () => {
-    try {
-      if (!newPatient.name || !newPatient.age || !newPatient.sex) {
-        alert("Please fill in all fields");
-        return;
-      }
-
-      if (window.confirm("Are you sure you want to add this patient?")) {
-        // Call the createPatient function from the API file
-        await createPatient(newPatient);
-
-        // Update the local state with the new patient
-        setPatients((prevPatients) => [
-          ...prevPatients,
-          { ...newPatient, id: prevPatients.length + 1 }, // Assuming you generate an ID
-        ]);
-
-        // Clear the form after successful addition
-        setNewPatient({
-          name: "",
-          age: "",
-          sex: "",
-        });
-
-        window.alert("Patient added successfully!");
-      }
-    } catch (error) {
-      console.error("Error adding patient:", error);
-      window.alert("Error adding patient. Please try again.");
-    }
-  };
+  
 
   const handleSort = (option) => {
     setSortBy(option);
@@ -149,7 +104,6 @@ const Patient = () => {
     }
   };
   
-
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -182,7 +136,6 @@ const Patient = () => {
               </a>
             </button>
           </div>
-
           {/*backend must be updated*/}
           <div className={Styles["Patient_sort_by"]}>
             <select
@@ -225,32 +178,35 @@ const Patient = () => {
                 </tr>
               </thead>
               <tbody className={Styles["Patient_table_data"]}>
-                {patients.map((patient) => (
-                  <tr key={patient.id}>
-                    <td>{patient.name}</td>
-                    <td>{patient.age}</td>
-                    <td>{patient.sex}</td>
-                    <td>
-                      <div className={Styles["Patient_table_action"]}>
-                        <div className={Styles["Action__Styling"]}>
-                          <a onClick={() => handleViewPatient(patient.id)} className={Styles["Action__link__Styling"]}>
-                            <HiOutlineEye size="15px" /> View
-                          </a>
-                        </div>
-                        <div className={Styles["Action__Styling"]}>
-                          <a href="#" className={Styles["Action__link__Styling"]}>
-                            <HiOutlinePencilAlt size="15px" /> Edit
-                          </a>
-                        </div>
-                        <div className={Styles["Action__Styling"]}>
-                          <a href="#" className={Styles["Action__link__Styling"]}>
-                            <HiOutlineTrash size="15px" /> Delete
-                          </a>
-                        </div>
+              {patients.map((patients) => {
+              console.log('Patient Data:', patients); // Log patient data for debugging
+              return (
+                <tr key={patients.id}>
+                  <td>{patients.name}</td>
+                  <td>{patients.age}</td>
+                  <td>{patients.sex}</td> 
+                  <td>
+                    <div className={Styles["Patient_table_action"]}>
+                      <div className={Styles["Action__Styling"]}>
+                        <a onClick={() => handleViewPatient(patient.id)} className={Styles["Action__link__Styling"]}>
+                          <HiOutlineEye size="15px" /> View
+                        </a>
                       </div>
-                    </td>
-                  </tr>
-                ))}
+                      <div className={Styles["Action__Styling"]}>
+                        <a href="#" className={Styles["Action__link__Styling"]}>
+                          <HiOutlinePencilAlt size="15px" /> Edit
+                        </a>
+                      </div>
+                      <div className={Styles["Action__Styling"]}>
+                        <a href="#" className={Styles["Action__link__Styling"]}>
+                          <HiOutlineTrash size="15px" /> Delete
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
               </tbody>
             </table>
           )}

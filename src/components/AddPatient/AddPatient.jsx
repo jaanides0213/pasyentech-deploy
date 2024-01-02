@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PatientInformation from './PatientInformation';
 import PastHistory from './PastHistory';
 import ReviewOfSystems from "./ReviewOfSystems";
 import PhysicalExamination from "./PhysicalExamination";
 import AssessmentAndPlan from './AssessmentAndPlan';
 import Confirmation from './Confirmation';
+
+
 
 export default class AddPatient extends Component {
     state = {
