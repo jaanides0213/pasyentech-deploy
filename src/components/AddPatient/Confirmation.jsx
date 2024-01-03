@@ -50,6 +50,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
               </div>
           </div>
         }/>
+
         <Accordion title="II. Patient History" content={
           <div className={Styles["main_div__partition"]}>
             <div className={Styles["main_div__data"]}>
@@ -68,7 +69,6 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                   <li><p>Psychiatric: {values.adultPsychiatric}</p></li>
                 </ul>
               </div>
-             
 
               <h3>c. Health Maintenance</h3>
               <div className={Styles["main_div__subdata"]}>

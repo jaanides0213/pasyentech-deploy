@@ -219,7 +219,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
         <Accordion title="VIII. Extremities" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>VIII. Extremities</h3>
               <label className={Styles["input_label"]}>Extremities</label>
                 <div>
                   <textarea

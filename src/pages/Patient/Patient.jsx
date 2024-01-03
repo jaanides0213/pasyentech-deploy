@@ -171,8 +171,8 @@ const Patient = () => {
             <table className={Styles["Patient_table"]}>
               <thead className={Styles["Patient_table_main_head"]}>
                 <tr>
-                  <th>Name</th>
-                  <th>Age</th>
+                  <th className={Styles["Patient_table_name"]}>Name</th>
+                  <th className={Styles["Patient_table_age"]}>Age</th>
                   <th>Sex</th>
                   <th>Actions</th>
                 </tr>
