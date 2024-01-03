@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from "./AddPrescription.module.css";
+import { createPrescription } from '../../api/createPrescription';
 
 const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
   
@@ -8,11 +9,25 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
     prevStep()
   }
 
-  const Continue = e => {
+  const Continue = async e => {
     e.preventDefault();
-    window.location.href = '/prescription'; // temp only
-  }
 
+    try {
+      // Check if dateOfConsultation is defined and provide a default value if not
+      const prescriptionId = await createPrescription({
+        ...values,
+        dateOfConsultation: values.dateOfConsultation || "Default Date",
+      });
+
+      //for debugging
+      console.log('Prescription created successfully with ID:', prescriptionId);
+
+      window.location.href = '/prescription';
+    } catch (error) {
+      console.error('Error creating prescription:', error);
+    }
+  }
+  
   return (
     <main>
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>

@@ -32,5 +32,4 @@ class Accordion extends Component {
     );
   }
 }
-
 export default Accordion;

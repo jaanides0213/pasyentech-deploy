@@ -1,7 +1,7 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 
-export const createPatient = async (newPrescription, currentPrescription) => {
+export const createPrescription = async (newPrescription, currentPrescription) => {
   // You can use the currentPrescription information if needed for any specific logic
 
   // Upload and edit logs for transparency as well as timestamps
@@ -16,11 +16,11 @@ export const createPatient = async (newPrescription, currentPrescription) => {
       ...newPrescription,
     });
 
-    console.log("Prescription added successfully: ", patientRef.id);
+    console.log("Prescription added successfully: ", prescriptionRef.id);
 
     return prescriptionRef.id;
   } catch (error) {
     console.error("Error adding prescription:", error);
     throw error;
   }
-};
+}; 
