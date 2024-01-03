@@ -132,6 +132,7 @@ form {
     min-height: 75px;
     padding: 10px;
     font-family: "Inter",sans-serif;
+    margin-bottom: 1rem;
 }
 
 .nextBtn__container {

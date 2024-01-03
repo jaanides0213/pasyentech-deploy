@@ -21,7 +21,9 @@ class Accordion extends Component {
     return (
       <div className="accordion-item">
         <div className="accordion-header" onClick={this.toggleAccordion}>
-          {title}
+          <h3 style={{margin: '5px 0', cursor: 'pointer'}}>
+            {title}
+          </h3>
         </div>
         {isOpen && (
           <div className="accordion-content">

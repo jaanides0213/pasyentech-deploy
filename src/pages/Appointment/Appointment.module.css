@@ -116,13 +116,28 @@ body {
     width: 100%;
     border-collapse: collapse;
 }
+
 .Appointment_table_main_head {
     background-color:#8F001E ;
     color: white;
 }
+
 .Appointment_table_main_head th {
     padding: 15px ;
 }
+
+.Appointment_table_name {
+    width: 20%;
+}
+
+.Appointment_table_date, .Appointment_table_time {
+    width: 10%;
+}
+
+.Patient_table_date, .Patient_table_time {
+    width: 5%;
+}
+
 .Appointment_table_data td {
     font-size: 15px;
     text-align: center;
@@ -131,6 +146,16 @@ body {
     font-weight: 600;
     border-bottom: 1px solid #8F001E;
 }
+
+.status_option__select {
+    background-color: white;
+    color: #8F001E;
+    border-color: white;
+    font-family: "Inter", sans-serif;  
+    font-size: 15px;
+    font-weight: 600;
+}
+
 .Appointment_table_action {
     display: flex;
     flex-direction: row;
