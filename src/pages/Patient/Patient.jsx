@@ -179,16 +179,15 @@ const Patient = () => {
               </thead>
               <tbody className={Styles["Patient_table_data"]}>
               {patients.map((patients) => {
-              console.log('Patient Data:', patients); // Log patient data for debugging
               return (
                 <tr key={patients.id}>
-                  <td>{patients.name}</td>
-                  <td>{patients.age}</td>
-                  <td>{patients.sex}</td> 
+                  <td>{patients.patientName}</td>
+                  <td>{patients.patientAge}</td>
+                  <td>{patients.patientSex}</td> 
                   <td>
                     <div className={Styles["Patient_table_action"]}>
                       <div className={Styles["Action__Styling"]}>
-                        <a onClick={() => handleViewPatient(patient.id)} className={Styles["Action__link__Styling"]}>
+                        <a onClick={() => handleViewPatient(patients.id)} className={Styles["Action__link__Styling"]}>
                           <HiOutlineEye size="15px" /> View
                         </a>
                       </div>

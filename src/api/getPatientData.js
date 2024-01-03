@@ -10,13 +10,13 @@ export const getPatientData = async () => {
 
     // Map each document's data to include id, age, sex, and name
     const patientsData = patientsSnapshot.docs.map((doc) => ({
+      
       id: doc.id,
-      name: doc.data().name,
-      age: doc.data().age,
-      sex: doc.data().sex,
+      patientName: doc.data().patientName,
+      patientAge: doc.data().patientAge,
+      patientSex: doc.data().patientSex,
     }));
     
-
     return patientsData;
   } catch (error) {
     console.error("Error fetching patients data:", error);

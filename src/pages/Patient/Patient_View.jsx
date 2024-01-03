@@ -7,20 +7,18 @@ import { useParams } from "react-router-dom";
 
 const Patient_View = () => {
   const { id } = useParams(); // Get patient ID from the URL
-  const [patient, setPatient] = useState(null);
+  const [patients, setPatient] = useState(null);
 
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        // Call the new getPatientById function from the API file
         const fetchedPatient = await getPatientById(id);
-
-        // Update the local state with the retrieved patient
         setPatient(fetchedPatient);
+        console.log("Fetched Patient:", fetchedPatient);
       } catch (error) {
         console.error("Error fetching patient:", error);
-        // Handle error as needed
       }
+      
     };
     // Call the fetchPatient function when the component mounts
     fetchPatient();
@@ -38,39 +36,40 @@ const Patient_View = () => {
           <hr className={Styles["Patient__hr"]} />
         </div>
 
-        {patient && (
+        {patients && (
           <div className={Styles["View__patient__container"]}>
             <span className={Styles["Patient__information__container"]}>
               <h3>Patient Information</h3>
-              <p>Name of Patient: {patient.name}</p>
-              <p>Age: {patient.age}</p>
-              <p>Sex: {patient.sex}</p>
-              <p>Date of Birth: {patient.dateofbirth}</p>
-              <p>Phone Number: {patient.contactdetails}</p>
+              <p>Name of Patient: {patients.patientName}</p>
+              <p>Age: {patients.patientAge}</p>
+              <p>Sex: {patients.patientSex}</p>
+              <p>Date of Birth: {patients.dateOfBirth}</p>
+              <p>Phone Number: {patients.phoneNumber}</p>
             </span>
 
             <span className={Styles["Patient__history__container"]}>
               <h3 className={Styles["Patient__information__h3"]}>Patient History</h3>
-              <p>Chief Complaint: {patient.chief_complaint}</p>
-              <p>History of Present Illness: {patient.history_present}</p>
-              <p>Review of Systems: {patient.review_system} </p>
-              <p>Past Medical Conditions: {patient.pastmedicalconditions}</p>
-              <p>Current Medications: {patient.currentmedications}</p>
-              <p>Medical History: {patient.medicalhistory}</p>
-              <p>Surgical History: {patient.surgicalhistory}</p>
-              <p>Family Medical History: {patient.familymedicalhistory}</p>
-              <p>Social History: {patient.socialhistory}</p>
-              <p>Psychosocial History: {patient.psychosocialhistory}</p>
+              <p>Chief Complaint: {patients.chiefComplaint}</p>
+              <p>History of Present Illness: {patients.presentIllness}</p>
+              <p>Review of Systems: {patients.review_system} </p>
+
+              <p>Past Medical Conditions: {patients.childhoodIllness}</p>
+              <p>Current Medications: {patients.healthMaintenance}</p>
+              <p>Medical History: {patients.medicalHistory}</p>
+              <p>Surgical History: {patients.surgicalHistory}</p>
+              <p>Family Medical History: {patients.familyHistory}</p>
+              <p>Social History: {patients.PersonalSocialHistory}</p>
+              <p>Psychosocial History: {patients.psychosocialHistory}</p>
             </span>
 
             <span className={Styles["Patient__physical__container"]}>
               <h3 className={Styles["Patient__physical__h3"]}>Physical Examination</h3>
-              <p>Physical Information Details: {patient.physical_information}</p>
+              <p>Physical Information Details: {patients.physical_information}</p>
             </span>
 
             <span className={Styles["Patient__impression__container"]}>
               <h3 className={Styles["Patient__impression__h3"]}>Impression</h3>
-              <p>Impression Details: {patient.impression}</p>
+              <p>Impression Details: {patients.patientImpression}</p>
             </span>
 
             <span className={Styles["Patient__diagnosticFiles__container"]}>
