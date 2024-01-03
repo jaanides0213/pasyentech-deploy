@@ -98,6 +98,45 @@ body {
     font-family: "Inter", sans-serif;  
 }
 
+/*Prescription table*/
+.Prescription_list_cont{
+    margin-top: 1.5rem;
+}
+
+.Prescription_table {
+    border: 1px solid #8F001E; 
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.Prescription_table_main_head {
+    background-color:#8F001E ;
+    color: white;
+}
+
+.Prescription_table_main_head th{
+    padding: 15px;
+}
+
+.Precription_table_data td{
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    color: #8F001E;
+    font-weight: 600;
+    border-bottom: 1px solid #8F001E;
+}
+
+.Prescription_table_action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Prescription_table_name {
+    width: 20%;
+}
+
 /*action styling*/
 .Action__Styling{
     padding-right: 1rem;

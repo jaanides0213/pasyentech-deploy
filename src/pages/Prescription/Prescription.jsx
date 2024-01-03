@@ -37,6 +37,7 @@ export class Prescription extends Component {
                 <HiSearch />
               </button>
             </div>
+
             <div className={Styles["Prescription_add_bar"]}>
               <button className={Styles["Prescription_add_button"]}>
                 <a href="/prescription/add-prescription-form" className={Styles["Patient_add_icon"]}>
@@ -45,6 +46,48 @@ export class Prescription extends Component {
               </button>
             </div>
           </div>
+
+          <div className={Styles["Prescription_list_cont"]}>
+            <table className={Styles["Prescription_table"]}>
+              <thead className={Styles["Prescription_table_main_head"]}>
+                <tr>
+                  <th className={Styles["Prescription_table_name"]}>Name</th>
+                  <th>Age</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody className={Styles["Precription_table_data"]}>
+                <tr>
+                  <td>Name</td>
+                  <td>Age</td>
+                  <td>
+                    <div className={Styles["Prescription_table_action"]}>
+                      
+                      <div className={Styles["Action__Styling"]}>
+                        <a className={Styles["Action__link__Styling"]}>
+                          <HiOutlineEye size="15px"/> View
+                        </a>
+                      </div>
+
+                      <div className={Styles["Action__Styling"]}>
+                        <a  href="#" className={Styles["Action__link__Styling"]}>
+                          <HiOutlinePencilAlt size="15px" /> Edit
+                        </a>
+                      </div>
+
+                      <div className={Styles["Action__Styling"]}>
+                        <a href="#" className={Styles["Action__link__Styling"]}>
+                          <HiOutlineTrash size="15px" /> Delete
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        
         </div>
       </main>
     );
