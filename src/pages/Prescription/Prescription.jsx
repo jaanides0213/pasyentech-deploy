@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Styles from "./Prescription.module.css";
 import Header from "../../components/Header/Header.jsx";
@@ -9,9 +9,40 @@ import {
   HiOutlineEye,
   HiOutlineTrash,
 } from "react-icons/hi";
+import {getPrescriptionData} from "../../api/getPrescriptionData";
+import {getPrescriptionById} from "../../api/getPrescriptionById.js";
 
-export class Prescription extends Component {
-  render() {
+const Prescription = () => {
+  const [prescriptions, setPrescription] = useState([]);
+
+  useEffect(() => {
+    // Fetch prescription data when the component mounts
+    const fetchData = async () => {
+      try {
+        const prescriptionData = await getPrescriptionData();
+        console.log("Prescription Data:", prescriptionData);
+        setPrescription(prescriptionData);
+      } catch (error) {
+        console.error("Error fetching prescription data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log("Prescription Data:", prescriptions);
+
+  const handleViewPatient = async (prescriptionId) => {
+    try {
+      const prescriptionDetails = await getPrescriptionById(prescriptionId);
+      // Display the prescription details as needed
+      console.log("Prescription Details:", prescriptionDetails);
+      // You can set the details in the state or navigate to a new component to display the details
+    } catch (error) {
+      console.error("Error fetching prescription details:", error);
+    }
+  };
+
     return (
       <main className={Styles["Prescription__cont"]}>
         <Sidebar />
@@ -56,15 +87,17 @@ export class Prescription extends Component {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody className={Styles["Precription_table_data"]}>
-                <tr>
-                  <td>Name</td>
-                  <td>Age</td>
+              <tbody className={Styles["Prescription_table_data"]}>
+              {prescriptions.map((prescription) => {
+              return (
+                <tr key={prescription.id}>
+                  <td>{prescription.patientName}</td>
+                  <td>{prescription.patientAge}</td>
                   <td>
                     <div className={Styles["Prescription_table_action"]}>
                       
                       <div className={Styles["Action__Styling"]}>
-                        <a className={Styles["Action__link__Styling"]}>
+                        <a onClick={() => handleViewPatient(prescription.id)} className={Styles["Action__link__Styling"]}>
                           <HiOutlineEye size="15px"/> View
                         </a>
                       </div>
@@ -83,6 +116,8 @@ export class Prescription extends Component {
                     </div>
                   </td>
                 </tr>
+              );
+              })}
               </tbody>
             </table>
           </div>
@@ -92,6 +127,5 @@ export class Prescription extends Component {
       </main>
     );
   }
-}
 
 export default Prescription;

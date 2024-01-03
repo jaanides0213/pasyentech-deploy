@@ -8,7 +8,6 @@ import {
 import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
-import { createPatient } from "../../api/createPatient";
 import { getPatientData } from "./../../api/getPatientData"; // Import the new function
 import { getPatientById } from "../../api/getPatientById.js";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
