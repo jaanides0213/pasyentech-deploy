@@ -18,7 +18,7 @@ const Dashboard = ({ userData }) => {
       if (user) {
         try {
           const userData = await getUserData(user.uid);
-          console.log("User Data:", userData);
+          console.log("User Data:", userData); //must be removed
           setUser(userData);
         } catch (error) {
           console.error("Error fetching user data:", error);

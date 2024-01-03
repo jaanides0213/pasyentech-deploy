@@ -1,12 +1,14 @@
 import React, { useState  } from "react"; // Import useState from React
 import { HiPencil, HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Styles from "./AccountDetailsComponent.module.css"; // Adjust the import path
+import { getUserData } from "../../api/getUserData";
 
 const AccountDetailsComponent = () => {
     // State to track password visibility
     const [CurrentPasswordVisible, setCurrentPasswordVisible] = useState(false);
     const [NewPasswordVisible, setNewPasswordVisible] = useState(false);
     const [ConfirmNewPasswordVisible, setConfirmNewPasswordVisible] = useState(false);
+    
 
     // Function to toggle password visibility
     const toggleCurrentPasswordVisibility = () => {
