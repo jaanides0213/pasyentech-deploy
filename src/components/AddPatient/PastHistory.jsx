@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from "./AddPatient.module.css";
+import Accordion from '../Accordion/Accordion';
 
 const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
 
@@ -19,7 +20,8 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
         <form>
             <h3 className={Styles["h3___styling"]}>Patient History</h3>
                 <div className={Styles["Patient__form__div_wrapper"]}>
-                    <h3>I. Childhood Illness History</h3>
+                
+                <Accordion title="I. Childhood Illness History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>
                             <label className={Styles["input_label"]}>
@@ -36,10 +38,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                             </div>
                         </div>
                     </div>
-
+                }/>
+                
+                <Accordion title="II. Adult Illness History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>         
-                            <h3>II. Adult Illness History</h3>
                             <label className={Styles["input_label"]}>
                                 Medical{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -52,11 +55,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                 required
                             />
                             </div>
-                        </div>
-                    </div>
-
-                    <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>         
+                            
                             <label className={Styles["input_label"]}>
                                 Surgical{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -69,12 +68,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     required
                                 />
                                 </div>
-                        </div>
-                    </div>
-
-                    <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>         
-                            <label className={Styles["input_label"]}>Ob/Gyn</label>
+                                <label className={Styles["input_label"]}>Ob/Gyn</label>
                                 <div>
                                     <textarea
                                         type="text"
@@ -84,12 +78,8 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                         required
                                     />
                                 </div>
-                        </div>
-                    </div>
 
-                    <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>         
-                            <label className={Styles["input_label"]}>Psychiatric</label>
+                                <label className={Styles["input_label"]}>Psychiatric</label>
                                 <div>
                                     <textarea
                                         type="text"
@@ -100,10 +90,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                 </div>
                         </div>
                     </div>
+                }/>
 
+                <Accordion title="III. Health Maintenance" content={
                     <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>    
-                            <h3>III. Health Maintenance</h3>     
+                        <div className={Styles["input_box_textarea"]}>       
                             <label className={Styles["input_label"]}>
                                 Health Maintenance{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -118,10 +109,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                             </div>
                         </div>
                     </div>
+                }/>
 
+                <Accordion title="IV. Family History" content={
                     <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>      
-                            <h3>IV. Family History</h3>   
+                        <div className={Styles["input_box_textarea"]}>        
                             <label className={Styles["input_label"]}>
                                 Family History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -136,10 +128,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                             </div>
                         </div>
                     </div>
-
+                }/>
+                <Accordion title="V. Personal History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>      
-                            <h3>V. Personal History</h3>
+                        
                             <label className={Styles["input_label"]}>
                                 Medical History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -152,11 +145,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     required
                                 />
                             </div>
-                        </div>
-                    </div>
-
-                    <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>      
                             <label className={Styles["input_label"]}>
                                 Surgical History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
                             </label>
@@ -169,12 +157,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     required
                                 />
                                 </div>
-                        </div>
-                    </div>
-
-                    <div className={Styles["main_div"]}>
-                        <div className={Styles["input_box_textarea"]}>      
-                            <label className={Styles["input_label"]}>Personal and Social History</label>
+                                <label className={Styles["input_label"]}>Personal and Social History</label>
                                 <div>
                                     <textarea
                                         type="text"
@@ -185,10 +168,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                 </div>
                         </div>
                     </div>
-
+                }/>
+                <Accordion title="VI. Psychosocial History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>      
-                            <h3>VI. Psychosocial History</h3>
+                            
                             <label className={Styles["input_label"]}>Psychosocial History</label>
                                 <div>
                                     <textarea
@@ -200,7 +184,9 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                 </div>
                         </div>
                     </div>
+                }/>
                 </div>
+                
 
             <div className={Styles["nextBtn__container"]}>
                 <button onClick={ Previous } className={Styles["nextBtn__style"]}>Prev</button>

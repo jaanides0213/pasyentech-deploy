@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from "./AddPatient.module.css";
+import Accordion from '../Accordion/Accordion';
 
 const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
   const Previous = e => {
@@ -18,7 +19,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
     <form>
       <h3 className={Styles["h3___styling"]}>Physical Examination</h3>
         <div className={Styles["Patient__form__div_wrapper"]}>
-          <h3>I. General Assessment</h3>
+        <Accordion title="I. General Assessment" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
               <label className={Styles["input_label"]}>
@@ -33,12 +34,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     required
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>
+                <label className={Styles["input_label"]}>
                 Skin{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
                 <div>
@@ -52,10 +48,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+        }/>
 
+        <Accordion title="II. Head, Eyes, Ears, Nose, Throat (HEENT)" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>II. Head, Eyes, Ears, Nose, Throat (HEENT)</h3>
               <label className={Styles["input_label"]}>
                 Head{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
@@ -68,12 +65,8 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     required
                   />
                 </div>
-            </div> 
-          </div>
 
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>
+                <label className={Styles["input_label"]}>
                 Eyes{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
                 <div>
@@ -85,12 +78,8 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     required
                   />
                 </div>
-            </div> 
-          </div>
 
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>
+                <label className={Styles["input_label"]}>
                 Ears{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
                 <div>
@@ -102,11 +91,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     required
                   />
                   </div>
-              </div> 
-           </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
               <label className={Styles["input_label"]}>
                 Nose{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
@@ -119,12 +103,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     required
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>
+                <label className={Styles["input_label"]}>
                 Throat{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
               </label>
                 <div>
@@ -138,10 +117,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+        }/>
 
+        <Accordion title="III. Neck" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>III. Neck</h3>
               <label className={Styles["input_label"]}>Neck</label>
                 <div>
                   <textarea
@@ -153,10 +133,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+        }/>
 
+        <Accordion title="IV. Thorax and Respiratory" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>IV. Thorax and Respiratory</h3>
               <label className={Styles["input_label"]}>Thorax and Lungs</label>
                 <div>
                   <textarea
@@ -166,12 +147,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Cardiovascular</label>
+                <label className={Styles["input_label"]}>Cardiovascular</label>
                 <div>
                   <textarea
                     type="text"
@@ -182,10 +158,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+        }/>
 
+        <Accordion title="V. Breasts" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>V. Breasts</h3>
               <label className={Styles["input_label"]}>Breasts</label>
                 <div>
                   <textarea
@@ -197,10 +174,10 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
-
+        }/>
+         <Accordion title="VI. Abdomen" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>VI. Abdomen</h3>
               <label className={Styles["input_label"]}>Abdomen</label>
                 <div>
                   <textarea
@@ -212,10 +189,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+         }/>
 
+        <Accordion title="VII. Pelvic and Genitalia" content=   {
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>VII. Pelvic and Genitalia</h3>
               <label className={Styles["input_label"]}>Genitalia</label>
                 <div>
                   <textarea
@@ -225,12 +203,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Rectal</label>
+                <label className={Styles["input_label"]}>Rectal</label>
                 <div>
                   <textarea
                     type="text"
@@ -241,7 +214,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
-
+        }/>
+        
+        <Accordion title="VIII. Extremities" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
               <h3>VIII. Extremities</h3>
@@ -254,12 +229,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Peripheral Vascular</label>
+                <label className={Styles["input_label"]}>Peripheral Vascular</label>
                 <div>
                   <textarea
                     type="text"
@@ -268,12 +238,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Muscoskeletal</label>
+                <label className={Styles["input_label"]}>Muscoskeletal</label>
                 <div>
                   <textarea
                     type="text"
@@ -284,10 +249,12 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+        }/>
 
+         
+<Accordion title="IX. Neurological" content={
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
-              <h3>IX. Neurological</h3>
               <label className={Styles["input_label"]}>Neurologic</label>
                 <div>
                   <textarea
@@ -297,12 +264,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Motor</label>
+                <label className={Styles["input_label"]}>Motor</label>
                 <div>
                   <textarea
                     type="text"
@@ -311,12 +273,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     className={Styles["textareaStyle"]}
                   />
                 </div>
-            </div> 
-          </div>
-
-          <div className={Styles["main_div"]}>
-            <div className={Styles["input_box_textarea"]}>
-              <label className={Styles["input_label"]}>Reflexes</label>
+                <label className={Styles["input_label"]}>Reflexes</label>
                 <div>
                   <textarea
                     type="text"
@@ -327,6 +284,9 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                 </div>
             </div> 
           </div>
+}/>
+
+          
         </div>
 
         <div className={Styles["nextBtn__container"]}>

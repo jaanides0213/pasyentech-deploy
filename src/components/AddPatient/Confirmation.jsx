@@ -1,6 +1,7 @@
 import React from 'react';
 import Styles from "./AddPatient.module.css";
 import { createPatient } from '../../api/createPatient.js';
+import Accordion from '../Accordion/Accordion.jsx';
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
 
@@ -32,8 +33,8 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>
       <div className={Styles["Patient__form__div_wrapper"]}>
         <div className={Styles["main_div__confirmation"]}>
+        <Accordion title="I. Patient Information" content={
           <div className={Styles["main_div__partition"]}>
-            <h3>I. Patient Information</h3>
               <div className={Styles["main_div__data"]}>
                 <p>Patient Name: {values.patientName} </p>
                 <p>Age: {values.patientAge}</p>
@@ -48,9 +49,9 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                 <p>Present Illness: {values.presentIllness}</p>
               </div>
           </div>
-          
+        }/>
+        <Accordion title="II. Patient History" content={
           <div className={Styles["main_div__partition"]}>
-            <h3>II. Patient History</h3>
             <div className={Styles["main_div__data"]}>
 
               <h3>a. Childhood Illnesses History</h3>
@@ -67,6 +68,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                   <li><p>Psychiatric: {values.adultPsychiatric}</p></li>
                 </ul>
               </div>
+             
 
               <h3>c. Health Maintenance</h3>
               <div className={Styles["main_div__subdata"]}>
@@ -93,9 +95,10 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
               </div>
             </div>
           </div>
+           }/>
 
+        <Accordion title="III. Review of Systems" content={
           <div className={Styles["main_div__partition"]}>
-            <h3>III. Review of Systems</h3>
             <div className={Styles["main_div__data"]}>
 
               <h3>a. Physical Assessment Systems</h3>
@@ -136,8 +139,10 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
             </div>
           </div>
 
+        }/>
+        
+        <Accordion title="IV. Physical Examination" content={
           <div className={Styles["main_div__partition"]}>
-            <h3>IV. Physical Examination</h3>
             <div className={Styles["main_div__data"]}>
 
               <h3>a. General Assessment</h3>
@@ -198,14 +203,18 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
             </div>
           </div>
 
+        }/>
+
+        <Accordion title="V. Impression, Assessment, and Plan" content={
           <div className={Styles["main_div__partition"]}>
-            <h3>V. Impression, Assessment, and Plan</h3>
             <div className={Styles["main_div__subdata"]}>
               <p>Impression: {values.patientImpression}</p>
               <p>Assessment and Plan: {values.patientAssessmentPlan}</p>
               <p>Uploaded Diagnostic Files: {values.patientDiagnosticFiles}</p>
             </div>
           </div>
+
+        }/>
         </div>
       </div>
 

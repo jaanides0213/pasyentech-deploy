@@ -6,8 +6,6 @@ import PhysicalExamination from "./PhysicalExamination";
 import AssessmentAndPlan from './AssessmentAndPlan';
 import Confirmation from './Confirmation';
 
-
-
 export default class AddPatient extends Component {
     state = {
         // PAGE 1: Patient Information
