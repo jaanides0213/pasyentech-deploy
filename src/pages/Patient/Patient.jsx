@@ -21,14 +21,10 @@ const Patient = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        // Call the getPatientData function from the API file
         const patientsData = await getPatientData();
-  
-        // Update the local state with the retrieved patients
         setPatients(patientsData);
       } catch (error) {
         console.error("Error fetching patients:", error);
-        // Handle error as needed
       }
     };
   

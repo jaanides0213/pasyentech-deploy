@@ -73,7 +73,6 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
         setMedications(newMedications);
     };
 
-
     return (
         <form className={Styles["Prescription__form__styling"]}>
             <h3 className={Styles["h3___styling"]}>Medical Prescription Form</h3>
