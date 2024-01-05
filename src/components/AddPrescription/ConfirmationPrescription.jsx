@@ -38,7 +38,7 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
             <p>Patient Name: {values.patientName}</p>
             <p>Age: {values.patientAge}</p>
             <p>Sex: {values.patientSex}</p>
-            <p>Weight: {values.patientWeight}</p>
+            <p>Weight: {values.patientWeight} {values.patientWeightUnit}</p>
             <p>Address: {values.patientAddress}</p>
             <p>Date of Consultation: {values.patientConsultationDate}</p>
           </div>

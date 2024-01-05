@@ -14,6 +14,7 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
             patientAge: values.patientAge,
             patientSex: values.patientSex,
             patientWeight: values.patientWeight,
+            patientWeightUnit: values.patientWeightUnit,
             patientAddress: values.patientAddress,
             patientConsultationDate: values.patientConsultationDate,
             medications: medications.map(medication => ({ ...medication })),
@@ -140,6 +141,29 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
                             onChange={handleChange('patientWeight')}
                             required
                         />
+                    </div>
+
+                    <div className={Styles["input_box_weight"]}>
+                        <label className={Styles["input_label"]}>
+                            Unit{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                        </label>
+                        <div>
+                            <select 
+                                value={values.patientWeightUnit}
+                                onChange={handleChange('patientWeightUnit')}
+                                className={Styles["patientWeightUnit_select_style"]}
+                                required>
+                                <option value=""  className={Styles["patientWeightUnit_select_option"]}>
+                                    Choose an option
+                                </option>
+                                <option value="Kilogram"  className={Styles["patientWeightUnit_select_option"]}>
+                                   Kilograms (kg)
+                                </option>
+                                <option value="Milligrams"  className={Styles["patientWeightUnit_select_option"]}>                                    
+                                    Pounds (lbs)
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
                     <div className={Styles["input_box_address"]}>

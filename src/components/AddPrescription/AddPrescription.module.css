@@ -55,7 +55,8 @@ form {
     width: 8rem;
 } 
 
-.sex_select_style, .dosageUnit_select_style{
+.sex_select_style, .dosageUnit_select_style,
+.patientWeightUnit_select_style{
     padding: 7.5px;
     background-color: white;
     color:black;
@@ -88,7 +89,7 @@ form {
     border: 1px solid #8F001E;
     padding-left: 10px;
     font-family: "Inter",sans-serif;
-    width: 32.8rem;
+    width: 22.6rem;
 }
 
 .input_box_calendar input {

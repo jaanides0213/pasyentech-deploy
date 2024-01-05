@@ -32,7 +32,6 @@ body {
 .Dashboard__cont-column{
     display: flex;
     flex-direction: column;
-
     margin-right: 30px;
 }
 
@@ -42,30 +41,71 @@ body {
 }
 
 .DashboardNotes_note__textarea{
- 
     width: 336px;
-    min-height:457px;
+    height:457px;
     padding: 35px 15px 15px 15px;
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #8F001E;
     color: white !important;
-    font-style: italic;
+}
+
+.DashboardAppointment_sample1 {
+    margin-top: 1rem;
+    background-color: #8F001E;
+    border-radius: 10px;
+    height: 70px;
+    cursor: pointer;
+    margin-bottom: -0.5rem;
+}
+
+.DashboardAppointment_row1 {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+}
+
+.DashboardAppointment_row2 {
+    padding-left: 15px;
+    margin-top: -1.8rem;
+}
+
+.DashboardAppointment_patientName {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 3rem;
+    font-family: "Inter", sans-serif;  
+}
+
+.DashboardAppointment_status {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;  
+}
+
+.DashboardAppointment_schedule {
+    color: white;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;  
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .DashboardAppointment_note {
     position: relative;
-    
 }
-  
+
 .DashboardAppointment_label {
     position: absolute;
+    margin-top: 0.5rem;
     top: 40px;
-    left: 15px;
+    left: 20px;
     font-weight: bold;
     color: black;
-    font-style: italic;
-    font-size: 12px;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
 }
 
 .DashboardNotes_label{
@@ -89,7 +129,6 @@ body {
     background-color: #ffffff;
     border: 2px solid #8F001E;
     font-family: 'Inter';
-    font-style: italic;
     color: black;
 }
 
