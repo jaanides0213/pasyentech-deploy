@@ -8,7 +8,6 @@ import {
 import { IoMdAdd } from "react-icons/io";
 import Styles from "./Patient.module.css";
 import Header from "../../components/Header/Header.jsx";
-import { createPatient } from "../../api/createPatient";
 import { getPatientData } from "./../../api/getPatientData"; // Import the new function
 import { getPatientById } from "../../api/getPatientById.js";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
@@ -18,7 +17,7 @@ const Patient = () => {
   const [sortBy, setSortBy] = useState(""); // State to track sorting option
   const [searchPatient, setSearchPatient] = useState(""); // State for Search patient functionality
   const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
-
+  
   useEffect(() => {
     const fetchPatients = async () => {
       try {
@@ -58,32 +57,6 @@ const Patient = () => {
     }
   };
 
-  const handleSearch = async () => {
-    const searchTerm = searchPatient.toLowerCase();
-
-    try {
-      // Fetch patient data from the API
-      const patientsData = await getPatientData();
-
-      // Filter patients based on the search term
-      const filteredPatients = patientsData.filter((patient) =>
-        patient.name.toLowerCase().includes(searchTerm)
-      );
-
-      // Update the patients state with the filtered results
-      setPatients(filteredPatients);
-
-      // Display appropriate message based on the search result
-      if (filteredPatients.length === 0) {
-        setSearchResultMessage("No matching patients found.");
-      } else {
-        setSearchResultMessage("");
-      }
-    } catch (error) {
-      console.error("Error fetching patients during search:", error);
-    }
-  };
-
   const handleViewPatient = async (patientId) => {
     try {
       // Call the new getPatientById function from the API file
@@ -100,6 +73,43 @@ const Patient = () => {
 
     } catch (error) {
       console.error("Error viewing patient:", error);
+      // Handle error as needed
+    }
+  };
+
+  const handleSearch = async () => {
+    // Convert search input to lowercase for case-insensitive search
+    const searchInput = searchPatient.toLowerCase();
+  
+    try {
+      // Call the getPatientData function from the API file to fetch the original data
+      const patientsData = await getPatientData();
+  
+      // Check if the search input is empty
+      if (searchInput.trim() === "") {
+        // If empty, reset to the original list of patients
+        setPatients(patientsData);
+        setSearchResultMessage(""); // Clear the search result message
+      } else {
+        // Filter patients based on the search input in the patientName field
+        const filteredPatients = patientsData.filter(
+          (patient) =>
+            patient.patientName &&
+            patient.patientName.toLowerCase().includes(searchInput)
+        );
+  
+        // Update the state with the filtered patients
+        setPatients(filteredPatients);
+  
+        // Display search result message
+        setSearchResultMessage(
+          filteredPatients.length > 0
+            ? ""
+            : "No matching patients found."
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching patients:", error);
       // Handle error as needed
     }
   };
