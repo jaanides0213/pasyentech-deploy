@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState} from 'react';
 import Styles from "./Prescription.module.css";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
@@ -25,6 +25,23 @@ const Prescription_View = () => {
     fetchPrescription();
   }, [id]);
 
+  const handlePrintPrescription = async (prescriptionId) => {
+    try {
+      const prescriptionDetails = await getPrescriptionById(prescriptionId);
+
+      // Construct the URL for the Patient_View page with the patient's ID
+      const viewPatientUrl = `/prescription/view-prescription/print/${prescriptionId}`;
+
+      // Redirect the user to the Patient_View page
+      window.location.href = viewPatientUrl;
+
+      // for debug
+      console.log("Prescription Details:", prescriptionDetails);
+    } catch (error) {
+      console.error("Error fetching prescription details:", error);
+    }
+  };
+
   return (
     <main className={Styles["Prescription__cont"]}>
       <Sidebar/>
@@ -46,7 +63,7 @@ const Prescription_View = () => {
             <p>Name of Patient: {prescription.patientName}</p>
             <p>Age: {prescription.patientAge}</p>
             <p>Sex: {prescription.patientSex}</p>
-            <p>Weight: {prescription.patientWeight}</p>
+            <p>Weight: {prescription.patientWeight} {prescription.patientWeightUnit}</p>
             <p>Address: {prescription.patientAddress}</p>
             <p>Consultation date: {prescription.patientConsultationDate}</p>
           </div> 
@@ -55,7 +72,8 @@ const Prescription_View = () => {
             <h3>Medications</h3>
             {prescription.medications.map((medication, index) => (
               <div key={index}>
-                <p>Dosage: {medication.dosageNum} {medication.dosageUnit}</p>
+                <p>Number of Units: {medication.dosageUnit}</p>
+                <p>Dosage: {medication.dosageNum} </p>
                 <p>Generic Name: {medication.genericName}</p>
                 <p>Brand Name: {medication.brandName}</p>
                 <p>Direction of Use: {medication.directionOfUse}</p>
@@ -66,11 +84,10 @@ const Prescription_View = () => {
         )}
 
         <div className={Styles["Prescription__print__container"]}>
-            <a href='#'>
-              <HiOutlinePrinter size="1.1rem"/> Print
-            </a>            
-          </div>
-          
+          <button onClick={() => handlePrintPrescription(prescription.id)} className={Styles["printBtn__style"]}> 
+            <HiOutlinePrinter size="1.1rem"/> Print
+          </button>          
+        </div>
       </div>     
     </main>
   )

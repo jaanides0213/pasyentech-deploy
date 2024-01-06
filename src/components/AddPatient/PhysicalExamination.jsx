@@ -23,7 +23,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
               <label className={Styles["input_label"]}>
-                Vital Signs{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                Vital Signs
               </label>
                 <div>
                   <textarea
@@ -31,11 +31,10 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalVital} 
                     onChange={handleChange('physicalVital')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
                 <label className={Styles["input_label"]}>
-                Skin{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                Skin
               </label>
                 <div>
                   <textarea
@@ -43,7 +42,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.physicalSkin} 
                     onChange={handleChange('physicalSkin')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 
@@ -54,7 +52,7 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
           <div className={Styles["main_div"]}>
             <div className={Styles["input_box_textarea"]}>
               <label className={Styles["input_label"]}>
-                Head{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                Head
               </label>
                 <div>
                   <textarea
@@ -62,12 +60,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.HEENT_head} 
                     onChange={handleChange('HEENT_head')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
 
-                <label className={Styles["input_label"]}>
-                Eyes{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              <label className={Styles["input_label"]}>
+                Eyes
               </label>
                 <div>
                   <textarea
@@ -75,12 +72,11 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.HEENT_eyes} 
                     onChange={handleChange('HEENT_eyes')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
 
-                <label className={Styles["input_label"]}>
-                Ears{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              <label className={Styles["input_label"]}>
+                Ears
               </label>
                 <div>
                   <textarea
@@ -88,11 +84,10 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.HEENT_ears} 
                     onChange={handleChange('HEENT_ears')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                   </div>
               <label className={Styles["input_label"]}>
-                Nose{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                Nose
               </label>
                 <div>
                   <textarea
@@ -100,11 +95,10 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.HEENT_nose} 
                     onChange={handleChange('HEENT_nose')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
                 <label className={Styles["input_label"]}>
-                Throat{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                Throat
               </label>
                 <div>
                   <textarea
@@ -112,7 +106,6 @@ const PhysicalExamination = ({prevStep, nextStep, handleChange, values}) => {
                     value={values.HEENT_throat} 
                     onChange={handleChange('HEENT_throat')}
                     className={Styles["textareaStyle"]}
-                    required
                   />
                 </div>
             </div> 

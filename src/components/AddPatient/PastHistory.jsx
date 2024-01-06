@@ -25,7 +25,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>
                             <label className={Styles["input_label"]}>
-                                Childhood Illnesses{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Childhood Illnesses
                             </label>
                             <div>
                                 <textarea
@@ -33,7 +33,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.childhoodIllness} 
                                     onChange={handleChange('childhoodIllness')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                             </div>
                         </div>
@@ -44,7 +43,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>         
                             <label className={Styles["input_label"]}>
-                                Medical{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Medical
                             </label>
                             <div>
                             <textarea
@@ -52,12 +51,11 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                 value={values.adultMedical} 
                                 onChange={handleChange('adultMedical')}
                                 className={Styles["textareaStyle"]}
-                                required
                             />
                             </div>
                             
                             <label className={Styles["input_label"]}>
-                                Surgical{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Surgical
                             </label>
                                 <div>
                                 <textarea
@@ -65,7 +63,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.adultSurgical} 
                                     onChange={handleChange('adultSurgical')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                                 </div>
                                 <label className={Styles["input_label"]}>Ob/Gyn</label>
@@ -75,7 +72,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                         value={values.adultObGyn} 
                                         onChange={handleChange('adultObGyn')}
                                         className={Styles["textareaStyle"]}
-                                        required
                                     />
                                 </div>
 
@@ -96,7 +92,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>       
                             <label className={Styles["input_label"]}>
-                                Health Maintenance{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Health Maintenance
                             </label>
                             <div>
                                 <textarea
@@ -104,7 +100,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.healthMaintenance} 
                                     onChange={handleChange('healthMaintenance')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                             </div>
                         </div>
@@ -115,7 +110,7 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>        
                             <label className={Styles["input_label"]}>
-                                Family History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Family History
                             </label>
                             <div>
                                 <textarea
@@ -123,7 +118,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.familyHistory} 
                                     onChange={handleChange('familyHistory')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                             </div>
                         </div>
@@ -132,9 +126,8 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                 <Accordion title="V. Personal History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>      
-                        
                             <label className={Styles["input_label"]}>
-                                Medical History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Medical History
                             </label>
                             <div>
                                 <textarea
@@ -142,11 +135,10 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.medicalHistory} 
                                     onChange={handleChange('medicalHistory')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                             </div>
                             <label className={Styles["input_label"]}>
-                                Surgical History{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+                                Surgical History
                             </label>
                              <div>
                                 <textarea
@@ -154,7 +146,6 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                                     value={values.surgicalHistory} 
                                     onChange={handleChange('surgicalHistory')}
                                     className={Styles["textareaStyle"]}
-                                    required
                                 />
                                 </div>
                                 <label className={Styles["input_label"]}>Personal and Social History</label>

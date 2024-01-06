@@ -117,59 +117,7 @@ export default class AddPatient extends Component {
                 alert("Please fill in all required fields before proceeding.");
                 return;
             }
-        } else if (step === 2) {
-            // Check if all required fields on Page 2 are filled
-            if (
-                !this.state.childhoodIllness ||
-                !this.state.adultMedical ||
-                !this.state.adultSurgical ||
-                !this.state.healthMaintenance ||
-                !this.state.familyHistory ||
-                !this.state.medicalHistory ||
-                !this.state.surgicalHistory
-            ) {
-                alert("Please fill in all required fields before proceeding.");
-                return;
-            }
-        } else if (step === 3) {
-            // Check if all required fields on Page 3 are filled
-            if (
-                !this.state.reviewGeneral ||
-                !this.state.reviewSkin ||
-                !this.state.reviewNeck ||
-                !this.state.review_HEENT_head ||
-                !this.state.review_HEENT_eyes ||
-                !this.state.review_HEENT_ears ||
-                !this.state.review_HEENT_nose ||
-                !this.state.review_HEENT_throat
-            ) {
-                alert("Please fill in all required fields before proceeding.");
-                return;
-            }
-        } else if (step === 4) {
-            // Check if all required fields on Page 4 are filled
-            if (
-                !this.state.physicalVital ||
-                !this.state.physicalSkin ||
-                !this.state.HEENT_head ||
-                !this.state.HEENT_eyes ||
-                !this.state.HEENT_ears ||
-                !this.state.HEENT_nose ||
-                !this.state.HEENT_throat
-            ) {
-                alert("Please fill in all required fields before proceeding.");
-                return;
-            }
-        } else if (step === 5) {
-            // Check if all required fields on Page 5 are filled
-            if (
-                !this.state.patientImpression ||
-                !this.state.patientAssessmentPlan 
-            ) {
-                alert("Please fill in all required fields before proceeding.");
-                return;
-            }
-        }
+        } 
         this.setState({ step: step + 1 });
     }
 

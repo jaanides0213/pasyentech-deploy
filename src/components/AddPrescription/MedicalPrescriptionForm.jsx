@@ -214,36 +214,12 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
                             <label className={Styles["input_label"]}>
                                 Unit{isRequired && <span className={Styles["required_asterisk"]}> *</span>} 
                             </label> 
-                            <div>
-                                <select 
-                                    value={medication.dosageUnit}
-                                    onChange={(e) => handleDosageUnitChange(e, index)}
-                                    className={Styles["dosageUnit_select_style"]}
-                                    required>
-                                    
-                                    <option value=""  className={Styles["dosageUnit_select_option"]}>
-                                        Choose an option
-                                    </option>
-                                    <option value="Grams"  className={Styles["dosageUnit_select_option"]}>
-                                        Grams (g)
-                                    </option>
-                                    <option value="Milligrams"  className={Styles["dosageUnit_select_option"]}>
-                                        Milligrams (mg)
-                                    </option>
-                                    <option value="Micrograms"  className={Styles["dosageUnit_select_option"]}>
-                                        Micrograms
-                                    </option>
-                                    <option value="Nanograms"  className={Styles["dosageUnit_select_option"]}>
-                                        Nanograms
-                                    </option>
-                                    <option value="Litres"  className={Styles["dosageUnit_select_option"]}>
-                                        Litres
-                                    </option>
-                                    <option value="Millilitres"  className={Styles["dosageUnit_select_option"]}>
-                                        Millilitres (ml)
-                                    </option>
-                                </select>
-                            </div>
+                            <input
+                                type="text"
+                                value={medication.dosageUnit}
+                                onChange={(e) =>  handleDosageUnitChange(e, index)}
+                                required
+                            />
                         </div>
 
                         <div className={Styles["input_box_genericName"]}>

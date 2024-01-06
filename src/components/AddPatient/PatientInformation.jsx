@@ -215,7 +215,7 @@ const PatientInformation = ({prevStep, nextStep, handleChange, values}) => {
                                     type="text"
                                     value={values.chiefComplaint} 
                                     onChange={handleChange('chiefComplaint')}
-                                    className={Styles["textareaStyle"]}
+                                    className={Styles["textareaStyle1"]}
                                     required
                                 />
                             </div>

@@ -14,6 +14,7 @@ import Patient_View from "./pages/Patient/Patient_View.jsx";
 import Prescription from "./pages/Prescription/Prescription.jsx";
 import Prescription_Form_Parent from "./pages/Prescription/Prescription_Form_Parent.jsx";
 import Prescription_View from "./pages/Prescription/Prescription_View.jsx";
+import Prescription_Print from "./pages/Prescription/Prescription_Print.jsx";
 import Appointment from "./pages/Appointment/Appointment.jsx";
 import Appointment_Form_Parent from "./pages/Appointment/Appointment_Form_Parent.jsx";
 import Appointment_View from "./pages/Appointment/Appointment_View.jsx";
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/prescription" element={<Prescription />} />
           <Route path="/prescription/add-prescription-form" element={<Prescription_Form_Parent/>}/>
           <Route path="/prescription/view-prescription/:id" element={<Prescription_View/>}/>
+          <Route path="/prescription/view-prescription/print/:id" element={<Prescription_Print/>}/>
           
           {/*Appointment-related routing*/}
           <Route path="/appointment" element={<Appointment />} />
