@@ -152,8 +152,7 @@ const AccountDetailsComponent = ({userData}) => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type={CurrentPasswordVisible ? "text" : "password"}
-                        className={Styles["AccountDetails__input"]}
-                        value={userPassword}>
+                        className={Styles["AccountDetails__input"]}>
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}
