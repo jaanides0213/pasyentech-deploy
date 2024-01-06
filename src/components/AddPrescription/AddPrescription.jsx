@@ -10,6 +10,7 @@ export class AddPrescription extends Component {
     patientAge: '',
     patientSex: '',
     patientWeight: '',
+    patientWeightUnit: '',
     patientAddress: '',
     patientConsultationDate: '',
 
@@ -41,6 +42,7 @@ export class AddPrescription extends Component {
         !this.state.patientAge ||
         !this.state.patientSex ||
         !this.state.patientWeight ||
+        !this.state.patientWeightUnit ||
         !this.state.patientAddress ||
         !this.state.patientConsultationDate 
       ) {
@@ -63,10 +65,10 @@ export class AddPrescription extends Component {
   render() {
     const { step } = this.state;
 
-    const {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientAddress, patientConsultationDate,
+    const {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
       genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications} = this.state;
     
-    const values = {dateOfConsultation, patientName, patientAge, patientSex, patientWeight,  patientAddress, patientConsultationDate,
+    const values = {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
       genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications}
     
     switch (step) {
