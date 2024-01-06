@@ -13,6 +13,7 @@ export const getPrescriptionData = async () => {
       id: doc.id,
       patientName: doc.data().patientName,
       patientAge: doc.data().patientAge,
+      patientConsultationDate: doc.data().patientConsultationDate,
     }));
     
     return prescriptionsData;

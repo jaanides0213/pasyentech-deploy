@@ -65,10 +65,10 @@ export class AddPrescription extends Component {
   render() {
     const { step } = this.state;
 
-    const {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
+    const {patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
       genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications} = this.state;
     
-    const values = {dateOfConsultation, patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
+    const values = {patientName, patientAge, patientSex, patientWeight, patientWeightUnit, patientAddress, patientConsultationDate,
       genericName, brandName, dosageNum, dosageUnit, unitsNumber, directionOfUse, medications}
     
     switch (step) {

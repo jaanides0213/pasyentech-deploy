@@ -16,7 +16,27 @@ const Prescription = () => {
   const [prescriptions, setPrescription] = useState([]);
   const [searchPrescription, setSearchPrescription] = useState(""); // State for Search prescription functionality
   const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
+  const [sortBy, setSortBy] = useState(""); 
 
+  const handleSort = (option) => {
+    setSortBy(option);
+  
+    if (option === "mostRecent") { //--most recent not workin grr
+      setPrescription((prevPrescription) =>
+        [...prevPrescription].sort((a, b) => {
+          const dateA = a.patientConsultationDate ? new Date(a.patientConsultationDate) : 0;
+          const dateB = b.patientConsultationDate ? new Date(b.patientConsultationDate) : 0;
+  
+          return dateB - dateA;
+        })
+      );
+    } else if (option === "name") {
+      setPrescription((prevPrescription) =>
+        [...prevPrescription].sort((a, b) => a.patientName.localeCompare(b.patientName))
+      );
+    }
+  };
+  
   useEffect(() => {
     // Fetch prescription data when the component mounts
     const fetchData = async () => {
@@ -131,6 +151,8 @@ const Prescription = () => {
                 id="sortBy"
                 name="sortBy"
                 className={Styles["sorting_select__style"]}
+                onChange={(e) => handleSort(e.target.value)}
+              value={sortBy}
               >
                 <option value="" className={Styles["sorting_option__style"]}>
                   Sort by
@@ -161,7 +183,9 @@ const Prescription = () => {
                   <tr>
                     <th className={Styles["Prescription_table_name"]}>Name</th>
                     <th>Age</th>
+                    <th>Date</th>
                     <th>Actions</th>
+                    
                   </tr>
                 </thead>
 
@@ -171,6 +195,7 @@ const Prescription = () => {
                     <tr key={prescription.id}>
                       <td className={Styles["Prescription_td"]}>{prescription.patientName}</td>
                       <td className={Styles["Prescription_td"]}>{prescription.patientAge}</td>
+                      <td className={Styles["Prescription_td"]}>{prescription.patientConsultationDate}</td>
                       <td className={Styles["Prescription_td"]}>
                         <div className={Styles["Prescription_table_action"]}>
                           <div className={Styles["Action__Styling"]}>

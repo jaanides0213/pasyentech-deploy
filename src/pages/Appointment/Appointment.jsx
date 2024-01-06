@@ -16,7 +16,28 @@ const Appointment = () => {
   const [appointment, setAppointment] = useState([]);
   const [searchAppointment, setSearchAppointment] = useState(""); // State for Search appointment functionality
   const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
+  const [sortBy, setSortBy] = useState(""); 
 
+  const handleSort = (option) => {
+    setSortBy(option);
+  
+    if (option === "mostRecent") {
+      setAppointment((prevAppointment) =>
+        [...prevAppointment].sort((a, b) => {
+          const dateA = a.apptDate ? new Date(a.apptDate) : 0;
+          const dateB = b.apptDate ? new Date(b.apptDate) : 0;
+  
+          return dateB - dateA;
+        })
+      );
+    } else if (option === "name") {
+      setAppointment((prevAppointment) =>
+        [...prevAppointment].sort((a, b) => a.patientName.localeCompare(b.patientName))
+      );
+    }
+  };
+  
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -127,6 +148,9 @@ const Appointment = () => {
                 id="sortBy"
                 name="sortBy"
                 className={Styles["sorting_select__style"]}
+                onChange={(e) => handleSort(e.target.value)}
+              value={sortBy}
+              
               >
                 <option value="" className={Styles["sorting_option__style"]}>
                   Sort by
@@ -140,6 +164,7 @@ const Appointment = () => {
                 <option value="name" className={Styles["sorting_option__style"]}>
                   Name
                 </option>
+               
               </select>
             </div>
           </div>

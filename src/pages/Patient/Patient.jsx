@@ -14,9 +14,9 @@ import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 const Patient = () => {
   const [patients, setPatients] = useState([]);
-  const [sortBy, setSortBy] = useState(""); // State to track sorting option
-  const [searchPatient, setSearchPatient] = useState(""); // State for Search patient functionality
-  const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
+  const [sortBy, setSortBy] = useState(""); 
+  const [searchPatient, setSearchPatient] = useState(""); 
+  const [searchResultMessage, setSearchResultMessage] = useState(""); 
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -28,27 +28,26 @@ const Patient = () => {
       }
     };
   
-    // Call the fetchPatients function when the component mounts
     fetchPatients();
-  }, []); // Empty dependency array to run the effect only once
+  }, []); 
   
 
   const handleSort = (option) => {
     setSortBy(option);
-
-    // Sort patients based on the selected option
+  
+    // Sort patients based on the selected option---most recent not working grr
     if (option === "mostRecent") {
       setPatients((prevPatients) =>
         [...prevPatients].sort((a, b) => {
           const dateA = a.createdAt ? a.createdAt.toMillis() : 0;
           const dateB = b.createdAt ? b.createdAt.toMillis() : 0;
-
+  
           return dateB - dateA;
         })
       );
     } else if (option === "name") {
       setPatients((prevPatients) =>
-        [...prevPatients].sort((a, b) => a.name.localeCompare(b.name))
+        [...prevPatients].sort((a, b) => a.patientName.localeCompare(b.patientName))
       );
     }
   };
@@ -183,6 +182,7 @@ const Patient = () => {
                   <th className={Styles["Patient_table_age"]}>Age</th>
                   <th>Sex</th>
                   <th>Actions</th>
+                  
                 </tr>
               </thead>
               

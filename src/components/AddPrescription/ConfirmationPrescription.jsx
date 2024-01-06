@@ -15,7 +15,7 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
     try {
       const prescriptionId = await createPrescription({
         ...values,
-        dateOfConsultation: values.dateOfConsultation || "Default Date",
+        patientConsultationDate: values.patientConsultationDate || "Default Date",
       });
       console.log("Prescription ID:", prescriptionId);
       
