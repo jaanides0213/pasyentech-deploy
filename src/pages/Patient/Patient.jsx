@@ -54,31 +54,42 @@ const Patient = () => {
   };
 
   const handleSearch = async () => {
-    const searchTerm = searchPatient.toLowerCase();
-
+    // Convert search input to lowercase for case-insensitive search
+    const searchInput = searchPatient.toLowerCase();
+  
     try {
-      // Fetch patient data from the API
+      // Call the getPatientData function from the API file to fetch the original data
       const patientsData = await getPatientData();
-
-      // Filter patients based on the search term
-      const filteredPatients = patientsData.filter((patient) =>
-        patient.name.toLowerCase().includes(searchTerm)
-      );
-
-      // Update the patients state with the filtered results
-      setPatients(filteredPatients);
-
-      // Display appropriate message based on the search result
-      if (filteredPatients.length === 0) {
-        setSearchResultMessage("No matching patients found.");
+  
+      // Check if the search input is empty
+      if (searchInput.trim() === "") {
+        // If empty, reset to the original list of patients
+        setPatients(patientsData);
+        setSearchResultMessage(""); // Clear the search result message
       } else {
-        setSearchResultMessage("");
+        // Filter patients based on the search input in the patientName field
+        const filteredPatients = patientsData.filter(
+          (patient) =>
+            patient.patientName &&
+            patient.patientName.toLowerCase().includes(searchInput)
+        );
+  
+        // Update the state with the filtered patients
+        setPatients(filteredPatients);
+  
+        // Display search result message
+        setSearchResultMessage(
+          filteredPatients.length > 0
+            ? ``
+            : "No matching patients found."
+        );
       }
     } catch (error) {
-      console.error("Error fetching patients during search:", error);
+      console.error("Error fetching patients:", error);
+      // Handle error as needed
     }
   };
-
+  
   const handleViewPatient = async (patientId) => {
     try {
       // Call the new getPatientById function from the API file
@@ -131,6 +142,7 @@ const Patient = () => {
               </a>
             </button>
           </div>
+          
           {/*backend must be updated*/}
           <div className={Styles["Patient_sort_by"]}>
             <select

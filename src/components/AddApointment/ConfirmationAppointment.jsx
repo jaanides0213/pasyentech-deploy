@@ -29,10 +29,11 @@ const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>
       <div>
         <div>
-          <h3>Appointment Schedule</h3>
+          <h3>Appointment Details</h3>
           <p>Patient Name: {values.patientName}</p>
           <p>Date: {values.apptDate}</p>
           <p>Time: {values.apptTime}</p>
+          <p>Status: {values.apptStatus}</p>
 
           {values.apptRemark && <p>Remarks: {values.apptRemark}</p>}
         </div>
