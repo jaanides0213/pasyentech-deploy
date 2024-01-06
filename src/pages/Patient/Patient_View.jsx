@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header.jsx";
 import { getPatientById } from "../../api/getPatientById";
 import { useParams } from "react-router-dom";
+import Accordion from "../../components/Accordion/Accordion.jsx";
 
 const Patient_View = () => {
   const { id } = useParams();
@@ -39,8 +40,8 @@ const Patient_View = () => {
         {patients && (
           <div className={Styles["View__patient__container"]}>
             {/* Patient Information */}
+            <Accordion title="Patient Information" content={
             <span className={Styles["Patient__information__container"]}>
-              <h3>Patient Information</h3>
               <p>Name of Patient: {patients.patientName}</p>
               <p>Age: {patients.patientAge}</p>
               <p>Sex: {patients.patientSex}</p>
@@ -53,13 +54,13 @@ const Patient_View = () => {
               <p>Chief Complaint: {patients.chiefComplaint}</p>
               <p>Present Illness: {patients.presentIllness}</p>
             </span>
+            }/>
 
             {/* Patient History */}
+            <Accordion title="Patient History" content={
             <span className={Styles["Patient__history__container"]}>
-              <h3 className={Styles["Patient__information__h3"]}>Patient History</h3>
               <div className={Styles["main_div__data"]}>
-
-              <h3>a. Physical Assessment Systems</h3>
+              <Accordion title="a. Physical Assessment Systems" content={
               <div className={Styles["main_div__subdata"]}>
                 <p>General: {patients.reviewGeneral}</p>
                 <p>Skin: {patients.reviewSkin}</p>
@@ -74,8 +75,9 @@ const Patient_View = () => {
                 <p>Neck: {patients.reviewNeck}</p>
                 <p>Breasts: {patients.reviewBreasts}</p>
               </div>
+              }/>
 
-              <h3>b. Organ Systems</h3>
+              <Accordion title="b. Organ Systems" content={
               <div className={Styles["main_div__subdata"]}> 
                 <p>Respiratory: {patients.reviewRespiratory}</p>
                 <p>Cardiovascular: {patients.reviewCardiovascular}</p>
@@ -86,29 +88,31 @@ const Patient_View = () => {
                 <p>Muscoskeletal: {patients.reviewMuscoskeletal}</p>
 
               </div>
+              }/>
 
-              <h3>c. Medical Specialties</h3>
+              <Accordion title="c. Medical Specialties" content={
               <div className={Styles["main_div__subdata"]}>
                 <p>Psychiatric: {patients.reviewPsychiatrict}</p>
                 <p>Neurologic: {patients.reviewNeurologic}</p>
                 <p>Hematologic: {patients.reviewHematologic}</p>
                 <p>Endocrine: {patients.reviewEndocrine}</p>
               </div>
+              }/>
             </div>
             </span>
-
+            }/>
             {/* Physical Examination */}
+            <Accordion title="Physical Examination" content={
             <span className={Styles["Patient__physical__container"]}>
-              <h3 className={Styles["Patient__physical__h3"]}>Physical Examination</h3>
               <div className={Styles["main_div__data"]}>
 
-                <h3>a. General Assessment</h3>
+                <Accordion title="a. General Assessment" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Vital Signs: {patients.physicalVital}</p>
                   <p>Skin: {patients.physicalSkin}</p>
                 </div>
-
-                <h3>b. Head, Eyes, Ears, Nose, Throat (HEENT)</h3>
+                }/>
+                <Accordion title="b. Head, Eyes, Ears, Nose, Throat (HEENT)" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Head: {patients.HEENT_head}</p>
                   <p>Eyes: {patients.HEENT_eyes}</p>
@@ -116,59 +120,69 @@ const Patient_View = () => {
                   <p>Nose: {patients.HEENT_nose}</p>
                   <p>Throat: {patients.HEENT_throat}</p>
                 </div>
+                }/>
 
-                <h3>c. Neck</h3>
+                <Accordion title="c. Neck" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Neck: {patients.physicalNeck}</p>
                 </div>
+                }/>
 
-                <h3>d. Thorax and Respiratory</h3>
+                <Accordion title="d. Thorax and Respiratory" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Thorax and Lungs: {patients.physicalThoraxLungs}</p>
                   <p>Cardiovascular: {patients.physicalCardio}</p>
                 </div>
+                }/>
 
-                <h3>e. Breasts</h3>
+                <Accordion title="e. Breasts" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Breasts: {patients.physicalBreast}</p>
                 </div>
+                }/>
 
-                <h3>f. Abdomen</h3>
+                <Accordion title="f. Abdomen" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Abdomen: {patients.physicalAbdomen}</p>
                 </div>
+                }/>
 
-                <h3>g. Pelvic and Genitalia</h3>
+                <Accordion title="g. Pelvic and Genitalia" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Genitalia: {patients.physicalGenitalia}</p>
                   <p>Rectal: {patients.physicalRectal}</p>
                 </div>
+                }/>
 
-                <h3>h. Extremities</h3>
+                <Accordion title="h. Extremities" content={
                 <div className={Styles["main_div__subdata"]}> 
                   <p>Extremities: {patients.physicalExtremities}</p>
                   <p>Peripheral Vascular: {patients.physicalPeripheral}</p>
                   <p>Muscoskeletal: {patients.physicalMuscoskeletal}</p>
                 </div>
+                }/>
 
-                <h3>i. Neurologic</h3>
+                <Accordion title="i. Neurologic" content={
                 <div className={Styles["main_div__subdata"]}>
                   <p>Neurologic: {patients.physicalNeurologic}</p>
                   <p>Motor: {patients.physicalMotor}</p>
                   <p>Reflexes: {patients.physicalReflexes}</p>
                 </div>
+                }/>
               </div>
             </span>
+            }/>
 
             {/* Impression */}
+          <Accordion title="Impression" content={
             <span className={Styles["Patient__impression__container"]}>
-              <h3 className={Styles["Patient__impression__h3"]}>Impression</h3>
               <div className={Styles["main_div__subdata"]}>
                 <p>Impression: {patients.patientImpression}</p>
                 <p>Assessment and Plan: {patients.patientAssessmentPlan}</p>
                 <p>Uploaded Diagnostic Files: {patients.patientDiagnosticFiles}</p>
               </div>
             </span>
+          }/>
           </div>
         )}
       </div>

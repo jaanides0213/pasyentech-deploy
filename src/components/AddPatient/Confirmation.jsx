@@ -14,17 +14,12 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
     e.preventDefault();
 
     try {
-      // Call createPatient function and pass the patient data
       const patientId = await createPatient(values);
-
-      // You can handle the response as needed, for example, redirecting to a new page or showing a success message.
       console.log('Patient created successfully with ID:', patientId);
 
-      // Additional logic or navigation can be added here
       window.location.href = '/patient'; // temp only
     } catch (error) {
       console.error('Error creating patient:', error);
-      // Handle the error, show an alert, or perform other actions as needed
     }
   }
 
@@ -97,7 +92,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
           </div>
            }/>
 
-        <Accordion title="III. Review of Systems" content={
+       <Accordion title="III. Review of Systems" content={
           <div className={Styles["main_div__partition"]}>
             <div className={Styles["main_div__data"]}>
 
