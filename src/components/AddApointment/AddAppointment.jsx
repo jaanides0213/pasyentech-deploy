@@ -8,6 +8,7 @@ export class AddAppointment extends Component {
     patientName: '',
     apptDate: '',
     apptTime: '',
+    apptStatus: '',
     apptRemark: ''
   }
 
@@ -27,7 +28,8 @@ export class AddAppointment extends Component {
       if(
         !this.state.patientName ||
         !this.state.apptDate ||
-        !this.state.apptTime
+        !this.state.apptTime || 
+        !this.state.apptStatus
       ) {
         alert("Please fill in all required fields before proceeding.");
         return;
@@ -44,9 +46,9 @@ export class AddAppointment extends Component {
   render() {
     const { step } = this.state;
 
-    const {patientName, apptDate, apptTime, apptRemark } = this.state;
+    const {patientName, apptDate, apptTime, apptStatus, apptRemark } = this.state;
 
-    const values = {patientName, apptDate, apptTime, apptRemark}
+    const values = {patientName, apptDate, apptTime, apptStatus, apptRemark}
 
     switch (step){
       case 1:

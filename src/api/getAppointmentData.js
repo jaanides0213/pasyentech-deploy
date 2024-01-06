@@ -14,6 +14,7 @@ export const getAppointmentData = async () => {
       patientName: doc.data().patientName,
       apptDate: doc.data().apptDate,
       apptTime: doc.data().apptTime,
+      apptStatus: doc.data().apptStatus
     }));
     
     return appointmentData;

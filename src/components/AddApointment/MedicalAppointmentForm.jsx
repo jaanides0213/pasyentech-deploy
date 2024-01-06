@@ -55,6 +55,40 @@ const MedicalAppointmentForm = ({ prevStep, nextStep, handleChange, values }) =>
         </div>
 
         <div className={Styles["main_div"]}>
+          {/* For Status input */}
+          <div className={Styles["input_box_status"]}>
+            <div className={Styles["status_label_container"]}>
+              <label className={Styles["input_label"]}>
+                Status{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              </label>
+            </div>
+            <div className={Styles["Appointment_table_status"]}>
+              <select
+                className={Styles["status_option__select"]}
+                value={values.apptStatus}
+                onChange={handleChange('apptStatus')}
+              >
+                <option value="" className={Styles["status_option__style"]}>
+                  Choose an option
+                </option>
+                <option value="Scheduled" className={Styles["status_option__style"]}>
+                  Scheduled
+                </option>
+                <option value="Ongoing" className={Styles["status_option__style"]}>
+                  Ongoing
+                </option>
+                <option value="Done" className={Styles["status_option__style"]}>
+                  Done
+                </option>
+                <option value="Cancelled" className={Styles["status_option__style"]}>
+                  Cancelled
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className={Styles["main_div"]}>
           <div className={Styles["input_box_remarks"]}>
             <label className={Styles["input_label"]}>Remarks</label>
             <div>

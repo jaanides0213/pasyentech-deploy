@@ -14,6 +14,8 @@ import {getPrescriptionById} from "../../api/getPrescriptionById.js";
 
 const Prescription = () => {
   const [prescriptions, setPrescription] = useState([]);
+  const [searchPrescription, setSearchPrescription] = useState(""); // State for Search prescription functionality
+  const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
 
   useEffect(() => {
     // Fetch prescription data when the component mounts
@@ -30,9 +32,53 @@ const Prescription = () => {
     fetchData();
   }, []);
 
-  const handleViewPatient = async (prescriptionId) => {
+  const handleSearch = async () => {
+    // Convert search input to lowercase for case-insensitive search
+    const searchInput = searchPrescription.toLowerCase();
+  
+    try {
+      // Call the getPatientData function from the API file to fetch the original data
+      const prescriptionData = await getPrescriptionData();
+  
+      // Check if the search input is empty
+      if (searchInput.trim() === "") {
+        // If empty, reset to the original list of patients
+        setPrescription(prescriptionData);
+        setSearchResultMessage(""); // Clear the search result message
+      } else {
+        // Filter patients based on the search input in the patientName field
+        const filteredPrescription = prescriptionData.filter(
+          (prescription) =>
+            prescription.patientName &&
+            prescription.patientName.toLowerCase().includes(searchInput)
+        );
+  
+        // Update the state with the filtered patients
+        setPrescription(filteredPrescription);
+  
+        // Display search result message
+        setSearchResultMessage(
+          filteredPrescription.length > 0
+            ? ``
+            : "No matching patients found."
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching prescription:", error);
+      // Handle error as needed
+    }
+  };
+
+  const handleViewPrescription = async (prescriptionId) => {
     try {
       const prescriptionDetails = await getPrescriptionById(prescriptionId);
+
+      // Construct the URL for the Patient_View page with the patient's ID
+      const viewPatientUrl = `/prescription/view-prescription/${prescriptionId}`;
+
+      // Redirect the user to the Patient_View page
+      window.location.href = viewPatientUrl;
+
       // for debug
       console.log("Prescription Details:", prescriptionDetails);
     } catch (error) {
@@ -40,9 +86,9 @@ const Prescription = () => {
     }
   };
 
-    return (
-      <main className={Styles["Prescription__cont"]}>
-        <Sidebar />
+  return (
+    <main className={Styles["Prescription__cont"]}>
+      <Sidebar />
         <div className={Styles["Prescription__cont-main"]}>
           <div className={Styles["Prescription__cont-header"]}>
             <Header />
@@ -53,73 +99,106 @@ const Prescription = () => {
 
           {/* for searchbar/add/sort */}
           <div className={Styles["Prescription_search_add_container"]}>
+             {/*Prescription: Search patient*/}
             <div className={Styles["Prescription_search_bar"]}>
               <input
                 className={Styles["Prescription_search_input"]}
-                placeholder="Search prescription"
+                placeholder="Search patient"
+                onChange={(e) => setSearchPrescription(e.target.value)}
+                value={searchPrescription}
                 type="text"
               />
             </div>
             <div>
-              <button className={Styles["Prescription_search_button"]}>
+              <button onClick={handleSearch} className={Styles["Prescription_search_button"]}>
                 <HiSearch />
               </button>
             </div>
 
+            {/*Prescription: Add Prescription*/}
             <div className={Styles["Prescription_add_bar"]}>
               <button className={Styles["Prescription_add_button"]}>
                 <a href="/prescription/add-prescription-form" className={Styles["Patient_add_icon"]}>
-                  <IoMdAdd /> Add prescription
+                  <IoMdAdd /> Add Prescription
                 </a>
               </button>
+            </div>
+
+            {/*Prescription: Sort by*/}
+            {/*Remark: No backend yet*/}
+            <div className={Styles["Prescription_sort_by"]}>
+              <select
+                id="sortBy"
+                name="sortBy"
+                className={Styles["sorting_select__style"]}
+              >
+                <option value="" className={Styles["sorting_option__style"]}>
+                  Sort by
+                </option>
+                <option
+                  value="mostRecent"
+                  className={Styles["sorting_option__style"]}
+                >
+                  Most recent
+                </option>
+                <option value="name" className={Styles["sorting_option__style"]}>
+                  Name
+                </option>
+              </select>
             </div>
           </div>
 
           <div className={Styles["Prescription_list_cont"]}>
-            <table className={Styles["Prescription_table"]}>
-              <thead className={Styles["Prescription_table_main_head"]}>
-                <tr>
-                  <th className={Styles["Prescription_table_name"]}>Name</th>
-                  <th>Age</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody className={Styles["Prescription_table_data"]}>
-              {prescriptions.map((prescription) => {
-              return (
-                <tr key={prescription.id}>
-                  <td>{prescription.patientName}</td>
-                  <td>{prescription.patientAge}</td>
-                  <td>
-                    <div className={Styles["Prescription_table_action"]}>
-                      
-                      <div className={Styles["Action__Styling"]}>
-                        <a onClick={() => handleViewPatient(prescription.id)} className={Styles["Action__link__Styling"]}>
-                          <HiOutlineEye size="15px"/> View
-                        </a>
-                      </div>
+            {searchResultMessage && (
+              <div className={Styles["Search_result_message"]}>
+                {searchResultMessage}
+              </div>
+            )}
 
-                      <div className={Styles["Action__Styling"]}>
-                        <a  href="#" className={Styles["Action__link__Styling"]}>
-                          <HiOutlinePencilAlt size="15px" /> Edit
-                        </a>
-                      </div>
+            {prescriptions.length > 0 && (
+              <table className={Styles["Prescription_table"]}>
+                <thead className={Styles["Prescription_table_main_head"]}>
+                  <tr>
+                    <th className={Styles["Prescription_table_name"]}>Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
 
-                      <div className={Styles["Action__Styling"]}>
-                        <a href="#" className={Styles["Action__link__Styling"]}>
-                          <HiOutlineTrash size="15px" /> Delete
-                        </a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              );
-              })}
+                <tbody className={Styles["Prescription_table_data"]}>
+                {prescriptions.map((prescription) => {
+                  return (
+                    <tr key={prescription.id}>
+                      <td className={Styles["Prescription_td"]}>{prescription.patientName}</td>
+                      <td className={Styles["Prescription_td"]}>{prescription.patientAge}</td>
+                      <td className={Styles["Prescription_td"]}>
+                        <div className={Styles["Prescription_table_action"]}>
+                          <div className={Styles["Action__Styling"]}>
+                            <a onClick={() => handleViewPrescription(prescription.id)} className={Styles["Action__link__Styling"]}>
+                              <HiOutlineEye size="15px"/> View
+                            </a>
+                          </div>
+
+                          <div className={Styles["Action__Styling"]}>
+                            <a  href="#" className={Styles["Action__link__Styling"]}>
+                              <HiOutlinePencilAlt size="15px" /> Edit
+                            </a>
+                          </div>
+
+                          <div className={Styles["Action__Styling"]}>
+                            <a href="#" className={Styles["Action__link__Styling"]}>
+                              <HiOutlineTrash size="15px" /> Delete
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
+          )}
           </div>
-          
-        
         </div>
       </main>
     );
