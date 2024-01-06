@@ -1,13 +1,15 @@
-import React, { useState  } from "react"; // Import useState from React
+import React, { useEffect, useState  } from "react"; // Import useState from React
 import { HiPencil, HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Styles from "./AccountDetailsComponent.module.css"; // Adjust the import path
 import { getUserData } from "../../api/getUserData";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const AccountDetailsComponent = () => {
+const AccountDetailsComponent = ({userData}) => {
     // State to track password visibility
     const [CurrentPasswordVisible, setCurrentPasswordVisible] = useState(false);
     const [NewPasswordVisible, setNewPasswordVisible] = useState(false);
     const [ConfirmNewPasswordVisible, setConfirmNewPasswordVisible] = useState(false);
+    const [user, setUser] = useState(userData);
     
 
     // Function to toggle password visibility
@@ -25,6 +27,33 @@ const AccountDetailsComponent = () => {
         setConfirmNewPasswordVisible(!ConfirmNewPasswordVisible);
     };
 
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            try {
+            const userData = await getUserData(user.uid);
+            console.log("User Data:", userData); //must be removed
+            setUser(userData);
+            } catch (error) {
+            console.error("Error fetching user data:", error);
+            }
+        } else {
+            setUser(null);
+        }
+        });
+
+        return () => {
+        unsubscribe();
+        };
+    }, [userData]);
+
+    const userFName = user ? user.fname : "";
+    const userLName = user ? user.lname : "";
+    const usercontactNo = user ? user.contactNo : "";
+    const userEmail = user ? user.email : "";
+    const userPassword = user ? user.password : "";
+
     return (
     <div className={Styles["AccountDetails__cont-column-main"]}>
         
@@ -39,7 +68,10 @@ const AccountDetailsComponent = () => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type="text"
-                        className={Styles["AccountDetails__input"]}>
+                        className={Styles["AccountDetails__input"]}
+                        value={userFName} //add an onchange handler para maka edit info hehe
+                        //for now, naa pay warning sa console log coz wala nako gibutngan ug onchange handler
+                        >
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}>
@@ -52,7 +84,8 @@ const AccountDetailsComponent = () => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type="text"
-                        className={Styles["AccountDetails__input"]}>
+                        className={Styles["AccountDetails__input"]}
+                        value={userLName}>
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}>
@@ -78,7 +111,8 @@ const AccountDetailsComponent = () => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type="text"
-                        className={Styles["AccountDetails__input"]}>
+                        className={Styles["AccountDetails__input"]}
+                        value={usercontactNo}>
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}>
@@ -91,7 +125,8 @@ const AccountDetailsComponent = () => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type="email"
-                        className={Styles["AccountDetails__input"]}>
+                        className={Styles["AccountDetails__input"]}
+                        value={userEmail}>
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}>
@@ -117,7 +152,8 @@ const AccountDetailsComponent = () => {
                 <div className={Styles["AccountDetails__input-wrapper"]}>
                     <input
                         type={CurrentPasswordVisible ? "text" : "password"}
-                        className={Styles["AccountDetails__input"]}>
+                        className={Styles["AccountDetails__input"]}
+                        value={userPassword}>
                     </input>
                     <button
                         className={Styles["AccountDetails__edit-detail"]}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from "./AddAppointment.module.css";
+import {createAppointment} from "../../api/createAppointment";
 
 const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
   const Previous = e => {
@@ -7,9 +8,20 @@ const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
     prevStep();
   };
 
-  const Continue = e => {
+  const Continue = async (e) => {
     e.preventDefault();
-    window.location.href = '/appointment'; // temp only
+
+    try {
+      const appointmentId = await createAppointment({
+        ...values,
+        dateOfAppointment: values.dateOfAppointment || "Default Date",
+      });
+      console.log("appointment ID:", appointmentId);
+      
+      window.location.href = '/appointment';
+    } catch (error) {
+      console.error('Error creating appointment:', error);
+    }
   };
 
   return (

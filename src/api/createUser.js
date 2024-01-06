@@ -26,6 +26,7 @@ import {
         fname: fname,
         lname: lname,
         email: email,
+        password: password,
         role: "pending",
         contactNo: contactNo, // Store the contact number in the user document
       });
@@ -36,6 +37,7 @@ import {
         firstName: fname,
         lastName: lname,
         email: email,
+        password: password,
         createdAt: serverTimestamp(),
         status: "pending",
       });

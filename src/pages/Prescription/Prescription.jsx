@@ -30,14 +30,11 @@ const Prescription = () => {
     fetchData();
   }, []);
 
-  console.log("Prescription Data:", prescriptions);
-
   const handleViewPatient = async (prescriptionId) => {
     try {
       const prescriptionDetails = await getPrescriptionById(prescriptionId);
-      // Display the prescription details as needed
+      // for debug
       console.log("Prescription Details:", prescriptionDetails);
-      // You can set the details in the state or navigate to a new component to display the details
     } catch (error) {
       console.error("Error fetching prescription details:", error);
     }

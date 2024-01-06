@@ -5,10 +5,9 @@ import { db } from "../config/firebase";
 
 export const getPrescriptionData = async () => {
   try {
-    const prescriptionsCollection = collection(db, "prescriptions");
+    const prescriptionsCollection = collection(db, "prescription");
     const prescriptionsSnapshot = await getDocs(prescriptionsCollection);
 
-    // Map each document's data to include id, age, sex, and name
     const prescriptionsData = prescriptionsSnapshot.docs.map((doc) => ({
       
       id: doc.id,

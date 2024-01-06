@@ -9,24 +9,21 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
     prevStep()
   }
 
-  const Continue = async e => {
+  const Continue = async (e) => {
     e.preventDefault();
 
     try {
-      // Check if dateOfConsultation is defined and provide a default value if not
       const prescriptionId = await createPrescription({
         ...values,
         dateOfConsultation: values.dateOfConsultation || "Default Date",
       });
-
-      //for debugging
-      console.log('Prescription created successfully with ID:', prescriptionId);
-
+      console.log("Prescription ID:", prescriptionId);
+      
       window.location.href = '/prescription';
     } catch (error) {
       console.error('Error creating prescription:', error);
     }
-  }
+  };
   
   return (
     <main>

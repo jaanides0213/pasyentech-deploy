@@ -3,7 +3,7 @@ import { db } from "../config/firebase";
 
 export const getPrescriptionById = async (prescriptionId) => {
   try {
-    const prescriptionRef = doc(db, "prescriptions", prescriptionId);
+    const prescriptionRef = doc(db, "prescription", prescriptionId);
     const prescriptionSnapshot = await getDoc(prescriptionRef);
 
     if (prescriptionSnapshot.exists()) {

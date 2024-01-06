@@ -41,7 +41,7 @@ const Dashboard = ({ userData }) => {
     return `${month}-${day}-${year}`;
   };
 
-  const userFName = user ? user.fname : ""; // Use user state instead of userData prop
+  const userFName = user ? user.fname : "";
 
   return (
     <main className={Styles["Dashboard__cont"]}>

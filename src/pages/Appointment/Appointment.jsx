@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, } from "react";
+import {useState, useEffect} from "react";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Styles from "./Appointment.module.css";
 import Header from "../../components/Header/Header.jsx";
@@ -9,9 +10,36 @@ import {
   HiOutlineEye,
   HiOutlineTrash,
 } from "react-icons/hi";
+import {getAppointmentData} from "../../api/getAppointmentData";
+import {getAppointmentById} from "../../api/getAppointmentById.js";
 
-export class Appointment extends Component {
-  render() {
+const Appointment = () => {
+  const [appointment, setAppointment] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const appointmentData = await getAppointmentData();
+        console.log("Appointment Data:", appointmentData);
+        setAppointment(appointmentData);
+      } catch (error) {
+        console.error("Error fetching appointment data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleViewPatient = async (appointmentId) => {
+    try {
+      const appointmentDetails = await getAppointmentById(appointmentId);
+      // for debug
+      console.log("appointment Details:", appointmentDetails);
+    } catch (error) {
+      console.error("Error fetching appointment details:", error);
+    }
+  };
+
     return (
       <main className={Styles["Appointment__cont"]}>
         <Sidebar />
@@ -58,10 +86,12 @@ export class Appointment extends Component {
                   </tr>
                 </thead>
                 <tbody className={Styles["Appointment_table_data"]}>
-                  <tr>
-                    <td>Name</td>
-                    <td>Date</td>
-                    <td>Time</td>
+                  {appointment.map((appointment) => {
+                  return (
+                  <tr key={appointment.id}> 
+                    <td>{appointment.patientName}</td>
+                    <td>{appointment.apptDate}</td>
+                    <td>{appointment.apptTime}</td>
                     <td>
                       <div className={Styles["Appointment_table_status"]}>
                         <select className={Styles["status_option__select"]}>
@@ -100,13 +130,14 @@ export class Appointment extends Component {
                       </div>
                     </td>
                   </tr>
+                  );
+                  })}
                 </tbody>
               </table>
             </div>
         </div>
       </main>
     );
-  }
 }
 
 export default Appointment;
