@@ -185,7 +185,6 @@ const Prescription = () => {
                     <th>Age</th>
                     <th>Date</th>
                     <th>Actions</th>
-                    
                   </tr>
                 </thead>
 

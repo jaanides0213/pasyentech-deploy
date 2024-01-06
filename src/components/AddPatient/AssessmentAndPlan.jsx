@@ -17,11 +17,12 @@ const AssessmentAndPlan = ({ prevStep, nextStep, handleChange, values }) => {
 
   return (
     <form>
+      <h3 className={Styles["h3___styling"]}>Impression, Assessment and Plan, and Diagnostic Files</h3>
       <Accordion title="I. Impression" content={
         <div className={Styles["main_div"]}>
           <div className={Styles["input_box_textarea"]}>
             <label className={Styles["input_label"]}>
-              Impression{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              Impression
             </label>
             <div>
               <textarea
@@ -29,7 +30,6 @@ const AssessmentAndPlan = ({ prevStep, nextStep, handleChange, values }) => {
                 value={values.patientImpression}
                 onChange={handleChange('patientImpression')}
                 className={Styles["textareaStyle"]}
-                required
               />
             </div>
           </div>
@@ -40,7 +40,7 @@ const AssessmentAndPlan = ({ prevStep, nextStep, handleChange, values }) => {
         <div className={Styles["main_div"]}>
           <div className={Styles["input_box_textarea"]}>
             <label className={Styles["input_label"]}>
-              Assessment and Plan{isRequired && <span className={Styles["required_asterisk"]}> *</span>}
+              Assessment and Plan
             </label>
             <div>
               <textarea
@@ -48,7 +48,6 @@ const AssessmentAndPlan = ({ prevStep, nextStep, handleChange, values }) => {
                 value={values.patientAssessmentPlan}
                 onChange={handleChange('patientAssessmentPlan')}
                 className={Styles["textareaStyle"]}
-                required
               />
             </div>
           </div>

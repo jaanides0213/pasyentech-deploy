@@ -37,7 +37,7 @@ const DashboardAppointment = () => {
           <div key={appointment.id} className={Styles["DashboardAppointment_sample1"]}>
             <div className={Styles["DashboardAppointment_row1"]}>
               <p className={Styles["DashboardAppointment_patientName"]}>{appointment.patientName}</p>
-              <p className={Styles["DashboardAppointment_status"]}>{appointment.apptStatus}</p>
+              {/* <p className={Styles["DashboardAppointment_status"]}>{appointment.apptStatus}</p> */}
             </div>
             <div className={Styles["DashboardAppointment_row2"]}>
               <p className={Styles["DashboardAppointment_schedule"]}>

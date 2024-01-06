@@ -48,7 +48,8 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
               <p><strong>Medication {index + 1}</strong></p>
               <p>Generic Name: {medication.genericName}</p>
               <p>Brand Name: {medication.brandName}</p>
-              <p>Dosage: {medication.dosageNum} {medication.dosageUnit}</p>
+              <p>Number of Units: {medication.dosageUnit}</p>
+              <p>Dosage: {medication.dosageNum} </p>
               <p>Direction of Use: {medication.directionOfUse}</p>
             </div>
           ))}

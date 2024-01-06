@@ -113,7 +113,21 @@ form {
     border: 1px solid #8F001E;
     padding-left: 10px;
     font-family: "Inter",sans-serif;
-    width: 4.5rem;
+    width: 5rem;
+    margin-right: 13px;
+} 
+
+.input_box_dosageUnit input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 8rem;
     margin-right: 13px;
 } 
 
@@ -209,6 +223,7 @@ form {
     .input_box_address input,
     .input_box_calendar input,
     .input_box_dosage input,
+    .input_box_dosageUnit input,
     .input_box_genericName input,
     .input_box_brandName input,
     .textareaStyle {
