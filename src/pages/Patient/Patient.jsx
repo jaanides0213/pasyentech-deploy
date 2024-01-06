@@ -142,6 +142,7 @@ const Patient = () => {
               </a>
             </button>
           </div>
+          
           {/*backend must be updated*/}
           <div className={Styles["Patient_sort_by"]}>
             <select

@@ -11,6 +11,34 @@ body {
     z-index: 1;  
 }
 
+.Prescription__print__container {
+   margin-top: 1.25rem;
+    font-weight: bold;
+    align-items: center;
+}
+
+.Prescription__print__container a {
+    background-color: #8F001E;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8.5px;
+    padding-bottom: 8.5px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.Prescription__print__container a:hover {
+    background-color: #8F001E;
+    color: white;
+}
+
+.printBtn_style {
+    color: #8F001E;
+    background-color: white;
+    height: 10px;
+}
+
 .Prescription__cont-main{
     display: flex;
     flex-direction: column;
@@ -21,7 +49,6 @@ body {
 .Prescription__hr {
     border: none;
     border: 1px solid #8F001E;
-    margin-top: 0.5rem;
 }
 
 .Prescription_search_add_container {
@@ -57,7 +84,6 @@ body {
 }
 
 .Prescription_add_bar button {
-   
     height: 2.25rem;
     border-radius: 0;
     border: none;
@@ -73,7 +99,6 @@ body {
 .Prescription_add_bar a:hover {
     color: white;
 }
-
 
 .Prescription_add_bar {
     margin-left: 1.5rem;
@@ -98,6 +123,13 @@ body {
     font-family: "Inter", sans-serif;  
 }
 
+.sorting_option__style {
+    padding: 7.5px;
+    background-color: white;
+    color: #8F001E;
+    border: 1px solid;
+}
+
 /*Prescription table*/
 .Prescription_list_cont{
     margin-top: 1.5rem;
@@ -118,7 +150,7 @@ body {
     padding: 15px;
 }
 
-.Precription_table_data td{
+.Prescription_td {
     font-size: 15px;
     text-align: center;
     padding: 10px;
@@ -154,4 +186,13 @@ body {
 /* for Prescription_Form css*/
 .add-Prescription-form {
     max-width: 100%;
+}
+
+/* Patient_View Styling */
+.Prescription__patientInfo__span,.Prescription__patientInfo__span1 {
+    line-height: 15px;
+}
+
+.Prescription__patientInfo__span {
+    margin-bottom: 2.5rem;
 }

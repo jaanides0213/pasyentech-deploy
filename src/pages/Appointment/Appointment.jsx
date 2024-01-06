@@ -1,5 +1,4 @@
-import React, { Component, } from "react";
-import {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Styles from "./Appointment.module.css";
 import Header from "../../components/Header/Header.jsx";
@@ -15,6 +14,8 @@ import {getAppointmentById} from "../../api/getAppointmentById.js";
 
 const Appointment = () => {
   const [appointment, setAppointment] = useState([]);
+  const [searchAppointment, setSearchAppointment] = useState(""); // State for Search appointment functionality
+  const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,13 +31,57 @@ const Appointment = () => {
     fetchData();
   }, []);
 
-  const handleViewPatient = async (appointmentId) => {
+  const handleSearch = async () => {
+    // Convert search input to lowercase for case-insensitive search
+    const searchInput = searchAppointment.toLowerCase();
+  
+    try {
+      // Call the getPatientData function from the API file to fetch the original data
+      const appointmentData = await getAppointmentData();
+  
+      // Check if the search input is empty
+      if (searchInput.trim() === "") {
+        // If empty, reset to the original list of appointments
+        setAppointment(appointmentData);
+        setSearchResultMessage(""); // Clear the search result message
+      } else {
+        // Filter patients based on the search input in the patientName field
+        const filteredAppointment = appointmentData.filter(
+          (appointment) =>
+            appointment.patientName &&
+            appointment.patientName.toLowerCase().includes(searchInput)
+        );
+  
+        // Update the state with the filtered patients
+        setAppointment(filteredAppointment);
+  
+        // Display search result message
+        setSearchResultMessage(
+          filteredAppointment.length > 0
+            ? ``
+            : "No matching patients found."
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching appointment:", error);
+      // Handle error as needed
+    }
+  };
+
+  const handleViewAppointment = async (appointmentId) => {
     try {
       const appointmentDetails = await getAppointmentById(appointmentId);
+
+      // Construct the URL for the Patient_View page with the patient's ID
+      const viewPatientUrl = `/appointment/view-appointment/${appointmentId}`;
+
+      // Redirect the user to the Patient_View page
+      window.location.href = viewPatientUrl;
+
       // for debug
-      console.log("appointment Details:", appointmentDetails);
+      console.log("Appointment Details:", appointmentDetails);
     } catch (error) {
-      console.error("Error fetching appointment details:", error);
+      console.error("Error fetching prescription details:", error);
     }
   };
 
@@ -56,25 +101,57 @@ const Appointment = () => {
             <div className={Styles["Appointment_search_bar"]}>
               <input
                 className={Styles["Appointment_search_input"]}
-                placeholder="Search"
+                placeholder="Search patient"
+                onChange={(e) => setSearchAppointment(e.target.value)}
+                value={searchAppointment}
                 type="text"
               />
             </div>
+
             <div>
-              <button className={Styles["Appointment_search_button"]}>
+              <button  onClick={handleSearch} className={Styles["Appointment_search_button"]}>
                 <HiSearch />
               </button>
             </div>
+
             <div className={Styles["Appointment_add_bar"]}>
               <button className={Styles["Appointment_add_button"]}>
                 <a href="/appointment/add-appointment-form">
-                  <IoMdAdd /> Add appointment
+                  <IoMdAdd /> Add Appointment
                 </a>
               </button>
+            </div>
+
+            <div className={Styles["Appointment_sort_by"]}>
+              <select
+                id="sortBy"
+                name="sortBy"
+                className={Styles["sorting_select__style"]}
+              >
+                <option value="" className={Styles["sorting_option__style"]}>
+                  Sort by
+                </option>
+                <option
+                  value="mostRecent"
+                  className={Styles["sorting_option__style"]}
+                >
+                  Most recent
+                </option>
+                <option value="name" className={Styles["sorting_option__style"]}>
+                  Name
+                </option>
+              </select>
             </div>
           </div>
 
           <div className={Styles["Appointment_list_cont"]}> 
+            {searchResultMessage && (
+              <div className={Styles["Search_result_message"]}>
+                {searchResultMessage}
+              </div>
+            )}
+
+            {appointment.length > 0 && (
               <table className={Styles["Appointment_table"]}>
                 <thead className={Styles["Appointment_table_main_head"]}>
                   <tr>
@@ -92,8 +169,8 @@ const Appointment = () => {
                     <td>{appointment.patientName}</td>
                     <td>{appointment.apptDate}</td>
                     <td>{appointment.apptTime}</td>
-                    <td>
-                      <div className={Styles["Appointment_table_status"]}>
+                    <td>{appointment.apptStatus}
+                      {/* <div className={Styles["Appointment_table_status"]}>
                         <select className={Styles["status_option__select"]}>
                           <option value="Scheduled" className={Styles["status_option__style"]}>
                             Scheduled
@@ -108,12 +185,12 @@ const Appointment = () => {
                             Cancelled
                           </option>
                         </select>
-                      </div>
+                      </div> */}
                     </td>
                     <td>
                       <div className={Styles["Appointment_table_action"]}>
                         <div className={Styles["Action__Styling"]}>
-                          <a className={Styles["Action__link__Styling"]}>
+                          <a onClick={() => handleViewAppointment(appointment.id)}  className={Styles["Action__link__Styling"]}>
                             <HiOutlineEye size="15px" /> View
                           </a>
                         </div>
@@ -134,6 +211,7 @@ const Appointment = () => {
                   })}
                 </tbody>
               </table>
+            )}
             </div>
         </div>
       </main>

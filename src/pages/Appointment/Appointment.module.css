@@ -58,7 +58,6 @@ body {
 }
 
 .Appointment_add_bar button {
-   
     height: 2.25rem;
     border-radius: 0;
     border: none;
@@ -75,7 +74,6 @@ body {
     color: white;
 }
 
-
 .Appointment_add_bar {
     margin-left: 1.5rem;
     border-radius: 0;
@@ -90,7 +88,6 @@ body {
 }
 
 .sorting_select__style {
-    
     font-size: 13.5px;
     font-weight: 450;
     background-color: #8F001E;
@@ -131,7 +128,7 @@ body {
 }
 
 .Appointment_table_date, .Appointment_table_time {
-    width: 10%;
+    width: 15%;
 }
 
 .Patient_table_date, .Patient_table_time {
@@ -326,3 +323,8 @@ input[type="file"]::file-selector-button {
     background-color: #f1f1f1; /* Color of the track */
     border-radius: 10px; /* Rounded corners of the track */
   }
+
+  /* View appointment (styling)*/
+ .Appointment__info__container {
+    line-height: 15px;
+ }

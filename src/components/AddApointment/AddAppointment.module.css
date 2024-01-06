@@ -64,6 +64,19 @@ form {
     font-family: "Inter",sans-serif;
 }
 
+.status_option__select {
+    background-color: #8F001E;
+    color: white;
+    font-family: "Inter", sans-serif;  
+    padding: 8.5px;
+    width: 12.8rem;
+}
+
+.status_option__style {
+    background-color: white;
+    color: #8F001E;
+}
+
 .textareaStyle {
     color: black;
     background-color: white;
