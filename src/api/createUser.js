@@ -6,7 +6,7 @@ import {
   import { setDoc, doc, serverTimestamp } from "firebase/firestore";
   import { auth, db } from "../config/firebase";
   
-  export const createUser = async (email, password, fname, lname, contactNo, navigate, notePad) => {
+  export const createUser = async (email, password, fname, lname, contactNo, navigate) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   
@@ -19,10 +19,7 @@ import {
   
       // Send email verification
       await sendEmailVerification(user); //not yet implemented but will implement soon
-  
-      // Create user document
 
-      const userNotePad = notePad || "";
       
       const docRef = doc(db, "users", user.uid);
       await setDoc(docRef, {
@@ -31,7 +28,6 @@ import {
         email: email,
         role: "pending",
         contactNo: contactNo,
-        notePad: userNotePad,
       });
   
       // Create request document

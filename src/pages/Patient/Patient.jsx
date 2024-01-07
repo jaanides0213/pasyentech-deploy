@@ -91,20 +91,15 @@ const Patient = () => {
 
   const handleViewPatient = async (patientId) => {
     try {
-      // Call the new getPatientById function from the API file
       const patient = await getPatientById(patientId);
 
-      // Construct the URL for the Patient_View page with the patient's ID
       const viewPatientUrl = `/patient/view-patient/${patientId}`;
 
-      // Redirect the user to the Patient_View page
       window.location.href = viewPatientUrl;
 
-      // Display the patient details (you can customize this part)
       console.log("Patient details:", patient);
     } catch (error) {
       console.error("Error viewing patient:", error);
-      // Handle error as needed
     }
   };
 
