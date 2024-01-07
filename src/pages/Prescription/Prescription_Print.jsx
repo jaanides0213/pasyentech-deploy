@@ -67,6 +67,7 @@ const Prescription_Print = () => {
                     {prescription.medications.map((medication, index) => (
                     <div key={index}>
                         <div className={Styles['Print__Prescription__medicationList__row1']}>
+                            <p>{index+1}.</p>
                             <p>{medication.genericName}</p>
                             <p>{medication.brandName}</p>
                             <p>{medication.dosageNum} </p>

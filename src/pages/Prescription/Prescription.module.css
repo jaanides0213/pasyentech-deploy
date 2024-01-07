@@ -273,7 +273,7 @@ body {
 .Print__Prescription__medicationList__row2 {
     margin-right: auto; /* Move the consultation date to the left */
     text-align: left;
-    padding-left: 70px;
+    padding-left: 150px;
     padding-right: 70px;
     margin-top: -1.5rem;
 }
