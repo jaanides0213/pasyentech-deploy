@@ -16,20 +16,27 @@ const PatientInformation = ({prevStep, nextStep, handleChange, values}) => {
         if (!isNaN(value) && value >= 0) {
             handleChange('patientAge')(e);
         } else {
-            console.log("ERROR: Invalid input.");
+            console.log("ERROR: Invalid input for Age.");
         }
     };
 
     const handlePhoneChange = e => {
-        // Validate that the input is a valid 11-digit Philippine cellphone number
+        // Validate that the input is a valid number
         const value = e.target.value;
-
-        // to be updated: valid 11-digit philippine number only
         if (!isNaN(value) && value >= 0) {
             handleChange('phoneNumber')(e);
         } else {
-            console.log("ERROR: Invalid input.");
+            console.log("ERROR: Invalid input for Phone Number.");
         }
+        // Validate that the input is a valid 11-digit Philippine cellphone number
+        // const value = e.target.value;
+
+        // // Updated: valid 11-digit Philippine number only
+        // if (/^\d+$/.test(value) && value.length === 11) {
+        //     handleChange('phoneNumber')(e);
+        // } else {
+        //     console.log("ERROR: Invalid input for Phone Number.");
+        // }
     };
 
     return (

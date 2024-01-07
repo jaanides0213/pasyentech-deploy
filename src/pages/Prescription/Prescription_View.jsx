@@ -42,6 +42,12 @@ const Prescription_View = () => {
     }
   };
 
+  const formatConsultationDate = () => {
+    const originalDate = new Date(prescription.patientConsultationDate);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <main className={Styles["Prescription__cont"]}>
       <Sidebar/>
@@ -65,13 +71,14 @@ const Prescription_View = () => {
             <p>Sex: {prescription.patientSex}</p>
             <p>Weight: {prescription.patientWeight} {prescription.patientWeightUnit}</p>
             <p>Address: {prescription.patientAddress}</p>
-            <p>Consultation date: {prescription.patientConsultationDate}</p>
+            <p>Consultation date: {formatConsultationDate()}</p>
           </div> 
 
           <div className={Styles["Prescription__patientInfo__span1"]}>
             <h3>Medications</h3>
             {prescription.medications.map((medication, index) => (
               <div key={index}>
+                <p><strong>Medication {index + 1}</strong></p>
                 <p>Number of Units: {medication.dosageUnit}</p>
                 <p>Dosage: {medication.dosageNum} </p>
                 <p>Generic Name: {medication.genericName}</p>

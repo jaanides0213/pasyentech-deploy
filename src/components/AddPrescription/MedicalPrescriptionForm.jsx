@@ -44,6 +44,16 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
         }
     };
 
+    const handleWeightChange = e => {
+        // Validate that the input is a valid number
+        const value = e.target.value;
+        if (!isNaN(value) && value >= 0) {
+            handleChange('patientWeight')(e);
+        } else {
+            console.log("ERROR: Invalid input for Weight.");
+        }
+    };
+
     const handleDosageNumChange = (e, index) => {
         const newMedications = [...medications];
         newMedications[index].dosageNum = e.target.value;
@@ -137,7 +147,8 @@ const MedicalPrescriptionForm = ({prevStep, nextStep, handleChange, values, medi
                         <input 
                             type="text"  
                             value={values.patientWeight} 
-                            onChange={handleChange('patientWeight')}
+                            onChange={handleWeightChange}
+                            // onChange={handleChange('patientWeight')}
                             required
                         />
                     </div>

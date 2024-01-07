@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Styles from './Prescription.module.css';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Header from '../../components/Header/Header';
 import { getPrescriptionById } from '../../api/getPrescriptionById';
 import { useParams } from 'react-router-dom';
 
@@ -28,6 +26,12 @@ const Prescription_Print = () => {
     fetchPrescription();
   }, [id]);
 
+  const formatConsultationDate = () => {
+    const originalDate = new Date(prescription.patientConsultationDate);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <main className={Styles['Print__Prescription__cont']}>
       {prescription && (
@@ -38,7 +42,7 @@ const Prescription_Print = () => {
             </div>
 
             <div className={Styles['Print__Prescription__consultationDate']}>
-                <p>Consultation Date: {prescription.patientConsultationDate}</p>
+              <p>Consultation date: {formatConsultationDate()}</p>
             </div>
 
             <div className={Styles['Print__Prescription__patientDetails__cont']}>

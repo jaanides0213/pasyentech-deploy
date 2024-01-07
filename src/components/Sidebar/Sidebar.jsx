@@ -76,8 +76,10 @@ const Sidebar = () => {
             </a>
             <a
               href="/patient"
-              /*"Patients" is not bold in the Sidebar when user navigates to View_Patient.jsx*/
-              className={isLinkActive("/patient") || isLinkActive("/patient/add-patient-form") || isLinkActive("/patient/view-patient/${patientId}") ? Styles["active-link"] : ""}
+              className={
+                /*"Patients" is not bold in the Sidebar when user navigates to View_Patient.jsx*/
+                isLinkActive("/patient") || isLinkActive("/patient/add-patient-form") || isLinkActive("/patient/view-patient/${patientId}") ? Styles["active-link"] : ""
+              }
             >
               <p>
                 <HiUsers size="1rem" /> Patients
@@ -85,7 +87,8 @@ const Sidebar = () => {
             </a>
             <a
               href="/prescription"
-              className={isLinkActive("/prescription") || isLinkActive("/prescription/add-prescription-form")? Styles["active-link"] : ""}
+              /*Same issue as Patients*/
+              className={isLinkActive("/prescription") || isLinkActive("/prescription/add-prescription-form") || isLinkActive("/prescription/view-prescription/${prescriptionId}") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiPencil size="1rem" /> Prescription
@@ -93,7 +96,8 @@ const Sidebar = () => {
             </a>
             <a
               href="/appointment"
-              className={isLinkActive("/appointment") || isLinkActive("/appointment/add-appointment-form")? Styles["active-link"] : ""}
+              /*Same issue as Appointments*/
+              className={isLinkActive("/appointment") || isLinkActive("/appointment/add-appointment-form") || isLinkActive("/appointment/view-appointment/${appointmentId}")? Styles["active-link"] : ""}
             >
               <p>
                 <HiCalendar size="1rem" /> Appointments
@@ -154,8 +158,8 @@ const Sidebar = () => {
               </p>
             </a>
             <a
-              href="/accountdetails"
-              className={isLinkActive("/accountdetails") ? Styles["active-link"] : ""}
+              href="/account-details"
+              className={isLinkActive("/account-details") ? Styles["active-link"] : ""}
             >
               <p>
                 <HiAdjustments
