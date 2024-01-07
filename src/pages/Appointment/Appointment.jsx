@@ -9,35 +9,37 @@ import {
   HiOutlineEye,
   HiOutlineTrash,
 } from "react-icons/hi";
-import {getAppointmentData} from "../../api/getAppointmentData";
-import {getAppointmentById} from "../../api/getAppointmentById.js";
+import { getAppointmentData } from "../../api/getAppointmentData";
+import { getAppointmentById } from "../../api/getAppointmentById.js";
+import { deleteAppointmentById } from "../../api/deleteAppointmentById.jsx";
 
 const Appointment = () => {
   const [appointment, setAppointment] = useState([]);
   const [searchAppointment, setSearchAppointment] = useState(""); // State for Search appointment functionality
   const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
-  const [sortBy, setSortBy] = useState(""); 
+  const [sortBy, setSortBy] = useState("");
 
   const handleSort = (option) => {
     setSortBy(option);
-  
+
     if (option === "mostRecent") {
       setAppointment((prevAppointment) =>
         [...prevAppointment].sort((a, b) => {
           const dateA = a.apptDate ? new Date(a.apptDate) : 0;
           const dateB = b.apptDate ? new Date(b.apptDate) : 0;
-  
+
           return dateB - dateA;
         })
       );
     } else if (option === "name") {
       setAppointment((prevAppointment) =>
-        [...prevAppointment].sort((a, b) => a.patientName.localeCompare(b.patientName))
+        [...prevAppointment].sort((a, b) =>
+          a.patientName.localeCompare(b.patientName)
+        )
       );
     }
   };
-  
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,11 +57,11 @@ const Appointment = () => {
   const handleSearch = async () => {
     // Convert search input to lowercase for case-insensitive search
     const searchInput = searchAppointment.toLowerCase();
-  
+
     try {
       // Call the getPatientData function from the API file to fetch the original data
       const appointmentData = await getAppointmentData();
-  
+
       // Check if the search input is empty
       if (searchInput.trim() === "") {
         // If empty, reset to the original list of appointments
@@ -72,15 +74,13 @@ const Appointment = () => {
             appointment.patientName &&
             appointment.patientName.toLowerCase().includes(searchInput)
         );
-  
+
         // Update the state with the filtered patients
         setAppointment(filteredAppointment);
-  
+
         // Display search result message
         setSearchResultMessage(
-          filteredAppointment.length > 0
-            ? ``
-            : "No matching patients found."
+          filteredAppointment.length > 0 ? `` : "No matching patients found."
         );
       }
     } catch (error) {
@@ -106,96 +106,123 @@ const Appointment = () => {
     }
   };
 
-    return (
-      <main className={Styles["Appointment__cont"]}>
-        <Sidebar />
-        <div className={Styles["Appointment__cont-main"]}>
-          <div className={Styles["Appointment__cont-header"]}>
-            <Header />
+  const handleDeleteAppointment = async (appointmentId, patientName) => {
+    const userConfirmed = window.confirm(
+      `Are you sure you want to delete this appointment?`
+    );
+
+    if (!userConfirmed) {
+      alert(`Deletion Canceled. Action was not confirmed.`);
+      return;
+    }
+
+    try {
+      await deleteAppointmentById(appointmentId);
+      alert(`Appointment for ${patientName} has been deleted.`);
+      setAppointment((prevAppointments) =>
+        prevAppointments.filter(
+          (appointment) => appointment.id !== appointmentId
+        )
+      );
+      console.log(`Appointment deleted successfully.`);
+      window.location.reload();
+    } catch (error) {
+      console.error(`Error deleting appointment ${appointmentId}.`);
+    }
+  };
+
+  return (
+    <main className={Styles["Appointment__cont"]}>
+      <Sidebar />
+      <div className={Styles["Appointment__cont-main"]}>
+        <div className={Styles["Appointment__cont-header"]}>
+          <Header />
+        </div>
+        <div className={Styles["Appointment__cont-column-main"]}>
+          <h2>Appointments</h2>
+        </div>
+
+        {/* for searchbar/add/sort */}
+        <div className={Styles["Appointment_search_add_container"]}>
+          <div className={Styles["Appointment_search_bar"]}>
+            <input
+              className={Styles["Appointment_search_input"]}
+              placeholder="Search patient"
+              onChange={(e) => setSearchAppointment(e.target.value)}
+              value={searchAppointment}
+              type="text"
+            />
           </div>
-          <div className={Styles["Appointment__cont-column-main"]}>
-            <h2>Appointments</h2>
+
+          <div>
+            <button
+              onClick={handleSearch}
+              className={Styles["Appointment_search_button"]}
+            >
+              <HiSearch />
+            </button>
           </div>
 
-          {/* for searchbar/add/sort */}
-          <div className={Styles["Appointment_search_add_container"]}>
-            <div className={Styles["Appointment_search_bar"]}>
-              <input
-                className={Styles["Appointment_search_input"]}
-                placeholder="Search patient"
-                onChange={(e) => setSearchAppointment(e.target.value)}
-                value={searchAppointment}
-                type="text"
-              />
-            </div>
+          <div className={Styles["Appointment_add_bar"]}>
+            <button className={Styles["Appointment_add_button"]}>
+              <a href="/appointment/add-appointment-form">
+                <IoMdAdd /> Add Appointment
+              </a>
+            </button>
+          </div>
 
-            <div>
-              <button  onClick={handleSearch} className={Styles["Appointment_search_button"]}>
-                <HiSearch />
-              </button>
-            </div>
-
-            <div className={Styles["Appointment_add_bar"]}>
-              <button className={Styles["Appointment_add_button"]}>
-                <a href="/appointment/add-appointment-form">
-                  <IoMdAdd /> Add Appointment
-                </a>
-              </button>
-            </div>
-
-            <div className={Styles["Appointment_sort_by"]}>
-              <select
-                id="sortBy"
-                name="sortBy"
-                className={Styles["sorting_select__style"]}
-                onChange={(e) => handleSort(e.target.value)}
+          <div className={Styles["Appointment_sort_by"]}>
+            <select
+              id="sortBy"
+              name="sortBy"
+              className={Styles["sorting_select__style"]}
+              onChange={(e) => handleSort(e.target.value)}
               value={sortBy}
-              
+            >
+              <option value="" className={Styles["sorting_option__style"]}>
+                Sort by
+              </option>
+              <option
+                value="mostRecent"
+                className={Styles["sorting_option__style"]}
               >
-                <option value="" className={Styles["sorting_option__style"]}>
-                  Sort by
-                </option>
-                <option
-                  value="mostRecent"
-                  className={Styles["sorting_option__style"]}
-                >
-                  Most recent
-                </option>
-                <option value="name" className={Styles["sorting_option__style"]}>
-                  Name
-                </option>
-               
-              </select>
-            </div>
+                Most recent
+              </option>
+              <option value="name" className={Styles["sorting_option__style"]}>
+                Name
+              </option>
+            </select>
           </div>
+        </div>
 
-          <div className={Styles["Appointment_list_cont"]}> 
-            {searchResultMessage && (
-              <div className={Styles["Search_result_message"]}>
-                {searchResultMessage}
-              </div>
-            )}
+        <div className={Styles["Appointment_list_cont"]}>
+          {searchResultMessage && (
+            <div className={Styles["Search_result_message"]}>
+              {searchResultMessage}
+            </div>
+          )}
 
-            {appointment.length > 0 && (
-              <table className={Styles["Appointment_table"]}>
-                <thead className={Styles["Appointment_table_main_head"]}>
-                  <tr>
-                    <th className={Styles["Appointment_table_name"]}>Name</th>
-                    <th className={Styles["Appointment_table_date"]}>Date</th>
-                    <th className={Styles["Appointment_table_time"]}>Time</th>
-                    <th className={Styles["Appointment_table_status"]}>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody className={Styles["Appointment_table_data"]}>
-                  {appointment.map((appointment) => {
+          {appointment.length > 0 && (
+            <table className={Styles["Appointment_table"]}>
+              <thead className={Styles["Appointment_table_main_head"]}>
+                <tr>
+                  <th className={Styles["Appointment_table_name"]}>Name</th>
+                  <th className={Styles["Appointment_table_date"]}>Date</th>
+                  <th className={Styles["Appointment_table_time"]}>Time</th>
+                  <th className={Styles["Appointment_table_status"]}>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody className={Styles["Appointment_table_data"]}>
+                {appointment.map((appointment) => {
                   return (
-                  <tr key={appointment.id}> 
-                    <td>{appointment.patientName}</td>
-                    <td>{appointment.apptDate}</td>
-                    <td>{appointment.apptTime}</td>
-                    <td>{appointment.apptStatus}
-                      {/* <div className={Styles["Appointment_table_status"]}>
+                    <tr key={appointment.id}>
+                      <td>{appointment.patientName}</td>
+                      <td>{appointment.apptDate}</td>
+                      <td>{appointment.apptTime}</td>
+                      <td>
+                        {appointment.apptStatus}
+                        {/* <div className={Styles["Appointment_table_status"]}>
                         <select className={Styles["status_option__select"]}>
                           <option value="Scheduled" className={Styles["status_option__style"]}>
                             Scheduled
@@ -211,36 +238,52 @@ const Appointment = () => {
                           </option>
                         </select>
                       </div> */}
-                    </td>
-                    <td>
-                      <div className={Styles["Appointment_table_action"]}>
-                        <div className={Styles["Action__Styling"]}>
-                          <a onClick={() => handleViewAppointment(appointment.id)}  className={Styles["Action__link__Styling"]}>
-                            <HiOutlineEye size="15px" /> View
-                          </a>
+                      </td>
+                      <td>
+                        <div className={Styles["Appointment_table_action"]}>
+                          <div className={Styles["Action__Styling"]}>
+                            <a
+                              onClick={() =>
+                                handleViewAppointment(appointment.id)
+                              }
+                              className={Styles["Action__link__Styling"]}
+                            >
+                              <HiOutlineEye size="15px" /> View
+                            </a>
+                          </div>
+                          <div className={Styles["Action__Styling"]}>
+                            <a
+                              href="#"
+                              className={Styles["Action__link__Styling"]}
+                            >
+                              <HiOutlinePencilAlt size="15px" /> Edit
+                            </a>
+                          </div>
+                          <div className={Styles["Action__Styling"]}>
+                            <a
+                              onClick={() =>
+                                handleDeleteAppointment(
+                                  appointment.id,
+                                  appointment.patientName
+                                )
+                              }
+                              className={Styles["Action__link__Styling"]}
+                            >
+                              <HiOutlineTrash size="15px" /> Delete
+                            </a>
+                          </div>
                         </div>
-                        <div className={Styles["Action__Styling"]}>
-                          <a href="#" className={Styles["Action__link__Styling"]}>
-                            <HiOutlinePencilAlt size="15px" /> Edit
-                          </a>
-                        </div>
-                        <div className={Styles["Action__Styling"]}>
-                          <a href="#" className={Styles["Action__link__Styling"]}>
-                            <HiOutlineTrash size="15px" /> Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                      </td>
+                    </tr>
                   );
-                  })}
-                </tbody>
-              </table>
-            )}
-            </div>
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
-      </main>
-    );
-}
+      </div>
+    </main>
+  );
+};
 
 export default Appointment;
