@@ -24,6 +24,12 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
       console.error('Error creating prescription:', error);
     }
   };
+
+  const formatConsultationDate = () => {
+    const originalDate = new Date(values.patientConsultationDate);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
   
   return (
     <main>
@@ -37,7 +43,8 @@ const ConfirmationPrescription = ({prevStep, nextStep, values}) => {
             <p>Sex: {values.patientSex}</p>
             <p>Weight: {values.patientWeight} {values.patientWeightUnit}</p>
             <p>Address: {values.patientAddress}</p>
-            <p>Date of Consultation: {values.patientConsultationDate}</p>
+            <p>Date of Consultation: {formatConsultationDate}</p>
+            {/* <p>Date of Consultation: {values.patientConsultationDate}</p> */}
           </div>
         </div>
 

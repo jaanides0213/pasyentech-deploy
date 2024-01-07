@@ -1,6 +1,7 @@
 import React from 'react';
 import Styles from "./AddPatient.module.css";
 import Accordion from '../Accordion/Accordion';
+import { RiArrowDownSFill } from "react-icons/ri";
 
 const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
 
@@ -37,8 +38,8 @@ const PastHistory = ({prevStep, nextStep, handleChange, values}) => {
                             </div>
                         </div>
                     </div>
-                }/>
-                
+                }/> 
+            
                 <Accordion title="II. Adult Illness History" content={
                     <div className={Styles["main_div"]}>
                         <div className={Styles["input_box_textarea"]}>         

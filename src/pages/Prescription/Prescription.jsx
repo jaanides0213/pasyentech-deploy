@@ -137,6 +137,12 @@ const Prescription = () => {
     }
   };
 
+  const formatConsultationDate = (prescription) => {
+    const originalDate = new Date(prescription.patientConsultationDate);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <main className={Styles["Prescription__cont"]}>
       <Sidebar />
@@ -220,7 +226,7 @@ const Prescription = () => {
                 <tr>
                   <th className={Styles["Prescription_table_name"]}>Name</th>
                   <th>Age</th>
-                  <th>Date</th>
+                  <th>Consultation Date</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -236,7 +242,7 @@ const Prescription = () => {
                         {prescription.patientAge}
                       </td>
                       <td className={Styles["Prescription_td"]}>
-                        {prescription.patientConsultationDate}
+                        {formatConsultationDate(prescription)}
                       </td>
                       <td className={Styles["Prescription_td"]}>
                         <div className={Styles["Prescription_table_action"]}>

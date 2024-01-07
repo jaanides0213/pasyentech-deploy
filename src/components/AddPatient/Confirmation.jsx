@@ -23,6 +23,12 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
     }
   }
 
+  const formatDateOfBirth = () => {
+    const originalDate = new Date(values.dateOfBirth);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <div>
       <h3 className={Styles["h3___styling"]}>Confirmation</h3>
@@ -34,7 +40,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
                 <p>Patient Name: {values.patientName} </p>
                 <p>Age: {values.patientAge}</p>
                 <p>Sex: {values.patientSex}</p>
-                <p>Date of Birth: {values.dateOfBirth}</p>
+                <p>Date of Birth: {formatDateOfBirth()}</p>
                 <p>Phone Number: {values.phoneNumber}</p>
                 <p>Civil Status: {values.civilStatus}</p>
                 <p>Address: {values.patientAddress}</p>

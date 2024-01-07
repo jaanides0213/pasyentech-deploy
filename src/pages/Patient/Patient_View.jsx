@@ -25,6 +25,12 @@ const Patient_View = () => {
     fetchPatient();
   }, [id]);
 
+  const formatDateOfBirth = () => {
+    const originalDate = new Date(patients.dateOfBirth);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -45,7 +51,7 @@ const Patient_View = () => {
               <p>Name of Patient: {patients.patientName}</p>
               <p>Age: {patients.patientAge}</p>
               <p>Sex: {patients.patientSex}</p>
-              <p>Date of Birth: {patients.dateOfBirth}</p>
+              <p>Date of Birth: {formatDateOfBirth()}</p>
               <p>Phone Number: {patients.phoneNumber}</p>
               <p>Civil Status: {patients.civilStatus} </p>
               <p>Address: {patients.patientAddress}</p>

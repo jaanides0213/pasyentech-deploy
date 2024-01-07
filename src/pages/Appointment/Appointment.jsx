@@ -131,6 +131,20 @@ const Appointment = () => {
     }
   };
 
+  const formatAppointmentDate = (appointment) => {
+    const originalDate = new Date(appointment.apptDate);
+    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    return formattedDate;
+  };
+
+  const formatAppointmentTime = (timeString) => {
+    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    return new Date(`1970-01-01T${timeString}`).toLocaleTimeString(
+      undefined,
+      options
+    );
+  };
+
   return (
     <main className={Styles["Appointment__cont"]}>
       <Sidebar />
@@ -218,8 +232,8 @@ const Appointment = () => {
                   return (
                     <tr key={appointment.id}>
                       <td>{appointment.patientName}</td>
-                      <td>{appointment.apptDate}</td>
-                      <td>{appointment.apptTime}</td>
+                      <td>{formatAppointmentDate(appointment)}</td>
+                      <td>{formatAppointmentTime(appointment.apptTime)}</td>
                       <td>
                         {appointment.apptStatus}
                         {/* <div className={Styles["Appointment_table_status"]}>
