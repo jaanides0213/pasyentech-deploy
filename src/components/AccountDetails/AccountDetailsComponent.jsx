@@ -116,7 +116,8 @@ const AccountDetailsComponent = ({ userData }) => {
       }
 */
       await updatePersonalInformation(testingId, updatedPersonalInfo);
-      console.log("Personal information updated successfully");
+      alert("Personal information updated successfully!");
+      console.log("Personal information updated successfully!");
     } catch (error) {
       console.error("Error updating personal information:", error);
     }
@@ -134,7 +135,8 @@ const AccountDetailsComponent = ({ userData }) => {
       };
       await updateContactInformation(testingId, updatedContactInfo);
       setUser(editedUserData);
-      console.log("Contact information updated successfully");
+      alert("Contact information updated successfully!");
+      console.log("Contact information updated successfully!");
     } catch (error) {
       console.error("Error updating contact information:", error);
     }
