@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { TiUserOutline } from "react-icons/ti";
 import { signOut } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
@@ -16,7 +16,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const signUpHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault();   
     navigate("/signup");
   };
 
