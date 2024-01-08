@@ -15,11 +15,10 @@ body {
     border: 2px solid #8F001E;
     border-radius: 10px;
     width: 100%;
- 
     max-width: 322px; /* Limit the width on larger screens */
     font-family: "Inter",sans-serif;
     padding: 0px 0px 10px 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .Dashboard__cont-main{
@@ -27,6 +26,19 @@ body {
     flex-direction: column;
     width: 100%;
     padding: 40px 40px;
+}
+
+.Dashboard__cont-text, .Dashboard__cont-text__h1, .Dashboard__cont-text__p2{
+    padding-left: 10px;
+}
+
+.Dashboard__cont-text {
+    padding-top: 10px;
+}
+
+.Dashboard__cont-text__h1 {
+    margin-top: 2.5px;
+    margin-bottom: -2.5px;
 }
 
 .Dashboard__cont-column{
@@ -48,6 +60,7 @@ body {
     border-radius: 10px;
     background-color: #8F001E;
     color: white !important;
+    padding-top: 3rem;
 }
 
 .DashboardAppointment_sample1 {
@@ -110,19 +123,20 @@ body {
 
 .DashboardNotes_label{
     position: absolute;
-    top: 120px;
+    margin-top: 1rem;
+    margin-left: 5px;
+    /* top: 120px; */
     font-weight: bold;
     color: rgb(255, 255, 255);
-    font-style: italic;
     border: none;
     padding: 0px 0px 10px 10px;
-    font-size: 12px;
+    font-size: 16px;
 }
   
 .DashboardAppointment_note__textarea {
     width: 336px;
     min-height: 260px;
-    padding: 30px 15px 15px   15px;
+    padding: 30px 15px 15px  15px;
     box-sizing: border-box;
     margin-top: 30px;
     border-radius: 10px;

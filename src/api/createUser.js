@@ -3,7 +3,6 @@ import {
     updateProfile,
     sendEmailVerification,
   } from "firebase/auth";
-  import { v4 as uuidv4 } from 'uuid';
   import { setDoc, doc, serverTimestamp } from "firebase/firestore";
   import { auth, db } from "../config/firebase";
   
@@ -13,21 +12,15 @@ import {
   
       const { user } = userCredential;
   
+      // Update user profile
       await updateProfile(user, {
         displayName: `${fname}`,
       });
-
-      const verificationId = uuidv4();
-
-      const verificationUrl = `https://pasyentech.com/${verificationId}`;
-
-
-      await sendEmailVerification(user, { url: verificationUrl });
   
-      // const params = useParams();
-      // const link = params.id;
-      // console.log(link);
+      // Send email verification
+      await sendEmailVerification(user); //not yet implemented but will implement soon
 
+      
       const docRef = doc(db, "users", user.uid);
       await setDoc(docRef, {
         fname: fname,
@@ -35,9 +28,8 @@ import {
         email: email,
         role: "pending",
         contactNo: contactNo,
-        verificationId: verificationId,
       });
-      
+  
       // Create request document
       const requestDocRef = doc(db, "requests", user.uid);
       await setDoc(requestDocRef, {
@@ -52,6 +44,7 @@ import {
         "You have been registered. Your account is awaiting approval from the superadmin. A verification email has been sent to your email address.";
       alert(message);
       
+    // Navigate to the login page after the alert is clicked
     navigate("/login");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -63,4 +56,3 @@ import {
       }
     }
   };
-  

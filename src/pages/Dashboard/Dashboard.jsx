@@ -38,7 +38,7 @@ const Dashboard = ({ userData }) => {
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
     const day = currentDate.getDate().toString().padStart(2, "0");
     const year = currentDate.getFullYear();
-    return `${month}-${day}-${year}`;
+    return `${month}/${day}/${year}`;
   };
 
   const userFName = user ? user.fname : "";
@@ -55,8 +55,8 @@ const Dashboard = ({ userData }) => {
             {user && (
               <div className={Styles["Dashboard__cont-helloUser"]}>
                 <p className={Styles["Dashboard__cont-text"]}>Hello,</p>
-                <h1>{userFName || " "}</h1>
-                <p className={Styles["Dashboard__cont-text"]}>
+                <h1 className={Styles["Dashboard__cont-text__h1"]}>{userFName || " "}!</h1>
+                <p className={Styles["Dashboard__cont-text__p2"]}>
                   Today is {getFormattedDate()}
                 </p>
               </div>
