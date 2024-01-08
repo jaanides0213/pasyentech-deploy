@@ -3,8 +3,8 @@ import {
     updateProfile,
     sendEmailVerification,
   } from "firebase/auth";
-  import { setDoc, doc, serverTimestamp } from "firebase/firestore";
-  import { auth, db } from "../config/firebase";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { auth, db } from "../config/firebase";
   
   export const createUser = async (email, password, fname, lname, contactNo, navigate) => {
     try {
@@ -12,15 +12,12 @@ import {
   
       const { user } = userCredential;
   
-      // Update user profile
       await updateProfile(user, {
         displayName: `${fname}`,
       });
   
-      // Send email verification
       await sendEmailVerification(user); //not yet implemented but will implement soon
 
-      
       const docRef = doc(db, "users", user.uid);
       await setDoc(docRef, {
         fname: fname,
@@ -29,7 +26,7 @@ import {
         role: "pending",
         contactNo: contactNo,
       });
-  
+      
       // Create request document
       const requestDocRef = doc(db, "requests", user.uid);
       await setDoc(requestDocRef, {
@@ -44,7 +41,6 @@ import {
         "You have been registered. Your account is awaiting approval from the superadmin. A verification email has been sent to your email address.";
       alert(message);
       
-    // Navigate to the login page after the alert is clicked
     navigate("/login");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
