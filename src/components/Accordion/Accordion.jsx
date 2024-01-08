@@ -16,7 +16,7 @@ class Accordion extends Component {
   };
 
   render() {
-    const { title, content } = this.props;
+    const { title, content} = this.props;
     const { isOpen } = this.state;
 
     return (
