@@ -2,6 +2,8 @@ import React from 'react';
 import Styles from "./AddPatient.module.css";
 import { createPatient } from '../../api/createPatient.js';
 import Accordion from '../Accordion/Accordion.jsx';
+import { notEditing } from '../../api/notEditing.js';
+
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
 
@@ -16,6 +18,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
     try {
       const patientId = await createPatient(values);
       console.log('Patient created successfully with ID:', patientId);
+      await notEditing();
 
       window.location.href = '/patient'; // temp only
     } catch (error) {

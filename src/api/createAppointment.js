@@ -1,4 +1,4 @@
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp, setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 
 export const createAppointment = async (newAppointment, currentAppointment) => {
@@ -7,16 +7,36 @@ export const createAppointment = async (newAppointment, currentAppointment) => {
     createdAt: serverTimestamp(),
   };
 
-  try {
-    const appointmentRef = await addDoc(collection(db, "appointment"), {
-      ...newAppointment,
-    });
+  console.log("hahhahhaahaha", newAppointment);
+  const appointmentId = newAppointment.apptId;
 
-    console.log("Appointment added successfully: ", appointmentRef.id);
+  if (!appointmentId || appointmentId === "") {
+    try {
+      const appointmentRef = await addDoc(collection(db, "appointment"), {
+        ...newAppointment,
+      });
 
-    return appointmentRef.id;
-  } catch (error) {
-    console.error("Error adding appointment:", error);
-    throw error;
+      console.log("Appointment added successfully: ", appointmentRef.id);
+
+      return appointmentRef.id;
+    } catch (error) {
+      console.error("Error adding appointment:", error);
+      throw error;
+    }
+  } else {
+    try {
+      const appointmentRef = doc(db, "appointment", appointmentId);
+
+      await setDoc(appointmentRef, {
+        ...newAppointment,
+      });
+
+      console.log("Appointment updated successfully: ", appointmentRef.id);
+
+      return appointmentRef.id;
+    } catch (error) {
+      console.error("Error updating appointment:", error);
+      throw error;
+    }
   }
-}; 
+};

@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 import Styles from "./AddAppointment.module.css";
-import {createAppointment} from "../../api/createAppointment";
+import { createAppointment } from "../../api/createAppointment";
+import { notEditing } from "../../api/notEditing";
 
 const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
-  const Previous = e => {
+  const Previous = (e) => {
     e.preventDefault();
     prevStep();
   };
@@ -17,16 +18,18 @@ const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
         dateOfAppointment: values.dateOfAppointment || "Default Date",
       });
       console.log("appointment ID:", appointmentId);
-      
-      window.location.href = '/appointment';
+      await notEditing();
+      window.location.href = "/appointment";
     } catch (error) {
-      console.error('Error creating appointment:', error);
+      console.error("Error creating appointment:", error);
     }
   };
 
   const formatAppointmentDate = () => {
     const originalDate = new Date(values.apptDate);
-    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    const formattedDate = `${
+      originalDate.getMonth() + 1
+    }/${originalDate.getDate()}/${originalDate.getFullYear()}`;
     return formattedDate;
   };
 
@@ -37,7 +40,9 @@ const ConfirmationAppointment = ({ prevStep, nextStep, values }) => {
     const minutes = parseInt(originalTime[1]);
     const period = hours >= 12 ? "PM" : "AM";
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedTime = `${formattedHours}:${minutes < 10 ? "0" : ""}${minutes} ${period}`;
+    const formattedTime = `${formattedHours}:${
+      minutes < 10 ? "0" : ""
+    }${minutes} ${period}`;
     return formattedTime;
   };
 

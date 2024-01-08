@@ -11,7 +11,9 @@ import {
 } from "react-icons/hi";
 import { getPrescriptionData } from "../../api/getPrescriptionData";
 import { getPrescriptionById } from "../../api/getPrescriptionById.js";
-import { deletePrescriptionById } from "../../api/deletePrescriptionById.jsx";
+import { deletePrescriptionById } from "../../api/deletePrescriptionById.js";
+import { currentlyEditing } from "../../api/currentlyEditing.js";
+import { notEditing } from "../../api/notEditing";
 
 const Prescription = () => {
   const [prescriptions, setPrescription] = useState([]);
@@ -137,9 +139,29 @@ const Prescription = () => {
     }
   };
 
+  const handleEditPrescription = async (prescriptionId) => {
+    try {
+      await currentlyEditing(prescriptionId);
+      window.location.href = "/prescription/add-prescription-form";
+    } catch (error) {
+      console.error("Error fetching prescription details: ", error);
+    }
+  };
+
+  const handleAddPrescription = async () => {
+    try {
+      await notEditing();
+      window.location.href = "/prescription/add-prescription-form";
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  };
+
   const formatConsultationDate = (prescription) => {
     const originalDate = new Date(prescription.patientConsultationDate);
-    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    const formattedDate = `${
+      originalDate.getMonth() + 1
+    }/${originalDate.getDate()}/${originalDate.getFullYear()}`;
     return formattedDate;
   };
 
@@ -179,7 +201,7 @@ const Prescription = () => {
           <div className={Styles["Prescription_add_bar"]}>
             <button className={Styles["Prescription_add_button"]}>
               <a
-                href="/prescription/add-prescription-form"
+                onClick={handleAddPrescription}
                 className={Styles["Patient_add_icon"]}
               >
                 <IoMdAdd /> Add Prescription
@@ -259,7 +281,9 @@ const Prescription = () => {
 
                           <div className={Styles["Action__Styling"]}>
                             <a
-                              href="#"
+                              onClick={() =>
+                                handleEditPrescription(prescription.id)
+                              }
                               className={Styles["Action__link__Styling"]}
                             >
                               <HiOutlinePencilAlt size="15px" /> Edit

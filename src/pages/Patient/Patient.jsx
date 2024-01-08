@@ -12,6 +12,8 @@ import { getPatientData } from "./../../api/getPatientData"; // Import the new f
 import { getPatientById } from "../../api/getPatientById.js";
 import { deletePatientById } from "../../api/deletePatientById.js";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
+import { currentlyEditing } from "../../api/currentlyEditing.js";
+import { notEditing } from "../../api/notEditing.js";
 
 const Patient = () => {
   const [patients, setPatients] = useState([]);
@@ -125,6 +127,24 @@ const Patient = () => {
     }
   };
 
+  const handleEditPatient = async (patientId) => {
+    try {
+      await currentlyEditing(patientId);
+      window.location.href = "/patient/add-patient-form";
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  };
+
+  const handleAddPatient = async () => {
+    try {
+      await notEditing();
+      window.location.href = "/patient/add-patient-form";
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  };
+
   return (
     <main className={Styles["Patient__cont"]}>
       <Sidebar />
@@ -156,7 +176,7 @@ const Patient = () => {
             {/* <link to="/patient_form" className={Styles[]} */}
             <button className={Styles["Patient_add_button"]}>
               <a
-                href="/patient/add-patient-form"
+                onClick={handleAddPatient}
                 className={Styles["Patient_add_icon"]}
               >
                 <IoMdAdd /> Add Patient
@@ -226,7 +246,9 @@ const Patient = () => {
                           </div>
                           <div className={Styles["Action__Styling"]}>
                             <a
-                              href="#"
+                              onClick={() => {
+                                handleEditPatient(patients.id);
+                              }}
                               className={Styles["Action__link__Styling"]}
                             >
                               <HiOutlinePencilAlt size="15px" /> Edit

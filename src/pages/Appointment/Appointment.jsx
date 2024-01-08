@@ -11,13 +11,16 @@ import {
 } from "react-icons/hi";
 import { getAppointmentData } from "../../api/getAppointmentData";
 import { getAppointmentById } from "../../api/getAppointmentById.js";
-import { deleteAppointmentById } from "../../api/deleteAppointmentById.jsx";
+import { deleteAppointmentById } from "../../api/deleteAppointmentById.js";
+import { currentlyEditing } from "../../api/currentlyEditing.js";
+import { notEditing } from "../../api/notEditing";
 
 const Appointment = () => {
   const [appointment, setAppointment] = useState([]);
   const [searchAppointment, setSearchAppointment] = useState(""); // State for Search appointment functionality
   const [searchResultMessage, setSearchResultMessage] = useState(""); // Message for search results
   const [sortBy, setSortBy] = useState("");
+  const [step, setStep] = useState(1);
 
   const handleSort = (option) => {
     setSortBy(option);
@@ -102,7 +105,7 @@ const Appointment = () => {
       // for debug
       console.log("Appointment Details:", appointmentDetails);
     } catch (error) {
-      console.error("Error fetching prescription details:", error);
+      console.error("Error fetching appointment details:", error);
     }
   };
 
@@ -118,27 +121,47 @@ const Appointment = () => {
 
     try {
       await deleteAppointmentById(appointmentId);
-      alert(`Appointment for ${patientName} has been deleted.`);
+      alert(`Deleting...`);
       setAppointment((prevAppointments) =>
         prevAppointments.filter(
           (appointment) => appointment.id !== appointmentId
         )
       );
-      console.log(`Appointment deleted successfully.`);
+      console.log(`Deleting...`);
       window.location.reload();
     } catch (error) {
       console.error(`Error deleting appointment ${appointmentId}.`);
     }
   };
 
+  const handleEditAppointment = async (appointmentId) => {
+    try {
+      await currentlyEditing(appointmentId);
+      window.location.href = "/appointment/add-appointment-form";
+    } catch (error) {
+      console.log(`Error: `, error);
+    }
+  };
+
+  const handleAddAppointment = async () => {
+    try {
+      await notEditing();
+      window.location.href = "/appointment/add-appointment-form";
+    } catch (error) {
+      console.log(`Error: `, error);
+    }
+  };
+
   const formatAppointmentDate = (appointment) => {
     const originalDate = new Date(appointment.apptDate);
-    const formattedDate = `${originalDate.getMonth() + 1}/${originalDate.getDate()}/${originalDate.getFullYear()}`;
+    const formattedDate = `${
+      originalDate.getMonth() + 1
+    }/${originalDate.getDate()}/${originalDate.getFullYear()}`;
     return formattedDate;
   };
 
   const formatAppointmentTime = (timeString) => {
-    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const options = { hour: "numeric", minute: "2-digit", hour12: true };
     return new Date(`1970-01-01T${timeString}`).toLocaleTimeString(
       undefined,
       options
@@ -179,7 +202,7 @@ const Appointment = () => {
 
           <div className={Styles["Appointment_add_bar"]}>
             <button className={Styles["Appointment_add_button"]}>
-              <a href="/appointment/add-appointment-form">
+              <a onClick={handleAddAppointment}>
                 <IoMdAdd /> Add Appointment
               </a>
             </button>
@@ -267,7 +290,10 @@ const Appointment = () => {
                           </div>
                           <div className={Styles["Action__Styling"]}>
                             <a
-                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleEditAppointment(appointment.id);
+                              }}
                               className={Styles["Action__link__Styling"]}
                             >
                               <HiOutlinePencilAlt size="15px" /> Edit

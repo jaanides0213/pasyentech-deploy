@@ -1,4 +1,10 @@
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 
 export const createPatient = async (newPatient, currentUser) => {
@@ -11,16 +17,34 @@ export const createPatient = async (newPatient, currentUser) => {
     createdAt: serverTimestamp(),
   };
 
-  try {
-    const patientRef = await addDoc(collection(db, "patients"), {
-      ...newPatient,
-    });
+  console.log("hahaha", newPatient);
+  const patientId = newPatient.patientId;
 
-    console.log("Patient added successfully: ", patientRef.id);
+  if (!patientId || patientId === "") {
+    try {
+      const patientRef = await addDoc(collection(db, "patients"), {
+        ...newPatient,
+      });
 
-    return patientRef.id;
-  } catch (error) {
-    console.error("Error adding patient:", error);
-    throw error;
+      console.log("Patient added successfully: ", patientRef.id);
+
+      return patientRef.id;
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  } else {
+    try {
+      const patientRef = doc(db, "patients", patientId);
+
+      await setDoc(patientRef, {
+        ...newPatient,
+      });
+
+      console.log("Appointment updated successfully: ", patientRef.id);
+
+      return patientRef.id;
+    } catch (error) {
+      console.error("error: ", error);
+    }
   }
 };
