@@ -3,8 +3,9 @@ import {
     updateProfile,
     sendEmailVerification,
   } from "firebase/auth";
-import { setDoc, doc, serverTimestamp } from "firebase/firestore";
-import { auth, db } from "../config/firebase";
+  import { v4 as uuidv4 } from 'uuid';
+  import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+  import { auth, db } from "../config/firebase";
   
   export const createUser = async (email, password, fname, lname, contactNo, navigate) => {
     try {
@@ -15,8 +16,17 @@ import { auth, db } from "../config/firebase";
       await updateProfile(user, {
         displayName: `${fname}`,
       });
+
+      const verificationId = uuidv4();
+
+      const verificationUrl = `https://pasyentech.com/${verificationId}`;
+
+
+      await sendEmailVerification(user, { url: verificationUrl });
   
-      await sendEmailVerification(user); //not yet implemented but will implement soon
+      // const params = useParams();
+      // const link = params.id;
+      // console.log(link);
 
       const docRef = doc(db, "users", user.uid);
       await setDoc(docRef, {
@@ -25,6 +35,7 @@ import { auth, db } from "../config/firebase";
         email: email,
         role: "pending",
         contactNo: contactNo,
+        verificationId: verificationId,
       });
       
       // Create request document
