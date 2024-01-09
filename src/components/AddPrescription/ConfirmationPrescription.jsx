@@ -21,7 +21,7 @@ const ConfirmationPrescription = ({ prevStep, nextStep, values }) => {
       console.log("Prescription ID:", prescriptionId);
       await notEditing();
 
-      //window.location.href = "/prescription";
+      window.location.href = "/prescription";
     } catch (error) {
       console.error("Error creating prescription:", error);
     }
