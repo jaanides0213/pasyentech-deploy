@@ -53,7 +53,8 @@ const DashboardNotes = () => {
       } else {
         await createNotes(noteContent);
       }
-    }
+    } 
+
     setEditMode(false);
   };
 
