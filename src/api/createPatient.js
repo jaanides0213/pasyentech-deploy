@@ -20,31 +20,21 @@ export const createPatient = async (newPatient, currentUser) => {
   console.log("hahaha", newPatient);
   const patientId = newPatient.patientId;
 
+  // If patientId is undefined or empty, remove it from the object
   if (!patientId || patientId === "") {
-    try {
-      const patientRef = await addDoc(collection(db, "patients"), {
-        ...newPatient,
-      });
+    // This ensures that patientId is not sent as an undefined or empty string
+    delete newPatient.patientId;
+  }
 
-      console.log("Patient added successfully: ", patientRef.id);
+  try {
+    const patientRef = await addDoc(collection(db, "patients"), {
+      ...newPatient,
+    });
 
-      return patientRef.id;
-    } catch (error) {
-      console.error("error: ", error);
-    }
-  } else {
-    try {
-      const patientRef = doc(db, "patients", patientId);
+    console.log("Patient added successfully: ", patientRef.id);
 
-      await setDoc(patientRef, {
-        ...newPatient,
-      });
-
-      console.log("Appointment updated successfully: ", patientRef.id);
-
-      return patientRef.id;
-    } catch (error) {
-      console.error("error: ", error);
-    }
+    return patientRef.id;
+  } catch (error) {
+    console.error("error: ", error);
   }
 };

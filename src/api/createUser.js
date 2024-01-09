@@ -41,7 +41,7 @@ import {
       });
   
       const message =
-        "You have been registered. Your account is awaiting approval from the superadmin. A verification email has been sent to your email address.";
+        "You have been registered. Your account is awaiting approval from the superadmin.";
       alert(message);
       
     // Navigate to the login page after the alert is clicked

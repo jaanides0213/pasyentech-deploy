@@ -214,7 +214,7 @@ const Patient = () => {
             <div className={Styles["Search_result_message"]}>
               {searchResultMessage}
             </div>
-          )}
+          )}   
 
           {patients.length > 0 && (
             <table className={Styles["Patient_table"]}>
