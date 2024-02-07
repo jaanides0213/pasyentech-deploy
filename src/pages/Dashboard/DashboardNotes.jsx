@@ -11,21 +11,25 @@ const DashboardNotes = () => {
   }, []);
 
   useEffect(() => {
-    if (editMode) {
-      const saveNote = async () => {
-        if (noteContent.trim() !== "") {
-          const notesData = await getNotesData();
+    const saveNote = async () => {
+      if (noteContent.trim() !== "") {
+        const notesData = await getNotesData();
 
-          if (notesData.length > 0) {
-            await updateNotes(notesData[0].id, noteContent);
-          } else {
-            await createNotes(noteContent);
-          }
+        if (notesData.length > 0) {
+          await updateNotes(notesData[0].id, noteContent);
+        } else {
+          await createNotes(noteContent);
         }
-      };
-      const saveTimeout = setTimeout(saveNote, 1000);
-      return () => clearTimeout(saveTimeout);
-    }
+      } else {
+        const notesData = await getNotesData();
+        if (notesData.length > 0) {
+          await updateNotes(notesData[0].id, "");
+        }
+      }
+    };
+
+    const saveTimeout = setTimeout(saveNote, 1000);
+    return () => clearTimeout(saveTimeout);
   }, [noteContent, editMode]);
 
   const loadNoteContent = async () => {
@@ -42,20 +46,6 @@ const DashboardNotes = () => {
 
   const handleTextareaClick = () => {
     setEditMode(true);
-  };
-
-  const handleSaveNote = async () => {
-    if (noteContent.trim() !== "") {
-      const notesData = await getNotesData();
-
-      if (notesData.length > 0) {
-        await updateNotes(notesData[0].id, noteContent);
-      } else {
-        await createNotes(noteContent);
-      }
-    } 
-
-    setEditMode(false);
   };
 
   return (

@@ -11,6 +11,7 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { FaFileArchive } from "react-icons/fa";
 import Styles from "./Sidebar.module.css"; // Adjust the import path
 import { auth } from "../../config/firebase";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -70,7 +71,7 @@ const Sidebar = () => {
                 isLinkActive("/dashboard") ? Styles["active-link"] : ""
               }
             >
-              <p>
+              <p> 
                 <HiHome size="1rem" /> Dashboard
               </p>
             </a>
@@ -111,6 +112,16 @@ const Sidebar = () => {
                 <HiAdjustments size="1rem" /> Account Details
               </p>
             </a>
+
+            <a
+              href="/account-details"
+              className={isLinkActive("/account-details") ? Styles["active-link"] : ""}
+            >
+              <p>
+                <FaFileArchive size="1rem" /> Archive
+              </p>
+            </a>
+
             <a
               href="#"
               onClick={signOutBtnHandler}
@@ -164,6 +175,16 @@ const Sidebar = () => {
               <p>
                 <HiAdjustments
                   size="1rem"
+                  className={Styles["sidebar-icons"]}
+                />
+              </p>
+            </a>
+            <a
+              href="/account-details"
+              className={isLinkActive("/account-details") ? Styles["active-link"] : ""}
+            >
+              <p>
+                <FaFileArchive size="1rem"
                   className={Styles["sidebar-icons"]}
                 />
               </p>

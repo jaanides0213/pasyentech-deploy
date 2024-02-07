@@ -50,6 +50,7 @@
     margin-top: -3rem;
     line-height: 20px;
     padding-top: 20px;
+
 }
 
 .sidebar-content-closed{
@@ -60,10 +61,12 @@
     font-weight: 300;
     color: white;
     font-size: 15px;
+    
 }
 
 .sidebar-content a.active-link {
     font-weight: 800;
+    
 }
 
 .sidebar-content a:hover, .sidebar-content-logout a:hover {
