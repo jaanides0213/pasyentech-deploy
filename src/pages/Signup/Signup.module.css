@@ -1,8 +1,6 @@
-body{
-    background: linear-gradient(to top, #31000a, #8f001e);
-    justify-content: center;
+body {
+    overflow-x: hidden; /*in order to remove the scrollbar on the bottom part of the signup page*/
 }
-
 .Signup{
     display: flex;
     align-items: center;

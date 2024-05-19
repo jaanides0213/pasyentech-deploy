@@ -1,0 +1,128 @@
+form {
+    max-width: 100%;
+}
+
+.h3___styling {
+    margin-top: -1.5rem;
+    margin-bottom: 1.3rem;
+}
+
+.Appointment__form__div_wrapper {
+    margin-top: 10px;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.required_asterisk {
+    color:#8F001E;
+}
+
+.input_box_name input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    width: 25rem;
+}
+
+.input_box_date input {
+    background-color: #8F001E;
+    color: white;
+    text-align: center;
+    display: flex;
+    padding: 8.5px;
+    text-align: center;    
+    width: 11.70rem;
+    border: none;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+}
+
+.input_box_time input {
+    background-color: #8F001E;
+    color: white;
+    text-align: center;
+    width: 11.70rem;
+    display: flex;
+    padding: 8.5px;
+    text-align: center;    
+    border: none;
+    font-family: "Inter",sans-serif;
+}
+
+.status_option__select {
+    background-color: #8F001E;
+    color: white;
+    font-family: "Inter", sans-serif;  
+    padding: 8.5px;
+    width: 12.8rem;
+}
+
+.status_option__style {
+    background-color: white;
+    color: #8F001E;
+}
+
+.textareaStyle {
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 25rem;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.doneBtn__container {
+    margin-top: 2rem;
+}
+
+.prevBtn__style {
+    font-family: "Inter",sans-serif;
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    color: white;
+}
+
+.doneBtn__style {
+    font-family: "Inter",sans-serif;
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    color: white;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .main_div{
+        flex-direction: column;
+    }
+
+    .input_box_name input, .input_box_date input,
+    .input_box_time input, .textareaStyle {
+        width: 90%;
+        margin-right: 0;
+    }   
+}

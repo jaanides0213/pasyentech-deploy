@@ -1,0 +1,98 @@
+.Sidebar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #8F001E;
+    transition: width 1s; /*styling to toggle sidebar*/
+    min-height: 100vh;
+    width: 400px;
+} 
+
+.arrow-btn:hover{
+    cursor: pointer;
+}
+
+.Sidebar.open {
+    max-width: 490px;
+    .arrow-btn{
+        background-color: #8F001E;
+        color: white;
+        align-self: flex-end;
+        margin-top: 6rem;
+        padding-right: 1.0rem;
+    }
+}
+
+.Sidebar.closed {
+    width: 125px;
+    .arrow-btn{
+        background-color: #8F001E;
+        align-self: center;
+        color: white;
+        margin-top: 6rem;
+    }
+    .sidebar-content-logout{
+        margin-top: 8rem;
+    }
+}
+
+.sidebar-logo{
+    margin-top: -6.5rem;
+    max-width: 180px;
+}
+
+.sidebar-icons {
+    align-self: flex-end;
+    color: white;
+}
+
+.sidebar-content {
+    margin-top: -3rem;
+    line-height: 20px;
+    padding-top: 20px;
+
+}
+
+.sidebar-content-closed{
+    margin-top: 2.5em;
+}
+
+.sidebar-content a {
+    font-weight: 300;
+    color: white;
+    font-size: 15px;
+    
+}
+
+.sidebar-content a.active-link {
+    font-weight: 800;
+    
+}
+
+.sidebar-content a:hover, .sidebar-content-logout a:hover {
+    color: white;
+}
+.sidebar-content-logout {
+    margin-top: 10rem;
+}
+.sidebar-content-logout a{
+    font-weight:300;
+    color: white;
+    font-size: 15px;
+}   
+
+/* Media Query for Responsive Design */
+@media screen and (min-width: 150px) {
+    .Sidebar.closed {
+        max-width: 100%;
+        visibility: visible;
+    }
+
+    .sidebar-logo{
+        width: 180px;
+    }
+
+    .sidebar-icons {
+        width: 125px;
+    }
+}

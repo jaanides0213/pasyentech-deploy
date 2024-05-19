@@ -1,0 +1,202 @@
+form {
+    max-width: 100%;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.h3___styling {
+    margin-top: -1.5rem;
+    margin-bottom: 1.3rem;
+}
+
+.input_box_name input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+    width: 40rem;
+}
+
+.input_box_address input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+    width: 50rem;
+}
+
+.input_box_occupation input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+    margin-right: 13px;
+    width: 39.25rem;
+}
+
+.input_box_age input{
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+} 
+
+.input_box_calendar {
+    margin-right: 13px;
+}
+
+.input_box_calendar input{
+    background-color: white;
+    border: 1px solid #8F001E;
+    color: black;
+    padding: 8px;
+    text-align: center;
+    display: flex;
+    font-family: "Inter",sans-serif;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.sex_select_style, .sex_select_option,
+.civilStatus_select_style, .patientReligion_select_style{
+    padding: 7.5px;
+    background-color: white;
+    color:black;
+    font-family: "Inter",sans-serif;
+    border: 1px solid #8F001E;
+}
+
+.civilStatus_select_style {
+    width: 14.3rem;
+}
+
+.patientReligion_select_style {
+    width: 10rem;
+    margin-right: 13px;
+}
+
+.input_box_phone {
+    margin-left: 13px;
+    margin-right: 32px;
+}
+
+.input_box_phone input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.textareaStyle {
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 50rem;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+    margin-bottom: 1rem;
+}
+.textareaStyle1 {
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 50rem;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.nextBtn__container {
+    margin-top: 2rem;
+}
+
+.nextBtn__style {
+    font-family: "Inter",sans-serif;
+    background-color: #8F001E;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 6rem;
+    border: none;
+    color: white;
+}
+
+.main_div__confirmation {
+    margin-top: 2rem;
+    line-height: 15px;
+}
+
+.main_div__partition {
+    margin-bottom: 2.5rem;
+}
+
+.main_div__data {
+    margin-left: 1rem;
+}
+
+.main_div__subdata {
+    margin-left: 1.3rem;
+}
+
+.main_div__subsubdata {
+    margin-left: 1.3rem;
+}
+
+.required_asterisk {
+    color:#8F001E;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .main_div {
+        flex-direction: column; /* Change to a column layout on smaller screens */
+    }
+
+    .input_box_name input,
+    .input_box_age input,
+    .input_box_calendar input,
+    .input_box_phone input,
+    .textareaStyle {
+        width: 90%; /* Make input fields and textareas full width on smaller screens */
+    }
+}

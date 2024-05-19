@@ -1,0 +1,327 @@
+body {
+    overflow-x: hidden;
+}
+
+.Patient__cont{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    font-family: "Inter", sans-serif;  
+    position: fixed;
+    
+}
+
+.Patient__cont-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 40px;
+    overflow-y: auto;
+}
+
+.Patient__hr {
+    border: none;
+    border: 1px solid #8F001E;
+    margin-top: 0.5rem;
+}
+
+.Patient_search_add_container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    margin-top: -1rem;
+    margin-left: 1px;
+    flex-direction: row;
+    width: 95%;
+}
+
+.Patient_search_bar {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.Patient_search_input {
+    min-width: 15rem;
+    height: 2rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #8F001E;
+}
+
+.Patient_search_button {
+    background-color: #8F001E;
+    border-radius: 0;
+    height: 2.2rem;
+    margin-left: -3.55rem;
+    height: 2.25rem;
+}
+
+.Patient_add_bar button {
+    height: 2.25rem;
+    border-radius: 0;
+    border: none;
+    color: white;
+    background-color: #8F001E;
+    font-size: 13.5px;
+}
+
+.Patient_add_bar a {
+    color: white;
+}
+
+.Patient_add_bar a:hover {
+    color: white;
+}
+
+.Patient_add_bar {
+    margin-left: 1.5rem;
+    border-radius: 0;
+    border: none;
+    background-color: #8F001E;
+}
+
+.Patient_sort_by {
+    margin-left: 1.5rem;
+    border-radius: 0;
+    border: none;
+}
+
+.sorting_select__style {
+    font-size: 13.5px;
+    font-weight: 450;
+    background-color: #8F001E;
+    height: 2.25rem;
+    border: none;
+    padding: 10px;
+    font-family: "Inter", sans-serif;  
+}
+
+.sorting_option__style {
+    padding: 7.5px;
+    background-color: white;
+    color: #8F001E;
+    border: 1px solid;
+}
+
+.Patient_list_cont {
+    margin-top: 1.5rem;
+    overflow: auto;
+    max-height: 500px; /* Adjust the max-height as needed */
+}
+
+.Patient_table{
+    border: 1px solid #8F001E; 
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.Patient_table_main_head {
+    background-color:#8F001E ;
+    color: white;
+}
+
+.Patient_table_main_head th {
+    padding: 15px ;
+}
+
+.Patient_table_data td {
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    color: #8F001E;
+    font-weight: 600;
+    border-bottom: 1px solid #8F001E;
+}
+
+.Patient_table_action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Patient_table_name {
+    width: 20%;
+}
+
+.Patient_table_age {
+    width: 10%;
+}
+
+/*action styling*/
+.Action__Styling{
+    padding-right: 1rem;
+}
+.Action__link__Styling {
+    color: #8F001E;
+    cursor: pointer;
+}
+.Action__link__Styling:hover {
+    color: #8F001E;
+}
+
+/* for Patient_Form css*/
+.add-patient-form {
+    max-width: 100%;
+}
+
+.Patient__form__div_wrapper{
+    margin-top: -1rem;
+}
+
+.Patient__form__container {
+    width: 100%; /* Ensure the form takes up 100% of the available width */
+    margin-top: -1px;
+}
+
+.main_div{
+    display: flex;
+    flex-direction: row;
+}
+
+.input_box {
+    line-height: 1.8rem;
+    margin-right: 2rem;
+    margin-top: 15px;
+}
+
+.input_box input {
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #8F001E;
+    padding-left: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+.input_label {
+    font-weight: 20px;
+    font-size: 18px;
+}
+
+.required_asterisk {
+    color:#8F001E;
+}
+.name  {
+    min-width: 40rem; /* Adjust the min-width for smaller screens */
+}
+
+.sex_select_style {
+    padding: 7.5px;
+    background-color: white;
+    color: #8F001E;
+    border: 1px solid;
+}
+
+/* .input_box_sex,
+.input_box_age,
+ input {
+    width: 50px;
+    height: 20px;
+    background-color: white;
+    border-color:#8F001E;
+    color: black;
+    padding: 0.5rem;
+} */
+.past{
+    min-height: 5rem;
+    word-wrap: break-word;
+}
+
+.medical, .past, .surgical, .current,
+.family, .social, .psychosocial, .risk,
+.chief_complaint, .history_present, .review_system,
+.physical_information, .impression{
+    color: black;
+    background-color: white;
+    border: 1px solid #8F001E;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 75px;
+    padding: 10px;
+    font-family: "Inter",sans-serif;
+}
+
+input[type="file"]::file-selector-button {
+    margin-top: 1rem;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #8F001E;
+    transition: 1s;
+    font-family: "Inter", sans-serif;  
+  }
+  
+  input[type="file"]::file-selector-button:hover {
+    cursor: pointer;
+}
+
+.uploaded_file__container {
+    margin-left: 15px;
+    margin-bottom: 0.5rem;
+}
+
+.Patient_add_button{
+    border-radius: 0px;
+    background-color: #8F001E;
+    border: none;
+}
+
+/*VIEW PATIENT STYLES*/
+.Patient__information__h3, .Patient__physical__h3,
+.Patient__impression__h3, .Patient__diagnosticFiles__h3{
+    margin-top: 2rem;
+}
+.Patient__information__container p, .Patient__history__container p,
+.Patient__physical__container p, .Patient__impression__container p {
+    line-height: 15px;
+}
+
+.main_div__data {
+    margin-left: 1rem;
+}
+
+.main_div__subdata {
+    margin-left: 1.3rem;
+}
+
+.main_div__subsubdata {
+    margin-left: 1.3rem;
+}
+
+/* Media Query for Responsive Design */
+@media screen and (max-width: 768px) {
+    .Patient__search_add_container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+}
+
+
+/* for scroll */
+.Patient__cont-column-main {
+    overflow: auto;
+    max-height: 700px;
+    padding-right: 20px; /* Add space for the scrollbar */
+    /* Add other styles as needed */
+  }
+  
+  /* Style the scrollbar */
+  .Patient__cont-column-main::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+  }
+  
+  .Patient__cont-column-main::-webkit-scrollbar-thumb {
+    background-color: #8F001E; /* Color of the thumb */
+    border-radius: 10px; /* Rounded corners of the thumb */
+  }
+  
+  .Patient__cont-column-main::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the track */
+    border-radius: 10px; /* Rounded corners of the track */
+  }
