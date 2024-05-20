@@ -69,5 +69,14 @@ h4 {
     background: none;
     border: none;
     text-decoration: underline;
+    color: white;
+    outline: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: text-shadow 0.3s ease;
+}
+
+.signup_btn:hover{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: text-shadow 0.3s ease;
 }
 
